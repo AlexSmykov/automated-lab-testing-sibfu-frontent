@@ -8,6 +8,7 @@ types:
   test: test
   build: build
   ci: ci
+  a: chore
   chore: chore
   revert: revert
   wip: wip
