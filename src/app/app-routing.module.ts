@@ -6,8 +6,13 @@ import { EFullRoutes, EPartialRoutes } from './shared/router-paths'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: EFullRoutes.REGISTRATION_PAGE,
+    redirectTo: EFullRoutes.MAIN,
     pathMatch: 'full',
+  },
+  {
+    path: EPartialRoutes.MAIN,
+    loadChildren: () =>
+      import('./layout/main/main.module').then((m) => m.MainModule),
   },
   {
     path: EPartialRoutes.REGISTRATION_PAGE,
