@@ -1,3 +1,7 @@
+matchTitle: true
+
+matchBody: false
+
 caseSensitive: false
 
 labelMappings:
@@ -13,3 +17,4 @@ labelMappings:
   chore: chore
   revert: revert
   wip: wip
+  a: feat
