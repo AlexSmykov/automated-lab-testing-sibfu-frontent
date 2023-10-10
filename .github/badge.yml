@@ -1,10 +1,4 @@
-matchTitle: true
-
-matchBody: false
-
-caseSensitive: false
-
-labelMappings:
+types:
   feat: feat
   fix: fix
   docs: docs
@@ -13,8 +7,7 @@ labelMappings:
   perf: perf
   test: test
   build: build
-  'ci': ci
+  ci: ci
   chore: chore
   revert: revert
   wip: wip
-  a: feat
