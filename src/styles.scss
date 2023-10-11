@@ -1,12 +1,7 @@
-@import './styles/variables';
+@import 'styles/variables';
 @import 'styles/text';
 @import 'styles/flex';
-
-body {
-  input {
-    border-radius: 10px;
-  }
-}
+@import 'styles/form';
 
 .paddingless {
   padding: 0;
