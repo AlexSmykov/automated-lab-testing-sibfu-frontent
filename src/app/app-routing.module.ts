@@ -6,7 +6,7 @@ import { EFullRoutes, EPartialRoutes } from './shared/router-paths'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: EFullRoutes.MAIN,
+    redirectTo: EFullRoutes.REGISTRATION_PAGE,
     pathMatch: 'full',
   },
   {
