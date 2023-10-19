@@ -30,6 +30,7 @@
             "styles": [
               "src/theme.less",
               "src/styles.scss",
+              "dist/form-controls/src/lib/style.scss",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []

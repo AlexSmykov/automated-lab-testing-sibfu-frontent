@@ -1,6 +1,10 @@
-<input
-  nz-input
-  [placeholder]="placeholder"
-  [formControl]="control"
-  [maxLength]="maxLength"
-/>
+<nz-form-item>
+  <nz-form-control [nzErrorTip]="publicErrorService.checkError(control)">
+    <input
+      nz-input
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [maxLength]="maxLength"
+    />
+  </nz-form-control>
+</nz-form-item>
