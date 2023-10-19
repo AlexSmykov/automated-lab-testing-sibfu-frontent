@@ -6,7 +6,7 @@ import { EFullRoutes, EPartialRoutes } from './shared/router-paths'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: EFullRoutes.REGISTRATION_PAGE,
+    redirectTo: EFullRoutes.LOGIN_PAGE,
     pathMatch: 'full',
   },
   {
@@ -15,10 +15,10 @@ const routes: Routes = [
       import('./layout/main/main.module').then((m) => m.MainModule),
   },
   {
-    path: EPartialRoutes.REGISTRATION_PAGE,
+    path: EPartialRoutes.LOGIN_PAGE,
     loadChildren: () =>
-      import('./pages/registration-page/registration-page.module').then(
-        (m) => m.RegistrationPageModule
+      import('./pages/login-page/login-page.module').then(
+        (m) => m.LoginPageModule
       ),
   },
 ]

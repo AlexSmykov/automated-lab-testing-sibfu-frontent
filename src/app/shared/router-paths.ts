@@ -1,9 +1,9 @@
 export const EPartialRoutes = {
   MAIN: 'main',
-  REGISTRATION_PAGE: 'registration',
+  LOGIN_PAGE: 'login',
 }
 
 export const EFullRoutes = {
-  REGISTRATION_PAGE: [EPartialRoutes.REGISTRATION_PAGE].join('/'),
+  LOGIN_PAGE: [EPartialRoutes.LOGIN_PAGE].join('/'),
   MAIN: [EPartialRoutes.MAIN].join('/'),
 }

@@ -14,6 +14,12 @@
           [placeholder]="'Введите пароль'"
         ></as-password-input>
       </as-label-wrapper>
+      <div class="flex row space max-w">
+        <app-router-link class="marginfull" [link]="''"
+          >Еще не зарегистрированы?</app-router-link
+        >
+        <app-button (click)="onLoginClick()">Войти</app-button>
+      </div>
     </app-form-container>
   </form>
 </section>
