@@ -1,19 +1,19 @@
 <section class="main-section flex column center align-center">
   <app-logo></app-logo>
-  <div class="form-sizer">
+  <form class="form-sizer">
     <app-form-container [title]="'Вход'">
-      <as-label-wrapper [control]="control" [title]="'Логин'">
+      <as-label-wrapper [control]="controls.login" [title]="'Логин'">
         <as-text-input
-          [control]="control"
+          [control]="controls.login"
           [placeholder]="'Введите логин'"
         ></as-text-input>
       </as-label-wrapper>
-      <as-label-wrapper [control]="control" [title]="'Пароль'">
+      <as-label-wrapper [control]="controls.password" [title]="'Пароль'">
         <as-password-input
-          [control]="control"
+          [control]="controls.password"
           [placeholder]="'Введите пароль'"
         ></as-password-input>
       </as-label-wrapper>
     </app-form-container>
-  </div>
+  </form>
 </section>

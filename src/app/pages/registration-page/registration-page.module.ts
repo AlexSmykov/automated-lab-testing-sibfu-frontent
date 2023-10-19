@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
 
 import {
   LabelWrapperModule,
@@ -17,6 +18,7 @@ import { FormContainerModule } from '../../components/form-container/form-contai
     RegistrationPageRoutingModule,
     LogoModule,
     FormContainerModule,
+    ReactiveFormsModule,
     LabelWrapperModule,
     TextInputModule,
     PasswordInputModule,
