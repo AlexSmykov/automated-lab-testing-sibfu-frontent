@@ -1,4 +1,4 @@
-export type TRegistrationData = {
+export type TLogin = {
   login: string
   password: string
 }
