@@ -1,0 +1,16 @@
+:host {
+  height: fit-content;
+}
+
+.logo {
+  height: fit-content;
+  width: fit-content;
+
+  &__image {
+    height: 64px;
+  }
+
+  &__text {
+    line-height: 1.2;
+  }
+}

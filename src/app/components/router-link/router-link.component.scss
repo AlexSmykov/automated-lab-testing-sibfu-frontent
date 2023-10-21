@@ -1,0 +1,7 @@
+.blue-link {
+  color: var(--blue-text);
+
+  &:hover {
+    color: var(--active-text);
+  }
+}

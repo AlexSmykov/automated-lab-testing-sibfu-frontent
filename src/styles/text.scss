@@ -1,0 +1,75 @@
+// основной шрифт
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+  p,
+  span,
+  div {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+  }
+
+  h {
+    &1 {
+      font-weight: 800;
+      font-size: 1.4rem;
+    }
+    &2 {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    &3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    &4 {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+}
+
+.weight {
+  &-200 {
+    font-weight: 200;
+  }
+  &-300 {
+    font-weight: 300;
+  }
+  &-400 {
+    font-weight: 400;
+  }
+  &-500 {
+    font-weight: 500;
+  }
+  &-600 {
+    font-weight: 600;
+  }
+  &-700 {
+    font-weight: 700;
+  }
+  &-800 {
+    font-weight: 800;
+  }
+}
+
+.size {
+  &-s {
+    font-size: 0.8rem;
+  }
+  &-m {
+    font-size: 1em;
+  }
+  &-l {
+    font-size: 1.2rem;
+  }
+  &-ts {
+    font-size: 1rem;
+  }
+  &-tm {
+    font-size: 1.2rem;
+  }
+  &-tl {
+    font-size: 1.4rem;
+  }
+}
