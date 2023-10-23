@@ -19,16 +19,16 @@ export const EErrorTextsBase: TErrors = {
     text: 'Некорректное значение',
   },
   [EErrors.MIN_LENGTH]: {
-    text: (value: any) => `Не менее ${value} символов`,
+    text: (value: { actualLength: number; requiredLength: number }) =>
+      `Не менее ${value.requiredLength} символов`,
   },
   [EErrors.MAX_LENGTH]: {
-    text: (value: any) => `Не более ${value} символов`,
+    text: (value: { actualLength: number; requiredLength: number }) =>
+      `Не более ${value.requiredLength} символов`,
   },
 } as const
 
-export type TErrors = TFieldsMapper<TError> & TWithPattern
-
-export type TWithPattern = { [EErrors.PATTERN]: TError }
+export type TErrors = TFieldsMapper<TError>
 
 export type TError = {
   text: string | TFunctionMapper<string>

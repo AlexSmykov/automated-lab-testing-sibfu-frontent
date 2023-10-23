@@ -1,4 +1,4 @@
-import { TFieldsMapper, TFunctionMapper } from '../interfaces/mapped-types'
+import { TFieldsMapper } from '../interfaces/mapped-types'
 
 export const EValidatePatterns: ValidatePatterns = {
   PHONE: {
@@ -11,5 +11,13 @@ export type ValidatePatterns = TFieldsMapper<ValidatePattern>
 
 type ValidatePattern = {
   pattern: string
-  errorText: string | TFunctionMapper<string>
+  errorText: string
+}
+
+export function regexLike(almostRegexString: string): string {
+  return `^${almostRegexString}$`
+}
+
+export function unRegex(regexString: string): string {
+  return regexString.slice(1, regexString.length - 1)
 }
