@@ -4,6 +4,7 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms'
 import { TMappedFormControls } from '../../shared/interfaces/mapped-types.interface'
 import { TLogin } from './login-page.interface'
 import { LoginPageService } from './login-page.service'
+import { EFullRoutes } from '../../shared/router-paths'
 
 @Component({
   selector: 'app-login-page',
@@ -27,4 +28,6 @@ export class LoginPageComponent {
   onLoginClick(): void {
     this.loginPageService.login(this.loginFormGroup.getRawValue())
   }
+
+  protected readonly EFullRoutes = EFullRoutes
 }

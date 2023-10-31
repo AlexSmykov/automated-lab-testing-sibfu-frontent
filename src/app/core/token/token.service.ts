@@ -6,7 +6,7 @@ import { LocalStorageService } from '../storage/local-storage.service'
 import { EStorageItems } from '../storage/local-storage.enum'
 import { TToken } from './token.interface'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TokenService {
   private _token$ = new BehaviorSubject<TToken>(
     this.localStorageService.getItem(EStorageItems.TOKEN)

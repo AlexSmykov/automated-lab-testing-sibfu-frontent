@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core'
   styleUrls: ['./router-link.component.scss'],
 })
 export class RouterLinkComponent {
-  @Input({ required: true }) link!: string | string[]
+  @Input({ required: true }) link!: string[]
 }

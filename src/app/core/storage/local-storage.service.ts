@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 
 import { EStorageItems } from './local-storage.enum'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LocalStorageService {
   private storage: Storage = localStorage
 
