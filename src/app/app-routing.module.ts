@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { EFullRoutes, EPartialRoutes } from './shared/router-paths'
+import { EPartialRoutes } from './shared/router-paths'
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: EFullRoutes.LOGIN_PAGE,
+    redirectTo: EPartialRoutes.LOGIN,
     pathMatch: 'full',
   },
   {
@@ -15,10 +15,17 @@ const routes: Routes = [
       import('./layout/main/main.module').then((m) => m.MainModule),
   },
   {
-    path: EPartialRoutes.LOGIN_PAGE,
+    path: EPartialRoutes.LOGIN,
     loadChildren: () =>
       import('./pages/login-page/login-page.module').then(
         (m) => m.LoginPageModule
+      ),
+  },
+  {
+    path: EPartialRoutes.REGISTRATION,
+    loadChildren: () =>
+      import('./pages/registration-page/registration-page.module').then(
+        (m) => m.RegistrationPageModule
       ),
   },
 ]

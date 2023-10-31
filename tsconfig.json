@@ -8,7 +8,8 @@
     "strict": true,
     "noImplicitOverride": true,
     "paths": {
-      "form-controls": ["dist/form-controls"]
+      "form-controls": ["dist/form-controls"],
+      "route-controller": ["dist/route-controller"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

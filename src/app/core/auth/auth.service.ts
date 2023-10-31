@@ -6,8 +6,12 @@ import { BehaviorSubject, Observable, tap } from 'rxjs'
 import { TokenService } from '../token/token.service'
 import { TLoginDto, TLoginDtoPost } from '../../pages/login-page/login-page.dto'
 import { LOGIN } from '../../shared/api-paths'
+import {
+  TRegistrationDto,
+  TRegistrationDtoPost,
+} from '../../pages/registration-page/registration-page.dto'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private _isAuth$ = new BehaviorSubject<boolean>(!!this.tokenService.token)
 
@@ -32,5 +36,11 @@ export class AuthService {
     )
   }
 
-  register() {}
+  register(data: TRegistrationDtoPost): Observable<TRegistrationDto> {
+    return this.httpClient.post<TRegistrationDto>(LOGIN, data).pipe(
+      tap((result) => {
+        this.tokenService.setToken(result.token)
+      })
+    )
+  }
 }

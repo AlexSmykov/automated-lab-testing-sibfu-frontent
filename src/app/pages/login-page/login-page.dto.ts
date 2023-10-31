@@ -5,4 +5,5 @@ export type TLoginDtoPost = {
 
 export type TLoginDto = {
   token: string
+  data: any
 }

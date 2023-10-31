@@ -9,7 +9,8 @@
     "test": "ng test",
     "prepare": "husky install",
     "refactor": "eslint --fix . & prettier --write .",
-    "build-form-controls": "ng build form-controls  &  npm run start"
+    "build-form-controls": "ng build form-controls  &  npm run start",
+    "build-route-controller": "ng build route-controller  &  npm run start"
   },
   "private": true,
   "dependencies": {
