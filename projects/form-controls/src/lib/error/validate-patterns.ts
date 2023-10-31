@@ -5,6 +5,11 @@ export const EValidatePatterns: ValidatePatterns = {
     pattern: '(\\+7\\s\\(9\\d{2}\\)\\s\\d{3}\\s\\d{2}\\-\\d{2}|9\\d{9})',
     errorText: 'Неверно введён номер телефона',
   },
+  FIO: {
+    pattern:
+      '[А-ЯЁA-Z][а-яёa-z]*([-][А-ЯЁA-Z][а-яёa-z]*)?\\s[А-ЯЁA-Z][а-яёa-z]*(\\s[А-ЯЁA-Z][а-яёa-z])?',
+    errorText: 'Неверно введён номер телефона',
+  },
 } as const
 
 export type ValidatePatterns = TFieldsMapper<ValidatePattern>
