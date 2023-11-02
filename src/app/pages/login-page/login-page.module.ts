@@ -9,10 +9,10 @@ import {
 
 import { LoginPageComponent } from './login-page.component'
 import { LoginPageRoutingModule } from './login-page-routing.module'
-import { FormContainerModule } from '../../components/form-container/form-container.module'
-import { RouterLinkModule } from '../../components/router-link/router-link.module'
+import { FormContainerModule } from '../../shared/components/form-container/form-container.module'
+import { RouterLinkModule } from '../../shared/components/router-link/router-link.module'
 import { LogoModule } from '../../components/logo/logo.module'
-import { ButtonModule } from '../../components/button/button.module'
+import { ButtonModule } from '../../shared/components/button/button.module'
 
 @NgModule({
   declarations: [LoginPageComponent],
