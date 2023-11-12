@@ -28,6 +28,13 @@ const routes: Routes = [
         (m) => m.RegistrationPageModule
       ),
   },
+  {
+    path: EPartialRoutes.HOME_PAGE,
+    loadChildren: () =>
+      import('./pages/home-page/home-page.module').then(
+        (m) => m.HomePageModule
+      ),
+  },
 ]
 
 @NgModule({
