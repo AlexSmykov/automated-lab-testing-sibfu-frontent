@@ -1,17 +1,16 @@
-<app-page-layout>
-  <app-side-bar side-bar></app-side-bar>
-  <section content class="max-h max-w flex column start align-l">
+<section class="flex row center">
+  <div class="max-h max-w flex column start align-l">
     <h1 class="title max-w">Мои курсы</h1>
     <div class="plus-button max-w">
       <app-island>
         <img src="assets/icons/plusIcon.svg" alt="Добавить курс" />
       </app-island>
     </div>
-    <div class="courses-layout max-h max-w flex row start align-l">
-      <app-course-item
+    <div class="courses-layout max-h max-w flex row start align-c wrap">
+      <app-courses-page-item
         *ngFor="let course of courses$ | async"
         [course]="course"
-      ></app-course-item>
+      ></app-courses-page-item>
     </div>
-  </section>
-</app-page-layout>
+  </div>
+</section>
