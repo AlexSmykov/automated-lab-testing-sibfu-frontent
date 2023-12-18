@@ -6,7 +6,7 @@ import { EPartialRoutes } from './shared/router-paths'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: EPartialRoutes.LOGIN,
+    redirectTo: EPartialRoutes.MAIN,
     pathMatch: 'full',
   },
   {
@@ -26,13 +26,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/registration-page/registration-page.module').then(
         (m) => m.RegistrationPageModule
-      ),
-  },
-  {
-    path: EPartialRoutes.HOME_PAGE,
-    loadChildren: () =>
-      import('./pages/home-page/home-page.module').then(
-        (m) => m.HomePageModule
       ),
   },
 ]
