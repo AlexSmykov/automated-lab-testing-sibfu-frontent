@@ -11,8 +11,16 @@
     flex-direction: column;
   }
 
+  &.start {
+    justify-content: flex-start;
+  }
+
   &.center {
     justify-content: center;
+  }
+
+  &.end {
+    justify-content: flex-end;
   }
 
   &.space {
@@ -21,6 +29,10 @@
 
   &.gapless {
     gap: 0;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
   }
 
   &.paddings {
