@@ -1,7 +1,12 @@
-.regular-button {
-  color: var(--black-text);
-  background: var(--gray-bg);
-  padding: 16px 24px;
-  border-radius: 10px;
-  border: none;
+:host {
+  --side-bar-width: 250px;
+  width: var(--side-bar-width);
+
+  .home-button {
+    width: var(--side-bar-width);
+    padding: 10px;
+
+    gap: 20px;
+    cursor: pointer;
+  }
 }

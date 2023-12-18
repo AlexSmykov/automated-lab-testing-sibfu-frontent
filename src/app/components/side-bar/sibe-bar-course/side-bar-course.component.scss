@@ -1,0 +1,70 @@
+:host {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+
+  .course-item {
+    &__image {
+      width: 100%;
+      height: 70px;
+
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+
+      -webkit-mask-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(0, 0, 0, 1)),
+        to(rgba(0, 0, 0, 0))
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0)
+      );
+    }
+
+    &__island {
+      border-radius: 10px;
+
+      background: var(--light-gray-bg);
+
+      &__wrapper {
+        padding: 6px;
+      }
+
+      &__practice {
+        height: 28px;
+        text-align: start;
+        padding: 0 10px;
+
+        &:first-child {
+          border-radius: 10px 10px 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 10px 10px;
+        }
+
+        &:hover {
+          background: var(--white-bg);
+        }
+
+        &.selected {
+          background: var(--gray-bg);
+
+          cursor: default;
+        }
+
+        span {
+          vertical-align: middle;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
