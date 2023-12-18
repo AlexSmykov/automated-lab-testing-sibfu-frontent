@@ -4,11 +4,11 @@ import { CdkListbox } from '@angular/cdk/listbox'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { RouterLink } from '@angular/router'
 
-import { CourseItemComponent } from './course-item.component'
+import { CourseHeaderComponent } from './course-header.component'
 
 @NgModule({
-  declarations: [CourseItemComponent],
+  declarations: [CourseHeaderComponent],
   imports: [NgStyle, CdkListbox, NzIconModule, NgIf, RouterLink],
-  exports: [CourseItemComponent],
+  exports: [CourseHeaderComponent],
 })
-export class CourseItemModule {}
+export class CourseHeaderModule {}
