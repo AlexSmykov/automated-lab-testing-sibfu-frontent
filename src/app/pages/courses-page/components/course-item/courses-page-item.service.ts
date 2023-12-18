@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
 @Injectable()
-export class CourseItemService {
+export class CoursesPageItemService {
   constructor(private httpClient: HttpClient) {}
 
   deleteCourse(courseId: number): Observable<void> {
