@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterOutlet } from '@angular/router'
+import { AngularSvgIconModule } from 'angular-svg-icon'
 
 import { AppComponent } from './app.component'
 import { FooterModule } from './layout/footer/footer.module'
@@ -18,6 +19,7 @@ registerLocaleData(ru)
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AngularSvgIconModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,

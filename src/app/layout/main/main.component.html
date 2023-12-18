@@ -1,8 +1,11 @@
 <div>
-  <div class="main">
+  <div class="main max-w flex column">
     <app-header></app-header>
-    <div class="body">
-      <router-outlet></router-outlet>
+    <div class="body max-h max-w flex row center">
+      <div class="page-layout max-h flex row align-l">
+        <app-side-bar *ngIf="isShowSideBar"></app-side-bar>
+        <router-outlet></router-outlet>
+      </div>
     </div>
     <app-footer></app-footer>
   </div>

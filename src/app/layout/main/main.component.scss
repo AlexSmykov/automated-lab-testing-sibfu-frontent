@@ -1,13 +1,10 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
   height: 100vh;
   background: var(--white-bg);
-}
 
-.body {
-  height: 100%;
-  width: 100%;
+  .body {
+    .page-layout {
+      width: 70%;
+    }
+  }
 }

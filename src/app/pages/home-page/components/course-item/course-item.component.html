@@ -1,0 +1,22 @@
+<div class="course max-w max-h flex column gapless">
+  <div [routerLink]="EFullRoutes.COURSE_ITEM(course.id)">
+    <div
+      class="background max-w max-h"
+      [ngStyle]="{
+        'background-image':
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 15%, var(--light-gray-bg)), url(' +
+          this.course.imageUrl +
+          ')'
+      }"
+    ></div>
+    <h2 class="title max-w">{{ course.name }}</h2>
+  </div>
+  <span
+    *ngIf="course.deletable"
+    (click)="deleteCourse()"
+    class="delete"
+    nz-icon
+    nzType="delete"
+    nzTheme="outline"
+  ></span>
+</div>

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .title {
+    text-align: center;
+    margin: 0;
+  }
+
+  .plus-button {
+    height: 50px;
+  }
+
+  .courses-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: flex-start;
+
+    :last-child:nth-child(odd) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+}

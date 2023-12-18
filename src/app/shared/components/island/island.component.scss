@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.form-section {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background: var(--light-gray-bg);
+  border-radius: 10px;
+}

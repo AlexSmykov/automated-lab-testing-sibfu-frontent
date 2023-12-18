@@ -1,24 +1,25 @@
-.header {
+:host {
   width: 100%;
-  height: 80px;
-  background: var(--light-gray-bg);
-}
 
-.content {
-  height: 100%;
-  width: var(--main-content-container-size);
+  .header {
+    height: 85px;
+    background: var(--very-light-gray-bg);
+  }
 
-  &__item {
-    height: 100%;
-    width: fit-content;
-    list-style-type: none;
+  .content {
+    width: var(--main-content-container-size);
 
-    &__logo-image {
-      height: 80%;
-    }
+    &__item {
+      width: fit-content;
+      list-style-type: none;
 
-    &__logo-text {
-      line-height: 1.2;
+      &__logo-image {
+        height: 80%;
+      }
+
+      &__logo-text {
+        line-height: 1.2;
+      }
     }
   }
 }
