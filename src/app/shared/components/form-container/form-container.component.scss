@@ -1,10 +1,9 @@
 :host {
   width: 100%;
-}
 
-.form-section {
-  background: var(--light-gray-bg);
-  border-radius: 10px;
-  width: 100%;
-  padding: 20px;
+  .form-section {
+    background: var(--very-light-gray-bg);
+    border-radius: 10px;
+    padding: 20px;
+  }
 }
