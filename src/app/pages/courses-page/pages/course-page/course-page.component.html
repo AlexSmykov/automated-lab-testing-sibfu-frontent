@@ -1,0 +1,15 @@
+<section class="flex row center">
+  <div
+    class="max-h max-w flex column start align-l"
+    *ngIf="course$ | async as course"
+  >
+    <app-course-header [course]="course"></app-course-header>
+    <div class="practices max-h max-w flex row start align-c wrap">
+      <ng-container *ngFor="let practice of course.practices">
+        <app-course-practice-item
+          [practice]="practice"
+        ></app-course-practice-item
+      ></ng-container>
+    </div>
+  </div>
+</section>
