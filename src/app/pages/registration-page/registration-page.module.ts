@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
-
 import {
   LabelWrapperModule,
   PasswordInputModule,
   TextInputModule,
-} from 'form-controls'
+} from 'as-form-controls'
 
 import { RegistrationPageComponent } from './registration-page.component'
 import { RegistrationPageRoutingModule } from './registration-page-routing.module'

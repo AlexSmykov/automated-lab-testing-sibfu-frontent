@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
-
 import {
   LabelWrapperModule,
   PasswordInputModule,
   TextInputModule,
-} from 'form-controls'
+} from 'as-form-controls'
 
 import { LoginPageComponent } from './login-page.component'
 import { LoginPageRoutingModule } from './login-page-routing.module'
@@ -21,12 +20,12 @@ import { ButtonModule } from '../../shared/components/button/button.module'
     RouterLinkModule,
     FormContainerModule,
     ReactiveFormsModule,
-    LabelWrapperModule,
-    TextInputModule,
-    PasswordInputModule,
     RouterLinkModule,
     LogoModule,
     ButtonModule,
+    LabelWrapperModule,
+    TextInputModule,
+    PasswordInputModule,
   ],
   exports: [LoginPageComponent],
 })
