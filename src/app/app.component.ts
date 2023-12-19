@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { ErrorService } from 'as-form-controls'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'automated-lab-testing-sibfu-frontent';
+  constructor(private errorService: ErrorService) {}
 }

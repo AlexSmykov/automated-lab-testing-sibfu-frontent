@@ -1,0 +1,52 @@
+<section class="main-section max-h flex column center align-center">
+  <form class="form-sizer">
+    <app-form-container [title]="'Регистрация'">
+      <as-label-wrapper [control]="controls.login" [title]="'Логин'">
+        <as-text-input
+          [control]="controls.login"
+          [placeholder]="'Введите логин'"
+        ></as-text-input>
+      </as-label-wrapper>
+
+      <as-label-wrapper [control]="controls.fio" [title]="'`ФИО'">
+        <as-text-input
+          [control]="controls.login"
+          [placeholder]="'Введите ваше ФИО'"
+        ></as-text-input>
+      </as-label-wrapper>
+
+      <as-label-wrapper [control]="controls.email" [title]="'Почта'">
+        <as-text-input
+          [control]="controls.login"
+          [placeholder]="'Введите почту'"
+        ></as-text-input>
+      </as-label-wrapper>
+
+      <as-label-wrapper [control]="controls.password" [title]="'Пароль'">
+        <as-password-input
+          [control]="controls.password"
+          [placeholder]="'Введите пароль'"
+        ></as-password-input>
+      </as-label-wrapper>
+
+      <as-label-wrapper
+        [control]="controls.passwordConfirm"
+        [title]="'Подтверждение пароля'"
+      >
+        <as-password-input
+          [control]="controls.password"
+          [placeholder]="'Повторите пароль'"
+        ></as-password-input>
+      </as-label-wrapper>
+
+      <div class="flex row space max-w">
+        <app-router-link class="marginfull" [link]="EFullRoutes.LOGIN"
+          >Уже есть аккаунт??</app-router-link
+        >
+        <app-button (click)="onRegistrationClick()"
+          >Зарегистрироваться</app-button
+        >
+      </div>
+    </app-form-container>
+  </form>
+</section>

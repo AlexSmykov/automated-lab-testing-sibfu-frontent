@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+
+  .header {
+    height: 85px;
+    background: var(--very-light-gray-bg);
+  }
+
+  .content {
+    width: var(--main-content-container-size);
+
+    &__item {
+      width: fit-content;
+      list-style-type: none;
+
+      &__logo-image {
+        height: 80%;
+      }
+
+      &__logo-text {
+        line-height: 1.2;
+      }
+    }
+  }
+}

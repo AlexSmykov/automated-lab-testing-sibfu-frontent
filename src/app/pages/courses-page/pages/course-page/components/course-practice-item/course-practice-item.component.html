@@ -1,0 +1,13 @@
+<div class="max-w max-h flex column gapless">
+  <div
+    class="island max-w max-h flex column center"
+    [ngStyle]="{
+      'background-image':
+        'linear-gradient(to bottom, var(--light-gray-bg) 75%, rgba(' +
+        getColor(practice.status) +
+        ',  0.3))'
+    }"
+  >
+    <h4 class="practice-text">{{ practice.name }}</h4>
+  </div>
+</div>

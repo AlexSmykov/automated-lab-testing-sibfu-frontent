@@ -1,0 +1,12 @@
+<div>
+  <label
+    >{{ title }}
+    <span
+      *ngIf="control.hasValidator(Validators.required)"
+      class="required-character"
+      >*</span
+    ></label
+  >
+  <label></label>
+</div>
+<ng-content></ng-content>

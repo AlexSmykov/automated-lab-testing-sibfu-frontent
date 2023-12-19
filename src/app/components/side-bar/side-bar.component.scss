@@ -1,0 +1,12 @@
+:host {
+  --side-bar-width: 250px;
+  width: var(--side-bar-width);
+
+  .home-button {
+    width: var(--side-bar-width);
+    padding: 10px;
+
+    gap: 20px;
+    cursor: pointer;
+  }
+}

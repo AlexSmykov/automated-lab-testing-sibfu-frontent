@@ -1,0 +1,21 @@
+:host {
+  height: 90px;
+  width: 100%;
+
+  cursor: pointer;
+
+  .island {
+    border-radius: 10px;
+    padding: 10px;
+
+    color: var(--light-gray-bg);
+
+    .practice-text {
+      overflow: hidden;
+      display: -webkit-box;
+      text-align: center;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+    }
+  }
+}

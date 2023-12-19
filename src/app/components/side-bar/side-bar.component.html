@@ -1,0 +1,25 @@
+<div class="max-w flex column start">
+  <app-island [routerLink]="EFullRoutes.COURSES">
+    <div class="home-button flex row end">
+      <h4 class="weight-600">Все мои курсы</h4>
+      <svg-icon src="assets/icons/home.svg"></svg-icon>
+    </div>
+  </app-island>
+
+  <ng-container *ngFor="let course of courses$ | async; let i = index">
+    <app-side-bar-course
+      *ngIf="(courseId$ | async) === course.id"
+      [course]="course"
+      [isCourseSelected]="true"
+      [practiceSelected]="practiceId$ | async"
+    >
+    </app-side-bar-course>
+    <app-side-bar-course
+      *ngIf="(courseId$ | async) !== course.id && i < 5"
+      [course]="course"
+      [isCourseSelected]="false"
+      [practiceSelected]="practiceId$ | async"
+    >
+    </app-side-bar-course>
+  </ng-container>
+</div>
