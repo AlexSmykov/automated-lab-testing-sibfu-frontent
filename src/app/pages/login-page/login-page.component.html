@@ -8,12 +8,14 @@
           [placeholder]="'Введите логин'"
         ></as-text-input>
       </as-label-wrapper>
+
       <as-label-wrapper [control]="controls.password" [title]="'Пароль'">
         <as-password-input
           [control]="controls.password"
           [placeholder]="'Введите пароль'"
         ></as-password-input>
       </as-label-wrapper>
+
       <div class="flex row space max-w">
         <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION"
           >Еще не зарегистрированы?</app-router-link
