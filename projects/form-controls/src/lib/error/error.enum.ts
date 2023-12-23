@@ -1,19 +1,23 @@
-import { TFieldsMapper, TFunctionMapper } from '../interfaces/mapped-types'
+import { TEnumNames, TFunctionMapper } from '../interfaces/mapped-types'
 
 export enum EErrors {
   REQUIRED = 'required',
   EMAIL = 'email',
+  PASSWORD = 'password',
   PATTERN = 'pattern',
   MIN_LENGTH = 'minlength',
   MAX_LENGTH = 'maxlength',
 }
 
-export const EErrorTextsBase: TErrors = {
+export const EErrorTextsBase: TEnumNames<EErrors, TErrorValue> = {
   [EErrors.REQUIRED]: {
     text: 'Обязательное поле',
   },
   [EErrors.EMAIL]: {
     text: 'Введите корректную почту',
+  },
+  [EErrors.PASSWORD]: {
+    text: 'Пароли не совпадают',
   },
   [EErrors.PATTERN]: {
     text: 'Некорректное значение',
@@ -28,8 +32,6 @@ export const EErrorTextsBase: TErrors = {
   },
 } as const
 
-export type TErrors = TFieldsMapper<TError>
-
-export type TError = {
+export type TErrorValue = {
   text: string | TFunctionMapper<string>
 }

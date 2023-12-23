@@ -7,5 +7,5 @@ export function addValidator(
   validator: TGroupValidator,
   ...args: any[]
 ): void {
-  formGroup.setValidators(validator(args))
+  formGroup.setValidators(validator(...args))
 }

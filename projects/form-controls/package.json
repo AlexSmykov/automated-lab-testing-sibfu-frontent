@@ -1,6 +1,6 @@
 {
   "name": "as-form-controls",
-  "version": "0.0.2",
+  "version": "0.0.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
