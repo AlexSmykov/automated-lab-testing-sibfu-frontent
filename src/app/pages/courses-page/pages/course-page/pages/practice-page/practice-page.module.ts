@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import {
+  LabelWrapperModule,
+  TextareaInputModule,
+  TextInputModule,
+} from 'as-form-controls'
 
 import { PracticePageComponent } from './practice-page.component'
 import { PracticePageRoutingModule } from './practice-page-routing.module'
@@ -17,6 +22,9 @@ import { CourseHeaderModule } from '../../components/course-header/course-header
     PracticePageRoutingModule,
     CoursePracticeItemModule,
     CourseHeaderModule,
+    LabelWrapperModule,
+    TextInputModule,
+    TextareaInputModule,
   ],
   exports: [PracticePageComponent],
 })
