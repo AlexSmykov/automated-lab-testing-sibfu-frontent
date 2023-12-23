@@ -12,6 +12,7 @@ import { IslandModule } from '../../../../../../shared/components/island/island.
 import { CoursesPageItemModule } from '../../../../components/course-item/courses-page-item.module'
 import { CoursePracticeItemModule } from '../../components/course-practice-item/course-practice-item.module'
 import { CourseHeaderModule } from '../../components/course-header/course-header.module'
+import { FormButtonModule } from '../../../../../../shared/components/button/form-button.module'
 
 @NgModule({
   declarations: [PracticePageComponent],
@@ -25,6 +26,7 @@ import { CourseHeaderModule } from '../../components/course-header/course-header
     LabelWrapperModule,
     TextInputModule,
     TextareaInputModule,
+    FormButtonModule,
   ],
   exports: [PracticePageComponent],
 })

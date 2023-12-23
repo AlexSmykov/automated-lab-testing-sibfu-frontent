@@ -20,7 +20,9 @@
         <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION"
           >Еще не зарегистрированы?</app-router-link
         >
-        <app-button (click)="onLoginClick()">Войти</app-button>
+        <app-form-button [formToWatch]="loginFormGroup" (click)="onLoginClick()"
+          >Войти</app-form-button
+        >
       </div>
     </app-form-container>
   </form>
