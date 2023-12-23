@@ -11,9 +11,8 @@ import { EFullRoutes } from '../../shared/router-paths'
 export class SideBarComponent {
   courses$ = this.sideBarService.courses$
   courseId$ = this.sideBarService.selectedCourseId$
-  practiceId$ = this.sideBarService.selectedCoursePracticeId$
+
+  EFullRoutes = EFullRoutes
 
   constructor(private sideBarService: SideBarService) {}
-
-  protected readonly EFullRoutes = EFullRoutes
 }

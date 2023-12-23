@@ -1,0 +1,39 @@
+<section class="flex column center" *ngIf="practice$ | async as practice">
+  <div class="practice__header max-w very-light-gray flex row center align-c">
+    <h1>{{ practice.name }}</h1>
+  </div>
+
+  <div
+    class="practice__description max-w"
+    [innerHTML]="safeHtmlDescription(practice.description)"
+  ></div>
+
+  <ng-container *ngFor="let example of practice.examples; let i = index">
+    <div>
+      <h4>Пример№{{ i + 1 }}</h4>
+      <div class="practice__example max-w flex column gapless very-light-gray">
+        <p>Входные данные:</p>
+        <p>{{ example.inputData }}</p>
+        <p>Выходные данные:</p>
+        <p>{{ example.outputData }}</p>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="practice__code very-light-gray flex column max-w align-l">
+    <h4>Загрузка работы</h4>
+    <as-textarea-input
+      class="max-w"
+      [control]="codeInputControl"
+      [placeholder]="'Паста javascript здесь'"
+      [startSizeInLines]="10"
+      [maxLength]="10000"
+    ></as-textarea-input>
+  </div>
+
+  <div class="flex row end">
+    <app-form-button [formToWatch]="codeInputControl">
+      Загрузить работу</app-form-button
+    >
+  </div>
+</section>

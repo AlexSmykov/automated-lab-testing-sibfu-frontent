@@ -11,8 +11,9 @@ import { TCourse } from '../../../pages/courses-page/pages/course-page/course-pa
 })
 export class SideBarCourseComponent {
   @Input({ required: true }) course!: TCourse
-  @Input() isCourseSelected?: boolean
-  @Input() practiceSelected: number | null = null
+
+  courseId$ = this.sideBarService.selectedCourseId$
+  practiceId$ = this.sideBarService.selectedCoursePracticeId$
 
   EFullRoutes = EFullRoutes
 
@@ -24,5 +25,6 @@ export class SideBarCourseComponent {
 
   onCourseClick(): void {
     this.sideBarService.selectCourse(this.course.id)
+    this.sideBarService.unselectPractice()
   }
 }

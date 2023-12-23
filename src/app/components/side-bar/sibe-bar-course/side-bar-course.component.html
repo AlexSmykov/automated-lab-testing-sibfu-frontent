@@ -1,5 +1,5 @@
 <app-island
-  [routerLink]="EFullRoutes.COURSE_ITEM(course.id)"
+  [routerLink]="EFullRoutes.COURSE(course.id)"
   (click)="onCourseClick()"
 >
   <div class="course-item flex column start gapless">
@@ -8,13 +8,16 @@
     <div class="course-item__island__wrapper">
       <div
         class="course-item__island flex column gapless"
-        *ngIf="isCourseSelected"
+        *ngIf="(courseId$ | async) === course.id"
       >
         <div
           class="course-item__island__practice flex row"
           *ngFor="let practice of course.practices"
-          [ngClass]="{ selected: practiceSelected === practice.id }"
-          (click)="onPracticeClick(practice.id)"
+          [ngClass]="{ selected: (practiceId$ | async) === practice.id }"
+          [routerLink]="EFullRoutes.PRACTICE(practice.id)"
+          (click)="
+            onPracticeClick(practice.id); $event.stopImmediatePropagation()
+          "
         >
           <app-status-circle [status]="practice.status"></app-status-circle>
           <span class="weight-600"> {{ practice.name }}</span>

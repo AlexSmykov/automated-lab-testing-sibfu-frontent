@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .practice {
+    &__header {
+      height: 80px;
+      border-radius: 10px;
+    }
+
+    &__description {
+      height: fit-content;
+      font-weight: 600;
+
+      * img {
+        border-radius: 10px;
+      }
+    }
+
+    &__example {
+      border-radius: 10px;
+      padding: 15px;
+
+      p {
+        width: 100%;
+        margin: 0;
+
+        text-align: left;
+        font-family: 'Courier New', monospace;
+      }
+    }
+
+    &__code {
+      border-radius: 10px;
+      padding: 15px;
+
+      .ant-form-item {
+        margin: 0;
+      }
+
+      ::ng-deep textarea {
+        width: 100%;
+        margin: 0;
+
+        text-align: left;
+        font-family: 'Courier New', monospace;
+      }
+    }
+  }
+}

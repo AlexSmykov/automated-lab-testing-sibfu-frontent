@@ -17,12 +17,12 @@ export class CoursePageService {
 
   constructor(private httpClient: HttpClient) {}
 
-  updateCourse(courseId: number): void {
+  updateCourse(id: number): void {
     // this.httpClient.get<TCourseDto>('').subscribe((result) => {
     //   this._course$.next(this.deserialize(result))
     // })
 
-    this._course$.next(mockCourses.find((item) => item.id === courseId)!)
+    this._course$.next(mockCourses.find((item) => item.id === id)!)
   }
 
   private deserialize(dto: TCourseDto): TCourse {

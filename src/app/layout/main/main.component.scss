@@ -2,9 +2,17 @@
   height: 100vh;
   background: var(--white-bg);
 
-  .body {
-    .page-layout {
-      width: 70%;
+  .scrollable {
+    height: 100%;
+    overflow-y: scroll;
+    padding-top: 14px;
+
+    .body {
+      height: fit-content;
+
+      .page-layout {
+        width: 70%;
+      }
     }
   }
 }
