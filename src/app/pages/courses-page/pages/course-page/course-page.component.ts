@@ -28,6 +28,7 @@ export class CoursePageComponent implements OnInit {
         const courseId: number = +params['id']
         this.coursePageService.updateCourse(courseId)
         this.sideBarService.selectCourse(courseId)
+        this.sideBarService.unselectPractice()
       })
   }
 }
