@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
-
-import { filter } from 'rxjs'
+import { ActivatedRoute } from '@angular/router'
 
 import { CoursePageService } from './course-page.service'
 import { SideBarService } from '../../../../components/side-bar/side-bar.service'
@@ -18,17 +17,17 @@ export class CoursePageComponent implements OnInit {
 
   constructor(
     private coursePageService: CoursePageService,
-    private sideBarService: SideBarService
+    private sideBarService: SideBarService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.sideBarService.selectedCourseId$
-      .pipe(
-        filter((id): id is number => !!id),
-        untilDestroyed(this)
-      )
-      .subscribe((id) => {
-        this.coursePageService.updateCourse(id)
+    this.activatedRoute.params
+      .pipe(untilDestroyed(this))
+      .subscribe((params) => {
+        const courseId: number = +params['id']
+        this.coursePageService.updateCourse(courseId)
+        this.sideBarService.selectCourse(courseId)
       })
   }
 }
