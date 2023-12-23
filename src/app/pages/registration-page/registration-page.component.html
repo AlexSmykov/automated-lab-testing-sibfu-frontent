@@ -8,16 +8,16 @@
         ></as-text-input>
       </as-label-wrapper>
 
-      <as-label-wrapper [control]="controls.fio" [title]="'`ФИО'">
+      <as-label-wrapper [control]="controls.fio" [title]="'ФИО'">
         <as-text-input
-          [control]="controls.login"
+          [control]="controls.fio"
           [placeholder]="'Введите ваше ФИО'"
         ></as-text-input>
       </as-label-wrapper>
 
       <as-label-wrapper [control]="controls.email" [title]="'Почта'">
         <as-text-input
-          [control]="controls.login"
+          [control]="controls.email"
           [placeholder]="'Введите почту'"
         ></as-text-input>
       </as-label-wrapper>
@@ -34,17 +34,19 @@
         [title]="'Подтверждение пароля'"
       >
         <as-password-input
-          [control]="controls.password"
+          [control]="controls.passwordConfirm"
           [placeholder]="'Повторите пароль'"
         ></as-password-input>
       </as-label-wrapper>
 
       <div class="flex row space max-w">
         <app-router-link class="marginfull" [link]="EFullRoutes.LOGIN"
-          >Уже есть аккаунт??</app-router-link
+          >Уже есть аккаунт?</app-router-link
         >
-        <app-button (click)="onRegistrationClick()"
-          >Зарегистрироваться</app-button
+        <app-form-button
+          [formToWatch]="registrationFormGroup"
+          (click)="onRegistrationClick()"
+          >Зарегистрироваться</app-form-button
         >
       </div>
     </app-form-container>

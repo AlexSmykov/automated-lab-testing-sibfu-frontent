@@ -22,11 +22,18 @@ const routes: Routes = [
           ),
       },
       {
-        path: EPartialRoutes.COURSE_ITEM,
+        path: EPartialRoutes.COURSE,
         loadChildren: () =>
           import(
             '../../pages/courses-page/pages/course-page/course-page.module'
           ).then((m) => m.CoursePageModule),
+      },
+      {
+        path: EPartialRoutes.PRACTICE,
+        loadChildren: () =>
+          import(
+            '../../pages/courses-page/pages/course-page/pages/practice-page/practice-page.module'
+          ).then((m) => m.PracticePageModule),
       },
     ],
   },

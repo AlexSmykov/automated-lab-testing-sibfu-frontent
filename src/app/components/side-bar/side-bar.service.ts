@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs'
 
 import { mockCourses } from '../../pages/courses-page/mock-courses'
 import { TCourse } from '../../pages/courses-page/pages/course-page/course-page.interface'
 
+@UntilDestroy()
 @Injectable({ providedIn: 'root' })
 export class SideBarService {
   private _courses$ = new BehaviorSubject<TCourse[]>([])
@@ -25,8 +27,7 @@ export class SideBarService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this.selectCourse(1)
-    this.selectPractice(2)
+    this.subOnPracticeIdSet()
     this.updateCourses()
   }
 
@@ -43,7 +44,7 @@ export class SideBarService {
     this._selectedCoursePracticeId$.next(null)
   }
 
-  unselectLab(): void {
+  unselectPractice(): void {
     this._selectedCoursePracticeId$.next(null)
   }
 
@@ -53,5 +54,26 @@ export class SideBarService {
 
   selectPractice(id: number): void {
     this._selectedCoursePracticeId$.next(id)
+  }
+
+  subOnPracticeIdSet(): void {
+    this._selectedCoursePracticeId$
+      .pipe(
+        untilDestroyed(this),
+        filter((id): id is number => !!id),
+        switchMap((id) =>
+          this._courses$.pipe(
+            map((courses) => {
+              return courses.find(
+                (course) =>
+                  course.practices.find((practice) => practice.id === id)!
+              )!
+            })
+          )
+        )
+      )
+      .subscribe((course) => {
+        this._selectedCourseId$.next(course!.id)
+      })
   }
 }

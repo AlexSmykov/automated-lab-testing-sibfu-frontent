@@ -1,0 +1,11 @@
+<nz-form-item>
+  <nz-form-control [nzErrorTip]="publicErrorService.checkError(control)">
+    <textarea
+      nz-input
+      [rows]="startSizeInLines"
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [maxLength]="maxLength"
+    ></textarea>
+  </nz-form-control>
+</nz-form-item>

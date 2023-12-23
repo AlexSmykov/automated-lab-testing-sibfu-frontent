@@ -4,4 +4,10 @@
   padding: 16px 24px;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 }

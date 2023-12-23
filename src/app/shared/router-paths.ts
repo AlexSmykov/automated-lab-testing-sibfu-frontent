@@ -3,7 +3,8 @@ enum ERoutes {
   LOGIN = 'LOGIN',
   REGISTRATION = 'REGISTRATION',
   COURSES = 'COURSES',
-  COURSE_ITEM = 'COURSE_ITEM',
+  COURSE = 'COURSE',
+  PRACTICE = 'PRACTICE',
 }
 
 enum ERoutesParts {
@@ -13,6 +14,7 @@ enum ERoutesParts {
   REGISTRATION = 'registration',
   COURSES = 'courses',
   COURSE = 'course',
+  PRACTICE = 'practice',
 }
 
 export const EPartialRoutes: { [key in ERoutes]: string } = {
@@ -20,7 +22,12 @@ export const EPartialRoutes: { [key in ERoutes]: string } = {
   [ERoutes.LOGIN]: [ERoutesParts.LOGIN].join('/'),
   [ERoutes.REGISTRATION]: [ERoutesParts.REGISTRATION].join('/'),
   [ERoutes.COURSES]: [ERoutesParts.COURSES].join('/'),
-  [ERoutes.COURSE_ITEM]: [ERoutesParts.COURSE, ERoutesParts.ID].join('/'),
+  [ERoutes.COURSE]: [ERoutesParts.COURSE, ERoutesParts.ID].join('/'),
+  [ERoutes.PRACTICE]: [
+    ERoutesParts.COURSE,
+    ERoutesParts.PRACTICE,
+    ERoutesParts.ID,
+  ].join('/'),
 }
 
 export const EFullRoutes: { [key in ERoutes]: any } = {
@@ -28,10 +35,17 @@ export const EFullRoutes: { [key in ERoutes]: any } = {
   [ERoutes.LOGIN]: ['/', ERoutesParts.LOGIN],
   [ERoutes.REGISTRATION]: ['/', ERoutesParts.REGISTRATION],
   [ERoutes.COURSES]: ['/', ERoutesParts.MAIN, ERoutesParts.COURSES],
-  [ERoutes.COURSE_ITEM]: (id: number) => [
+  [ERoutes.COURSE]: (id: number) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSE,
+    id,
+  ],
+  [ERoutes.PRACTICE]: (id: number) => [
+    '/',
+    ERoutesParts.MAIN,
+    ERoutesParts.COURSE,
+    ERoutesParts.PRACTICE,
     id,
   ],
 }

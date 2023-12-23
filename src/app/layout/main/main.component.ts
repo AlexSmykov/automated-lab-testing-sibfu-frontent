@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router'
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 
 import { filter } from 'rxjs'
 
 import { EFullRoutes } from '../../shared/router-paths'
 
+@UntilDestroy()
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -22,7 +24,8 @@ export class MainComponent implements OnInit {
       .pipe(
         filter(
           (event): event is NavigationEnd => event instanceof NavigationEnd
-        )
+        ),
+        untilDestroyed(this)
       )
       .subscribe((events) => {
         this.checkPath(events.urlAfterRedirects)
@@ -30,8 +33,6 @@ export class MainComponent implements OnInit {
   }
 
   private checkPath(url: string): void {
-    console.log(url)
-    console.log(this.withoutSideBarPages)
     if (this.withoutSideBarPages.includes(url)) {
       this.isShowSideBar = false
       return

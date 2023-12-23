@@ -19,6 +19,7 @@ export class LoginPageComponent {
   })
 
   controls = this.loginFormGroup.controls
+  EFullRoutes = EFullRoutes
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -28,6 +29,4 @@ export class LoginPageComponent {
   onLoginClick(): void {
     this.loginPageService.login(this.loginFormGroup.getRawValue())
   }
-
-  protected readonly EFullRoutes = EFullRoutes
 }

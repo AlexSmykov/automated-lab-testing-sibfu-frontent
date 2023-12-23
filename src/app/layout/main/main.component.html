@@ -1,12 +1,16 @@
 <div>
-  <div class="main max-w flex column">
+  <div class="main max-w flex column gapless">
     <app-header></app-header>
-    <div class="body max-h max-w flex row center">
-      <div class="page-layout max-h flex row align-l">
-        <app-side-bar *ngIf="isShowSideBar"></app-side-bar>
-        <router-outlet></router-outlet>
+
+    <div class="scrollable flex column space">
+      <div class="body max-h max-w flex row center">
+        <div class="page-layout max-h flex row align-l">
+          <app-side-bar *ngIf="isShowSideBar"></app-side-bar>
+          <router-outlet></router-outlet>
+        </div>
       </div>
+
+      <app-footer></app-footer>
     </div>
-    <app-footer></app-footer>
   </div>
 </div>
