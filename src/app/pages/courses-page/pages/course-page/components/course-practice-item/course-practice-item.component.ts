@@ -5,7 +5,7 @@ import {
   EPracticeStatus,
   EPracticeStatusColor,
   TPractice,
-} from '../../pages/practice-page/practice-page.interface'
+} from '../../../../../practice-page/practice-page.interface'
 
 @Component({
   selector: 'app-course-practice-item',

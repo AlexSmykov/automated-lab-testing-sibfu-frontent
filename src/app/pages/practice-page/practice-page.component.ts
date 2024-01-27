@@ -5,7 +5,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser'
 import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms'
 
 import { PracticePageService } from './practice-page.service'
-import { SideBarService } from '../../../../../../components/side-bar/side-bar.service'
+import { SideBarService } from '../../components/side-bar/side-bar.service'
 
 @UntilDestroy()
 @Component({
