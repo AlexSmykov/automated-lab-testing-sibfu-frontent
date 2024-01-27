@@ -1,5 +1,5 @@
-import { EPracticeStatus } from '../practice-page/practice-page.interface'
 import { TCourse } from './pages/course-page/course-page.interface'
+import { EPracticeStatus } from '../../shared/interfaces/practice-status.interface'
 
 export const mockCourses: TCourse[] = [
   {

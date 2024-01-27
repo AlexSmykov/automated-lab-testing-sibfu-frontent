@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core'
 
 import { EFullRoutes } from '../../../../../../shared/router-paths'
+import { TPractice } from '../../../../../practice-page/practice-page.interface'
 import {
   EPracticeStatus,
   EPracticeStatusColor,
-  TPractice,
-} from '../../../../../practice-page/practice-page.interface'
+} from '../../../../../../shared/interfaces/practice-status.interface'
 
 @Component({
   selector: 'app-course-practice-item',
