@@ -1,24 +1,3 @@
-export type TPractice = {
-  id: number
-  status: EPracticeStatus
-  name: string
-  description: string
-  examples: TPracticeExample[]
-  tests?: TTest[]
-}
-
-export type TTest = {
-  id: number
-  inputData: string
-  outputData: string
-}
-
-export type TPracticeExample = {
-  id: number
-  inputData: string
-  outputData: string
-}
-
 export enum EPracticeStatus {
   EMPTY = 'EMPTY',
   DONE = 'DONE',

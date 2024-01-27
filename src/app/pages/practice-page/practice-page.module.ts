@@ -8,11 +8,11 @@ import {
 
 import { PracticePageComponent } from './practice-page.component'
 import { PracticePageRoutingModule } from './practice-page-routing.module'
-import { IslandModule } from '../../../../../../shared/components/island/island.module'
-import { CoursesPageItemModule } from '../../../../components/course-item/courses-page-item.module'
-import { CoursePracticeItemModule } from '../../components/course-practice-item/course-practice-item.module'
-import { CourseHeaderModule } from '../../components/course-header/course-header.module'
-import { FormButtonModule } from '../../../../../../shared/components/button/form-button.module'
+import { IslandModule } from '../../shared/components/island/island.module'
+import { CoursesPageItemModule } from '../courses-page/components/course-item/courses-page-item.module'
+import { CoursePracticeItemModule } from '../courses-page/pages/course-page/components/course-practice-item/course-practice-item.module'
+import { CourseHeaderModule } from '../courses-page/pages/course-page/components/course-header/course-header.module'
+import { FormButtonModule } from '../../shared/components/button/form-button.module'
 
 @NgModule({
   declarations: [PracticePageComponent],

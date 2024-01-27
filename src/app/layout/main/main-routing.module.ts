@@ -22,7 +22,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: EPartialRoutes.COURSE,
+        path: EPartialRoutes.COURSES_ID,
         loadChildren: () =>
           import(
             '../../pages/courses-page/pages/course-page/course-page.module'
@@ -31,9 +31,9 @@ const routes: Routes = [
       {
         path: EPartialRoutes.PRACTICE,
         loadChildren: () =>
-          import(
-            '../../pages/courses-page/pages/course-page/pages/practice-page/practice-page.module'
-          ).then((m) => m.PracticePageModule),
+          import('../../pages/practice-page/practice-page.module').then(
+            (m) => m.PracticePageModule
+          ),
       },
     ],
   },

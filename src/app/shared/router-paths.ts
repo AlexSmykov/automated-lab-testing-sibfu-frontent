@@ -1,9 +1,11 @@
+import { TKeyInEnum } from './interfaces/key-in-enum.interface'
+
 enum ERoutes {
   MAIN = 'MAIN',
   LOGIN = 'LOGIN',
   REGISTRATION = 'REGISTRATION',
   COURSES = 'COURSES',
-  COURSE = 'COURSE',
+  COURSES_ID = 'COURSES_ID',
   PRACTICE = 'PRACTICE',
 }
 
@@ -13,38 +15,37 @@ enum ERoutesParts {
   LOGIN = 'login',
   REGISTRATION = 'registration',
   COURSES = 'courses',
-  COURSE = 'course',
   PRACTICE = 'practice',
 }
 
-export const EPartialRoutes: { [key in ERoutes]: string } = {
+export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.MAIN]: [ERoutesParts.MAIN].join('/'),
   [ERoutes.LOGIN]: [ERoutesParts.LOGIN].join('/'),
   [ERoutes.REGISTRATION]: [ERoutesParts.REGISTRATION].join('/'),
   [ERoutes.COURSES]: [ERoutesParts.COURSES].join('/'),
-  [ERoutes.COURSE]: [ERoutesParts.COURSE, ERoutesParts.ID].join('/'),
+  [ERoutes.COURSES_ID]: [ERoutesParts.COURSES, ERoutesParts.ID].join('/'),
   [ERoutes.PRACTICE]: [
-    ERoutesParts.COURSE,
+    ERoutesParts.COURSES,
     ERoutesParts.PRACTICE,
     ERoutesParts.ID,
   ].join('/'),
 }
 
-export const EFullRoutes: { [key in ERoutes]: any } = {
+export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
   [ERoutes.MAIN]: ['/', ERoutesParts.MAIN],
   [ERoutes.LOGIN]: ['/', ERoutesParts.LOGIN],
   [ERoutes.REGISTRATION]: ['/', ERoutesParts.REGISTRATION],
   [ERoutes.COURSES]: ['/', ERoutesParts.MAIN, ERoutesParts.COURSES],
-  [ERoutes.COURSE]: (id: number) => [
+  [ERoutes.COURSES_ID]: (id: number) => [
     '/',
     ERoutesParts.MAIN,
-    ERoutesParts.COURSE,
+    ERoutesParts.COURSES,
     id,
   ],
   [ERoutes.PRACTICE]: (id: number) => [
     '/',
     ERoutesParts.MAIN,
-    ERoutesParts.COURSE,
+    ERoutesParts.COURSES,
     ERoutesParts.PRACTICE,
     id,
   ],

@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http'
 
 import { BehaviorSubject, Observable } from 'rxjs'
 
-import { TCourse } from '../../course-page.interface'
-import { mockCourses } from '../../../../mock-courses'
-import { TCourseDto } from '../../course-page.dto'
+import { TCourse } from '../courses-page/pages/course-page/course-page.interface'
+import { mockCourses } from '../courses-page/mock-courses'
+import { TCourseDto } from '../courses-page/pages/course-page/course-page.dto'
 import { TPractice } from './practice-page.interface'
 
 @Injectable()
