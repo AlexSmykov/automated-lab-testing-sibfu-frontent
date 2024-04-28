@@ -1,0 +1,14 @@
+<nz-form-item>
+  <nz-form-label *ngIf="label" [nzRequired]="isRequired">
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <textarea
+      nz-input
+      [rows]="startSizeInLines"
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [maxLength]="maxLength"
+    ></textarea>
+  </nz-form-control>
+</nz-form-item>

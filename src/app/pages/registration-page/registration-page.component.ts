@@ -1,10 +1,9 @@
 import { Component } from '@angular/core'
 import { NonNullableFormBuilder, Validators } from '@angular/forms'
-import {
-  addValidator,
-  EValidatePatterns,
-  passwordValidatorFn,
-} from 'as-form-controls'
+
+import { EValidatePatterns } from 'src/app/shared/enum/validate-patterns'
+import { addValidator } from 'src/app/shared/utils/form-validators'
+import { passwordValidatorFn } from 'src/app/shared/validators/validators'
 
 import { TMappedFormControls } from '../../shared/interfaces/mapped-types.interface'
 import { TRegistration } from './registration-page.interface'

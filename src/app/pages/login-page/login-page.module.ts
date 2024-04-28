@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
-import {
-  LabelWrapperModule,
-  PasswordInputModule,
-  TextInputModule,
-} from 'as-form-controls'
+
+import { TextInputModule } from 'src/app/shared/components/forms/text-input/text-input.module'
+import { PasswordInputModule } from 'src/app/shared/components/forms/password-input/password-input.module'
 
 import { LoginPageComponent } from './login-page.component'
 import { LoginPageRoutingModule } from './login-page-routing.module'
@@ -23,7 +21,8 @@ import { FormButtonModule } from '../../shared/components/button/form-button.mod
     RouterLinkModule,
     LogoModule,
     FormButtonModule,
-    LabelWrapperModule,
+    TextInputModule,
+    PasswordInputModule,
     TextInputModule,
     PasswordInputModule,
   ],
