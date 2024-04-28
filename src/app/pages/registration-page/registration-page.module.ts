@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { TextInputModule } from 'src/app/shared/components/forms/text-input/text-input.module'
 import { PasswordInputModule } from 'src/app/shared/components/forms/password-input/password-input.module'
+import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-input/checkbox-input.module'
 
 import { RegistrationPageComponent } from './registration-page.component'
 import { RegistrationPageRoutingModule } from './registration-page-routing.module'
@@ -22,6 +23,7 @@ import { FormButtonModule } from '../../shared/components/button/form-button.mod
     PasswordInputModule,
     TextInputModule,
     PasswordInputModule,
+    CheckboxInputModule,
   ],
   exports: [RegistrationPageComponent],
 })

@@ -1,5 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms'
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms'
 
-export type TMappedFormControls<ValueType> = FormGroup<{
-  [Property in keyof ValueType]: FormControl<ValueType[Property]>
+export type TFormGroupValue<ValueType> = FormGroup<{
+  [Property in keyof ValueType]: ValueType[Property] extends AbstractControl
+    ? ValueType[Property]
+    : FormControl<ValueType[Property]>
 }>
