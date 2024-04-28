@@ -9,7 +9,7 @@ import { ErrorService } from 'src/app/shared/services/error.service'
   styleUrls: ['./text-input.component.scss'],
 })
 export class TextInputComponent {
-  @Input({ required: true }) control!: FormControl
+  @Input({ required: true }) control!: FormControl<string>
   @Input() label?: string
   @Input() placeholder?: string
   @Input() maxLength: number = 1000

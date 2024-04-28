@@ -9,7 +9,7 @@ import { ErrorService } from 'src/app/shared/services/error.service'
   styleUrls: ['./password-input.component.scss'],
 })
 export class PasswordInputComponent {
-  @Input({ required: true }) control!: FormControl
+  @Input({ required: true }) control!: FormControl<string>
   @Input() label?: string
   @Input() placeholder?: string
 
