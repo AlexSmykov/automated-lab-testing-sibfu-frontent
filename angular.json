@@ -30,8 +30,7 @@
             "styles": [
               "src/theme.less",
               "src/styles.scss",
-              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "node_modules/as-form-controls/src/lib/style.scss"
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []
           },
@@ -91,66 +90,6 @@
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []
-          }
-        }
-      }
-    },
-    "form-controls": {
-      "projectType": "library",
-      "root": "projects/form-controls",
-      "sourceRoot": "projects/form-controls/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/form-controls/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/form-controls/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/form-controls/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/form-controls/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
-        }
-      }
-    },
-    "route-controller": {
-      "projectType": "library",
-      "root": "projects/route-controller",
-      "sourceRoot": "projects/route-controller/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/route-controller/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/route-controller/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/route-controller/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/route-controller/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

@@ -5,8 +5,7 @@ export const mockCourses: TCourse[] = [
   {
     id: 1,
     name: 'awd',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img.png',
     deletable: true,
     practices: [
       {
@@ -88,16 +87,14 @@ export const mockCourses: TCourse[] = [
   {
     id: 2,
     name: 'qwe',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img_1.png',
     deletable: true,
     practices: [],
   },
   {
     id: 3,
     name: 'zxc',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img_2.png',
     deletable: true,
     practices: [],
   },

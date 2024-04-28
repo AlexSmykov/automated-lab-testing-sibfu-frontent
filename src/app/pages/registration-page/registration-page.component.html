@@ -1,43 +1,35 @@
 <section class="main-section max-h flex column center align-center">
   <form class="form-sizer">
     <app-form-container [title]="'Регистрация'">
-      <as-label-wrapper [control]="controls.login" [title]="'Логин'">
-        <as-text-input
-          [control]="controls.login"
-          [placeholder]="'Введите логин'"
-        ></as-text-input>
-      </as-label-wrapper>
+      <app-text-input
+        label="Логин"
+        [control]="controls.login"
+        [placeholder]="'Введите логин'"
+      ></app-text-input>
 
-      <as-label-wrapper [control]="controls.fio" [title]="'ФИО'">
-        <as-text-input
-          [control]="controls.fio"
-          [placeholder]="'Введите ваше ФИО'"
-        ></as-text-input>
-      </as-label-wrapper>
+      <app-text-input
+        label="ФИО"
+        [control]="controls.fio"
+        [placeholder]="'Введите ваше ФИО'"
+      ></app-text-input>
 
-      <as-label-wrapper [control]="controls.email" [title]="'Почта'">
-        <as-text-input
-          [control]="controls.email"
-          [placeholder]="'Введите почту'"
-        ></as-text-input>
-      </as-label-wrapper>
+      <app-text-input
+        label="Почта"
+        [control]="controls.email"
+        [placeholder]="'Введите почту'"
+      ></app-text-input>
 
-      <as-label-wrapper [control]="controls.password" [title]="'Пароль'">
-        <as-password-input
-          [control]="controls.password"
-          [placeholder]="'Введите пароль'"
-        ></as-password-input>
-      </as-label-wrapper>
+      <app-password-input
+        label="Пароль"
+        [control]="controls.password"
+        [placeholder]="'Введите пароль'"
+      ></app-password-input>
 
-      <as-label-wrapper
+      <app-password-input
+        label="Подтверждение пароля"
         [control]="controls.passwordConfirm"
-        [title]="'Подтверждение пароля'"
-      >
-        <as-password-input
-          [control]="controls.passwordConfirm"
-          [placeholder]="'Повторите пароль'"
-        ></as-password-input>
-      </as-label-wrapper>
+        [placeholder]="'Повторите пароль'"
+      ></app-password-input>
 
       <div class="flex row space max-w">
         <app-router-link class="marginfull" [link]="EFullRoutes.LOGIN"
