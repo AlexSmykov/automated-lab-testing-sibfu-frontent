@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { NonNullableFormBuilder, Validators } from '@angular/forms'
 
-import { TMappedFormControls } from '../../shared/interfaces/mapped-types.interface'
+import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface'
 import { TLogin } from './login-page.interface'
 import { LoginPageService } from './login-page.service'
 import { EFullRoutes } from '../../shared/router-paths'
@@ -13,7 +13,7 @@ import { EFullRoutes } from '../../shared/router-paths'
   providers: [LoginPageService],
 })
 export class LoginPageComponent {
-  loginFormGroup: TMappedFormControls<TLogin> = this.fb.group({
+  loginFormGroup: TFormGroupValue<TLogin> = this.fb.group({
     login: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required]),
   })

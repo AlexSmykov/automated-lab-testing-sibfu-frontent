@@ -4,16 +4,13 @@ import { FormControl, Validators } from '@angular/forms'
 import { ErrorService } from 'src/app/shared/services/error.service'
 
 @Component({
-  selector: 'app-password-input',
-  templateUrl: './password-input.component.html',
-  styleUrls: ['./password-input.component.scss'],
+  selector: 'app-checkbox-input',
+  templateUrl: './checkbox-input.component.html',
+  styleUrls: ['./checkbox-input.component.scss'],
 })
-export class PasswordInputComponent {
-  @Input({ required: true }) control!: FormControl<string>
+export class CheckboxInputComponent {
+  @Input({ required: true }) control!: FormControl<boolean>
   @Input() label?: string
-  @Input() placeholder?: string
-
-  isPasswordVisible = false
 
   get errorText(): string {
     return this.errorService.checkError(this.control)

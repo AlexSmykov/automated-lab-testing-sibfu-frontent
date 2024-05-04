@@ -1,7 +1,5 @@
-export type TRegistration = {
-  login: string
-  fio: string
-  email: string
-  password: string
+import { TRegistrationPost } from 'src/app/core/api/registration/registration-api.interface'
+
+export type TRegistrationFormValue = TRegistrationPost & {
   passwordConfirm: string
 }
