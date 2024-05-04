@@ -13,7 +13,7 @@ export class PasswordInputComponent {
   @Input() label?: string
   @Input() placeholder?: string
 
-  isPasswordVisible = true
+  isPasswordVisible = false
 
   get errorText(): string {
     return this.errorService.checkError(this.control)
