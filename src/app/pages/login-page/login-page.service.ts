@@ -8,9 +8,7 @@ import { AuthService } from '../../core/auth/auth.service'
 export class LoginPageService {
   constructor(private authService: AuthService) {}
 
-  login(data: TLogin): void {
-    this.authService.login(this.serialize(data)).subscribe()
-  }
+  login(data: TLogin): void {}
 
   private serialize(data: TLogin): TLoginDtoPost {
     return data

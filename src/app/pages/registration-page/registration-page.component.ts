@@ -5,6 +5,8 @@ import { Router } from '@angular/router'
 import { EValidatePatterns } from 'src/app/shared/enum/validate-patterns'
 import { addValidator } from 'src/app/shared/utils/form-validators'
 import { passwordValidatorFn } from 'src/app/shared/validators/validators'
+import { TokenService } from 'src/app/core/token/token.service'
+import { RegistrationApiService } from 'src/app/core/api/registration/registration-api.service'
 
 import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface'
 import { TRegistrationFormValue } from './registration-page.interface'
@@ -42,7 +44,8 @@ export class RegistrationPageComponent {
   constructor(
     private router: Router,
     private fb: NonNullableFormBuilder,
-    private loginPageService: RegistrationPageService
+    private tokenService: TokenService,
+    private registrationApiService: RegistrationApiService
   ) {
     addValidator(
       this.registrationFormGroup,
@@ -53,6 +56,11 @@ export class RegistrationPageComponent {
   }
 
   onRegistrationClick(): void {
-    this.loginPageService.register(this.registrationFormGroup.getRawValue())
+    this.registrationApiService
+      .register(this.registrationFormGroup.getRawValue())
+      .subscribe((result) => {
+        this.tokenService.setToken(result)
+        this.router.navigate(EFullRoutes.MAIN)
+      })
   }
 }
