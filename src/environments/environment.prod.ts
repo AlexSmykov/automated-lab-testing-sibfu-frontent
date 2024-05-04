@@ -1,7 +1,4 @@
-import { EStorageItems } from '../app/core/storage/local-storage.enum'
-
 export const environment = {
   production: true,
-  baseUrl: 'http://', //TODO нужно уточнить после поднятия бэка
-  localStorageAuthTokenName: EStorageItems.TOKEN,
+  baseUrl: 'http://45.82.152.40',
 }
