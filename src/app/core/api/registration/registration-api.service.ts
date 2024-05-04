@@ -12,6 +12,8 @@ import {
 import { API_REGISTRATIONS } from 'src/app/core/api/api-urls'
 import { LocalStorageService } from 'src/app/core/storage/local-storage.service'
 import { EStorageItems } from 'src/app/core/storage/local-storage.enum'
+import { RoleService } from 'src/app/core/role/role.service'
+import { ERoles } from 'src/app/core/role/role.enum'
 
 import { map, Observable, tap } from 'rxjs'
 
@@ -19,6 +21,7 @@ import { map, Observable, tap } from 'rxjs'
 export class RegistrationApiService {
   constructor(
     private httpClient: HttpClient,
+    private roleService: RoleService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -31,10 +34,17 @@ export class RegistrationApiService {
       .pipe(
         map((dto) => RegistrationApiService.deserialize(dto)),
         tap(() => {
+          // Данные для базовой аутентификации
           this.localStorageService.setItem(EStorageItems.USERNAME, data.login)
           this.localStorageService.setItem(
             EStorageItems.PASSWORD,
             data.password
+          )
+
+          // TODO Сделать чтобы роль препода ставилась не сразу, таких пользователей модератор проверяет
+          // Устанавливаем нашу роль
+          this.roleService.setCurrentRole(
+            data.isTeacher ? ERoles.TEACHER : ERoles.STUDENT
           )
         })
       )
