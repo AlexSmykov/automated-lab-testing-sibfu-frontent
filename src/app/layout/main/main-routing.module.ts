@@ -22,13 +22,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: EPartialRoutes.COURSES_ID,
-        loadChildren: () =>
-          import(
-            '../../pages/courses-page/pages/course-page/course-page.module'
-          ).then((m) => m.CoursePageModule),
-      },
-      {
         path: EPartialRoutes.PRACTICE,
         loadChildren: () =>
           import('../../pages/practice-page/practice-page.module').then(

@@ -7,6 +7,7 @@ enum ERoutes {
   COURSES = 'COURSES',
   COURSES_ID = 'COURSES_ID',
   PRACTICE = 'PRACTICE',
+  COURSE_CREATE = 'COURSE_CREATE',
 }
 
 enum ERoutesParts {
@@ -16,6 +17,7 @@ enum ERoutesParts {
   REGISTRATION = 'registration',
   COURSES = 'courses',
   PRACTICE = 'practice',
+  CREATE = 'create',
 }
 
 export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
@@ -23,7 +25,8 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.LOGIN]: [ERoutesParts.LOGIN].join('/'),
   [ERoutes.REGISTRATION]: [ERoutesParts.REGISTRATION].join('/'),
   [ERoutes.COURSES]: [ERoutesParts.COURSES].join('/'),
-  [ERoutes.COURSES_ID]: [ERoutesParts.COURSES, ERoutesParts.ID].join('/'),
+  [ERoutes.COURSES_ID]: [ERoutesParts.ID].join('/'),
+  [ERoutes.COURSE_CREATE]: [ERoutesParts.CREATE].join('/'),
   [ERoutes.PRACTICE]: [
     ERoutesParts.COURSES,
     ERoutesParts.PRACTICE,
@@ -48,5 +51,11 @@ export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
     ERoutesParts.COURSES,
     ERoutesParts.PRACTICE,
     id,
+  ],
+  [ERoutes.COURSE_CREATE]: [
+    '/',
+    ERoutesParts.MAIN,
+    ERoutesParts.COURSES,
+    ERoutesParts.CREATE,
   ],
 }
