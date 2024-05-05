@@ -1,0 +1,42 @@
+:host {
+  width: 100%;
+
+  .image-upload {
+    &__wrapper {
+      height: 150px;
+      position: relative;
+    }
+
+    &__delete-button {
+      position: fixed;
+
+      width: 20px;
+      height: 20px;
+
+      top: 10px;
+      right: 10px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--gray-bg);
+
+      &__icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+::ng-deep .uploader {
+  .ant-upload {
+    border-radius: 10px;
+    overflow: hidden;
+
+    .ant-upload-btn {
+      padding: 0;
+    }
+  }
+}
