@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { SvgIconComponent } from 'angular-svg-icon'
 
 import { CoursesPageComponent } from './courses-page.component'
 import { CoursesPageItemModule } from './components/course-item/courses-page-item.module'
@@ -13,6 +14,7 @@ import { CoursesPageRoutingModule } from './courses-page-routing.module'
     CoursesPageItemModule,
     IslandModule,
     CoursesPageRoutingModule,
+    SvgIconComponent,
   ],
   exports: [CoursesPageComponent],
 })

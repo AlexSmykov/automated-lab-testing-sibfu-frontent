@@ -7,11 +7,13 @@ import { NzGridModule } from 'ng-zorro-antd/grid'
 import { CommonModule } from '@angular/common'
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { NzUploadModule } from 'ng-zorro-antd/upload'
+import { SvgIconComponent } from 'angular-svg-icon'
 
-import { CheckboxInputComponent } from 'src/app/shared/components/forms/checkbox-input/checkbox-input.component'
+import { ImageInputComponent } from 'src/app/shared/components/forms/image-input/image-input.component'
+import { IslandModule } from 'src/app/shared/components/island/island.module'
 
 @NgModule({
-  declarations: [CheckboxInputComponent],
+  declarations: [ImageInputComponent],
   imports: [
     NzInputModule,
     ReactiveFormsModule,
@@ -20,8 +22,10 @@ import { CheckboxInputComponent } from 'src/app/shared/components/forms/checkbox
     NzGridModule,
     CommonModule,
     NzCheckboxModule,
+    IslandModule,
     NzUploadModule,
+    SvgIconComponent,
   ],
-  exports: [CheckboxInputComponent],
+  exports: [ImageInputComponent],
 })
-export class CheckboxInputModule {}
+export class ImageInputModule {}

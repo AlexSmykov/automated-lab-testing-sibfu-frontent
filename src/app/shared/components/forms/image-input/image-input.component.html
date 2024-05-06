@@ -1,0 +1,33 @@
+<nz-form-item>
+  <nz-form-label *ngIf="label" [nzRequired]="isRequired">
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <nz-input-group>
+      <nz-upload
+        class="uploader"
+        nzType="drag"
+        nzAccept=".jpg,.jpeg,.png"
+        [title]="label"
+        [nzBeforeUpload]="beforeImageUpload"
+      >
+        <div class="image-upload__wrapper max-w">
+          <ng-container *ngIf="!loadedImage">
+            <ng-content></ng-content>
+          </ng-container>
+
+          <ng-container *ngIf="loadedImage">
+            <img class="max-h max-w" [src]="loadedImage.url" />
+
+            <div class="image-upload__delete-button" (click)="removeImage()">
+              <svg-icon
+                class="image-upload__delete-button__icon"
+                src="assets\icons\trash.svg"
+              ></svg-icon>
+            </div>
+          </ng-container>
+        </div>
+      </nz-upload>
+    </nz-input-group>
+  </nz-form-control>
+</nz-form-item>

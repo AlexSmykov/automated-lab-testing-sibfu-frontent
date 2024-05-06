@@ -1,0 +1,28 @@
+<section class="flex row center">
+  <app-form-container title="Создание нового курса">
+    <app-text-input
+      label="Название нового курса"
+      placeholder="Введите название"
+      [control]="createCourseForm.controls.name"
+    >
+    </app-text-input>
+    <app-image-input
+      label="Обложка курса"
+      [control]="createCourseForm.controls.image"
+    >
+      <div class="create-course__image-upload-button max-w">
+        <svg-icon src="assets/icons/plusIcon.svg" />
+      </div>
+    </app-image-input>
+
+    <div class="create-course__buttons">
+      <app-form-button
+        class="create-course__buttons__create-button"
+        [formToWatch]="createCourseForm"
+        (click)="createCourse()"
+      >
+        Добавить предмет
+      </app-form-button>
+    </div>
+  </app-form-container>
+</section>
