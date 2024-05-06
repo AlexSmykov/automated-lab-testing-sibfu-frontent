@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import {
   EPracticeStatus,
   EPracticeStatusColor,
-} from '../../interfaces/practice-status.interface';
+} from 'src/app/shared/interfaces/practice-status.interface';
 
 @Component({
   selector: 'app-status-circle',

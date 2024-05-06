@@ -4,7 +4,7 @@ import { CdkListbox } from '@angular/cdk/listbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterLink } from '@angular/router';
 
-import { CourseHeaderComponent } from './course-header.component';
+import { CourseHeaderComponent } from 'src/app/pages/courses-page/pages/course-page/components/course-header/course-header.component';
 
 @NgModule({
   declarations: [CourseHeaderComponent],

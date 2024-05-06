@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { RoleService } from 'src/app/core/role/role.service';
 import { EFullRoutes } from 'src/app/shared/router-paths';
-
-import { CoursesPageService } from './courses-page.service';
+import { CoursesPageService } from 'src/app/pages/courses-page/courses-page.service';
 
 @Component({
   selector: 'app-courses-page',

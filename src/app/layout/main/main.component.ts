@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { filter } from 'rxjs';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
-import { EFullRoutes } from '../../shared/router-paths';
+import { filter } from 'rxjs';
 
 @UntilDestroy()
 @Component({

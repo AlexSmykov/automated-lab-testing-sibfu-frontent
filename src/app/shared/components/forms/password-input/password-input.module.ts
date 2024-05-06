@@ -7,7 +7,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { CommonModule } from '@angular/common';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
-import { PasswordInputComponent } from './password-input.component';
+import { PasswordInputComponent } from 'src/app/shared/components/forms/password-input/password-input.component';
 
 @NgModule({
   declarations: [PasswordInputComponent],

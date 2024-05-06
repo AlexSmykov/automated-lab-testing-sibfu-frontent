@@ -7,10 +7,9 @@ import { addValidator } from 'src/app/shared/utils/form-validators';
 import { passwordValidatorFn } from 'src/app/shared/validators/validators';
 import { TokenService } from 'src/app/core/token/token.service';
 import { RegistrationApiService } from 'src/app/core/api/registration/registration-api.service';
-
-import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface';
-import { TRegistrationFormValue } from './registration-page.interface';
-import { EFullRoutes } from '../../shared/router-paths';
+import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
+import { TRegistrationFormValue } from 'src/app/pages/registration-page/registration-page.interface';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 const PASSWORD_FIELD_NAME = 'password';
 const PASSWORD_CONFIRM_FIELD_NAME = 'passwordConfirm';

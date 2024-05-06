@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/storage/local-storage.service';
+import { EStorageItems } from 'src/app/core/storage/local-storage.enum';
+import { TToken } from 'src/app/core/token/token.interface';
 
-import { LocalStorageService } from '../storage/local-storage.service';
-import { EStorageItems } from '../storage/local-storage.enum';
-import { TToken } from './token.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {

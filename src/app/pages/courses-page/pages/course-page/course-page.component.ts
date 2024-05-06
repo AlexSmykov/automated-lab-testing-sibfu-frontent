@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ActivatedRoute } from '@angular/router';
 
-import { CoursePageService } from './course-page.service';
-import { SideBarService } from '../../../../components/side-bar/side-bar.service';
+import { CoursePageService } from 'src/app/pages/courses-page/pages/course-page/course-page.service';
+import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
 
 @UntilDestroy()
 @Component({

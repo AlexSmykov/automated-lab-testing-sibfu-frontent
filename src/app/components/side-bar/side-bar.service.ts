@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
+import { mockCourses } from 'src/app/pages/courses-page/mock-courses';
+import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
 
-import { mockCourses } from '../../pages/courses-page/mock-courses';
-import { TCourse } from '../../pages/courses-page/pages/course-page/course-page.interface';
+import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 
 @UntilDestroy()
 @Injectable({ providedIn: 'root' })

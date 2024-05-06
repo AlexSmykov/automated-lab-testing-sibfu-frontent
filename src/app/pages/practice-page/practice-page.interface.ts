@@ -1,4 +1,4 @@
-import { EPracticeStatus } from '../../shared/interfaces/practice-status.interface';
+import { EPracticeStatus } from 'src/app/shared/interfaces/practice-status.interface';
 
 export type TPractice = {
   id: number;

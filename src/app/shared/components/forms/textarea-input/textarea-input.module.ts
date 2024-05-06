@@ -5,7 +5,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { CommonModule } from '@angular/common';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
-import { TextareaInputComponent } from './textarea-input.component';
+import { TextareaInputComponent } from 'src/app/shared/components/forms/textarea-input/textarea-input.component';
 
 @NgModule({
   declarations: [TextareaInputComponent],

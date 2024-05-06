@@ -4,7 +4,7 @@ import { CdkListbox } from '@angular/cdk/listbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterLink } from '@angular/router';
 
-import { CoursesPageItemComponent } from './courses-page-item.component';
+import { CoursesPageItemComponent } from 'src/app/pages/courses-page/components/course-item/courses-page-item.component';
 
 @NgModule({
   declarations: [CoursesPageItemComponent],

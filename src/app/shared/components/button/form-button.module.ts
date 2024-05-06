@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { FormButtonComponent } from './form-button.component';
+import { FormButtonComponent } from 'src/app/shared/components/button/form-button.component';
 
 @NgModule({
   declarations: [FormButtonComponent],

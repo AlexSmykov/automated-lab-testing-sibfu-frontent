@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { EFullRoutes } from '../../../shared/router-paths';
-import { SideBarService } from '../side-bar.service';
-import { TCourse } from '../../../pages/courses-page/pages/course-page/course-page.interface';
+import { EFullRoutes } from 'src/app/shared/router-paths';
+import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
+import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
 
 @Component({
   selector: 'app-side-bar-course',

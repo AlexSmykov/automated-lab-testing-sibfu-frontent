@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EPartialRoutes } from './shared/router-paths';
+import { EPartialRoutes } from 'src/app/shared/router-paths';
 
 const routes: Routes = [
   {

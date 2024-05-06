@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
-import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface';
-import { TLogin } from './login-page.interface';
-import { LoginPageService } from './login-page.service';
-import { EFullRoutes } from '../../shared/router-paths';
+import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
+import { TLogin } from 'src/app/pages/login-page/login-page.interface';
+import { LoginPageService } from 'src/app/pages/login-page/login-page.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 @Component({
   selector: 'app-login-page',

@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { PracticePageService } from './practice-page.service';
-import { SideBarService } from '../../components/side-bar/side-bar.service';
+import { PracticePageService } from 'src/app/pages/practice-page/practice-page.service';
+import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
 
 @UntilDestroy()
 @Component({

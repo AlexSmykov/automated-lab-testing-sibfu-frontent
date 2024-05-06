@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { SideBarService } from './side-bar.service';
-import { EFullRoutes } from '../../shared/router-paths';
+import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 @Component({
   selector: 'app-side-bar',

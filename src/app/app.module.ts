@@ -10,11 +10,10 @@ import { RouterOutlet } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { BasicAuthInterceptor } from 'src/app/core/intercepters/basic-auth.interceptor';
-
-import { AppComponent } from './app.component';
-import { FooterModule } from './layout/footer/footer.module';
-import { HeaderModule } from './layout/header/header.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from 'src/app/app.component';
+import { FooterModule } from 'src/app/layout/footer/footer.module';
+import { HeaderModule } from 'src/app/layout/header/header.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 registerLocaleData(ru);
 

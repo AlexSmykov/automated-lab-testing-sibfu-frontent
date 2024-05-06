@@ -1,4 +1,4 @@
-import { TKeyInEnum } from './interfaces/key-in-enum.interface';
+import { TKeyInEnum } from 'src/app/shared/interfaces/key-in-enum.interface';
 
 enum ERoutes {
   MAIN = 'MAIN',
