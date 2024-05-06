@@ -3,7 +3,7 @@
     <app-text-input
       label="Название нового курса"
       placeholder="Введите название"
-      [control]="createCourseForm.controls.title"
+      [control]="createCourseForm.controls.name"
     >
     </app-text-input>
     <app-image-input
@@ -19,8 +19,10 @@
       <app-form-button
         class="create-course__buttons__create-button"
         [formToWatch]="createCourseForm"
-        >Добавить предмет</app-form-button
+        (click)="createCourse()"
       >
+        Добавить предмет
+      </app-form-button>
     </div>
   </app-form-container>
 </section>
