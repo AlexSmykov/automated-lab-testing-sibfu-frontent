@@ -1,7 +1,7 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 
-import { SideBarService } from './side-bar.service'
-import { EFullRoutes } from '../../shared/router-paths'
+import { SideBarService } from './side-bar.service';
+import { EFullRoutes } from '../../shared/router-paths';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,10 +9,10 @@ import { EFullRoutes } from '../../shared/router-paths'
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent {
-  courses$ = this.sideBarService.courses$
-  courseId$ = this.sideBarService.selectedCourseId$
+  courses$ = this.sideBarService.courses$;
+  courseId$ = this.sideBarService.selectedCourseId$;
 
-  EFullRoutes = EFullRoutes
+  EFullRoutes = EFullRoutes;
 
   constructor(private sideBarService: SideBarService) {}
 }

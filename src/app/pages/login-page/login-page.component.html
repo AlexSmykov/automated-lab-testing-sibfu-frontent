@@ -15,12 +15,15 @@
       ></app-password-input>
 
       <div class="flex row space max-w">
-        <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION"
-          >Еще не зарегистрированы?</app-router-link
+        <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION">
+          Еще не зарегистрированы?
+        </app-router-link>
+        <app-form-button
+          [formToWatch]="loginFormGroup"
+          (click)="onLoginClick()"
         >
-        <app-form-button [formToWatch]="loginFormGroup" (click)="onLoginClick()"
-          >Войти</app-form-button
-        >
+          Войти
+        </app-form-button>
       </div>
     </app-form-container>
   </div>

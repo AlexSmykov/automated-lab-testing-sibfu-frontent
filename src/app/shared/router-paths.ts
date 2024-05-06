@@ -1,4 +1,4 @@
-import { TKeyInEnum } from './interfaces/key-in-enum.interface'
+import { TKeyInEnum } from './interfaces/key-in-enum.interface';
 
 enum ERoutes {
   MAIN = 'MAIN',
@@ -32,7 +32,7 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
     ERoutesParts.PRACTICE,
     ERoutesParts.ID,
   ].join('/'),
-}
+};
 
 export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
   [ERoutes.MAIN]: ['/', ERoutesParts.MAIN],
@@ -58,4 +58,4 @@ export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
     ERoutesParts.COURSES,
     ERoutesParts.CREATE,
   ],
-}
+};

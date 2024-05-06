@@ -1,12 +1,12 @@
-import { Component } from '@angular/core'
-import { UntilDestroy } from '@ngneat/until-destroy'
-import { FormBuilder, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
+import { Component } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface'
-import { TNewCourse } from 'src/app/pages/courses-page/pages/create-course-page/create-course-page.interface'
-import { CourseApiService } from 'src/app/core/api/course/course-api.service'
-import { EFullRoutes } from 'src/app/shared/router-paths'
+import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
+import { TNewCourse } from 'src/app/pages/courses-page/pages/create-course-page/create-course-page.interface';
+import { CourseApiService } from 'src/app/core/api/course/course-api.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 @UntilDestroy()
 @Component({
@@ -26,7 +26,7 @@ export class CreateCoursePageComponent {
       ],
     }),
     image: this.fb.control<number | null>(null),
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +38,7 @@ export class CreateCoursePageComponent {
     this.courseApiService
       .create(this.createCourseForm.getRawValue())
       .subscribe(() => {
-        this.router.navigate(EFullRoutes.COURSES)
-      })
+        this.router.navigate(EFullRoutes.COURSES);
+      });
   }
 }

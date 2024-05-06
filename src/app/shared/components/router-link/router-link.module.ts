@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core'
-import { RouterLink } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-import { RouterLinkComponent } from './router-link.component'
+import { RouterLinkComponent } from './router-link.component';
 
 @NgModule({
   declarations: [RouterLinkComponent],

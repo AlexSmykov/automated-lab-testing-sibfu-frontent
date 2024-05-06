@@ -1,1 +1,1 @@
-export type TToken = string | null
+export type TToken = string | null;

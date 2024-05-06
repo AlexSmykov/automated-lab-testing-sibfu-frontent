@@ -28,8 +28,8 @@ export const EErrorTextsBase: Record<EErrors, TErrorValue> = {
     text: (value: { actualLength: number; requiredLength: number }) =>
       `Не более ${value.requiredLength} символов`,
   },
-} as const
+} as const;
 
 export type TErrorValue = {
-  text: string | ((value: any) => string)
-}
+  text: string | ((value: any) => string);
+};

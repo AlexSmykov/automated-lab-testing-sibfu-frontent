@@ -1,6 +1,6 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 
-import { ErrorService } from 'src/app/shared/services/error.service'
+import { ErrorService } from 'src/app/shared/services/error.service';
 
 @Component({
   selector: 'app-root',

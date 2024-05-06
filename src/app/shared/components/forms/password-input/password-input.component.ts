@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core'
-import { FormControl, Validators } from '@angular/forms'
+import { Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import { ErrorService } from 'src/app/shared/services/error.service'
+import { ErrorService } from 'src/app/shared/services/error.service';
 
 @Component({
   selector: 'app-password-input',
@@ -9,18 +9,18 @@ import { ErrorService } from 'src/app/shared/services/error.service'
   styleUrls: ['./password-input.component.scss'],
 })
 export class PasswordInputComponent {
-  @Input({ required: true }) control!: FormControl<string>
-  @Input() label?: string
-  @Input() placeholder?: string
+  @Input({ required: true }) control!: FormControl<string>;
+  @Input() label?: string;
+  @Input() placeholder?: string;
 
-  isPasswordVisible = false
+  isPasswordVisible = false;
 
   get errorText(): string {
-    return this.errorService.checkError(this.control)
+    return this.errorService.checkError(this.control);
   }
 
   get isRequired(): boolean {
-    return this.control.hasValidator(Validators.required)
+    return this.control.hasValidator(Validators.required);
   }
 
   constructor(private errorService: ErrorService) {}

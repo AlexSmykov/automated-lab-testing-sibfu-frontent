@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 
-import { RoleService } from 'src/app/core/role/role.service'
-import { EFullRoutes } from 'src/app/shared/router-paths'
+import { RoleService } from 'src/app/core/role/role.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
-import { CoursesPageService } from './courses-page.service'
+import { CoursesPageService } from './courses-page.service';
 
 @Component({
   selector: 'app-courses-page',
@@ -12,9 +12,9 @@ import { CoursesPageService } from './courses-page.service'
   providers: [CoursesPageService],
 })
 export class CoursesPageComponent implements OnInit {
-  courses$ = this.homePageService.courses$
+  courses$ = this.homePageService.courses$;
 
-  isTeacher = this.roleService.isTeacher
+  isTeacher = this.roleService.isTeacher;
 
   constructor(
     private homePageService: CoursesPageService,
@@ -22,8 +22,8 @@ export class CoursesPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.homePageService.getCoursesAction()
+    this.homePageService.getCoursesAction();
   }
 
-  protected readonly EFullRoutes = EFullRoutes
+  protected readonly EFullRoutes = EFullRoutes;
 }

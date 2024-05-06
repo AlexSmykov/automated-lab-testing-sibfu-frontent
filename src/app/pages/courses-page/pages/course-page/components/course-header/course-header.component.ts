@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
-import { EFullRoutes } from '../../../../../../shared/router-paths'
-import { TCourse } from '../../course-page.interface'
+import { EFullRoutes } from '../../../../../../shared/router-paths';
+import { TCourse } from '../../course-page.interface';
 
 @Component({
   selector: 'app-course-header',
@@ -9,9 +9,9 @@ import { TCourse } from '../../course-page.interface'
   styleUrls: ['./course-header.component.scss'],
 })
 export class CourseHeaderComponent {
-  @Input({ required: true }) course!: TCourse
+  @Input({ required: true }) course!: TCourse;
 
-  EFullRoutes = EFullRoutes
+  EFullRoutes = EFullRoutes;
 
   constructor() {}
 }

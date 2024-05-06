@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
-import { TLogin } from './login-page.interface'
-import { TLoginDtoPost } from './login-page.dto'
-import { AuthService } from '../../core/auth/auth.service'
+import { TLogin } from './login-page.interface';
+import { TLoginDtoPost } from './login-page.dto';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Injectable()
 export class LoginPageService {
@@ -11,6 +11,6 @@ export class LoginPageService {
   login(data: TLogin): void {}
 
   private serialize(data: TLogin): TLoginDtoPost {
-    return data
+    return data;
   }
 }

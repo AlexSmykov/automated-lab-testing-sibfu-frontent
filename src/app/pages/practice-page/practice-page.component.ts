@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core'
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
-import { ActivatedRoute } from '@angular/router'
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser'
-import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {
+  FormControl,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 
-import { PracticePageService } from './practice-page.service'
-import { SideBarService } from '../../components/side-bar/side-bar.service'
+import { PracticePageService } from './practice-page.service';
+import { SideBarService } from '../../components/side-bar/side-bar.service';
 
 @UntilDestroy()
 @Component({
@@ -15,12 +19,12 @@ import { SideBarService } from '../../components/side-bar/side-bar.service'
   providers: [PracticePageService],
 })
 export class PracticePageComponent implements OnInit {
-  practice$ = this.practicePageService.practice$
+  practice$ = this.practicePageService.practice$;
 
   codeInputControl: FormControl<string> = this.fb.control<string>(
     '',
     Validators.required
-  )
+  );
 
   constructor(
     private practicePageService: PracticePageService,
@@ -34,13 +38,13 @@ export class PracticePageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
-        const courseId: number = +params['id']
-        this.practicePageService.updatePractice(courseId)
-        this.sideBarService.selectPractice(courseId)
-      })
+        const courseId: number = +params['id'];
+        this.practicePageService.updatePractice(courseId);
+        this.sideBarService.selectPractice(courseId);
+      });
   }
 
   safeHtmlDescription(htmlString: string): SafeHtml {
-    return this.domSanitizer.bypassSecurityTrustHtml(htmlString)
+    return this.domSanitizer.bypassSecurityTrustHtml(htmlString);
   }
 }

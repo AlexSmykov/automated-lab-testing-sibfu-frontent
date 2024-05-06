@@ -1,9 +1,9 @@
 export type TLoginDtoPost = {
-  login: string
-  password: string
-}
+  login: string;
+  password: string;
+};
 
 export type TLoginDto = {
-  token: string
-  data: any
-}
+  token: string;
+  data: any;
+};

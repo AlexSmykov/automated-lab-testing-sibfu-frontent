@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { EPartialRoutes } from '../../shared/router-paths'
-import { MainComponent } from './main.component'
+import { EPartialRoutes } from '../../shared/router-paths';
+import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
       },
     ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

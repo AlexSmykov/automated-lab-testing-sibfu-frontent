@@ -1,4 +1,4 @@
 export type TNewCourse = {
-  name: string
-  image: number | null
-}
+  name: string;
+  image: number | null;
+};

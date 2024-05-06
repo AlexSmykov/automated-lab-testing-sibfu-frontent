@@ -1,5 +1,5 @@
-import { TRegistrationPost } from 'src/app/core/api/registration/registration-api.interface'
+import { TRegistrationPost } from 'src/app/core/api/registration/registration-api.interface';
 
 export type TRegistrationFormValue = TRegistrationPost & {
-  passwordConfirm: string
-}
+  passwordConfirm: string;
+};

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
+import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-button',
@@ -7,5 +7,5 @@ import { FormControl, FormGroup } from '@angular/forms'
   styleUrls: ['./form-button.component.scss'],
 })
 export class FormButtonComponent {
-  @Input({ required: true }) formToWatch!: FormControl | FormGroup
+  @Input({ required: true }) formToWatch!: FormControl | FormGroup;
 }

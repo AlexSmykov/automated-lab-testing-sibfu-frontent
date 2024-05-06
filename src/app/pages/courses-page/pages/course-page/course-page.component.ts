@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
-import { ActivatedRoute } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ActivatedRoute } from '@angular/router';
 
-import { CoursePageService } from './course-page.service'
-import { SideBarService } from '../../../../components/side-bar/side-bar.service'
+import { CoursePageService } from './course-page.service';
+import { SideBarService } from '../../../../components/side-bar/side-bar.service';
 
 @UntilDestroy()
 @Component({
@@ -13,7 +13,7 @@ import { SideBarService } from '../../../../components/side-bar/side-bar.service
   providers: [CoursePageService],
 })
 export class CoursePageComponent implements OnInit {
-  course$ = this.coursePageService.course$
+  course$ = this.coursePageService.course$;
 
   constructor(
     private coursePageService: CoursePageService,
@@ -25,10 +25,10 @@ export class CoursePageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
-        const courseId: number = +params['id']
-        this.coursePageService.updateCourse(courseId)
-        this.sideBarService.selectCourse(courseId)
-        this.sideBarService.unselectPractice()
-      })
+        const courseId: number = +params['id'];
+        this.coursePageService.updateCourse(courseId);
+        this.sideBarService.selectCourse(courseId);
+        this.sideBarService.unselectPractice();
+      });
   }
 }
