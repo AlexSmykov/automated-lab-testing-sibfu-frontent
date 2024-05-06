@@ -1,1 +1,1 @@
-export type TCourseDto = {}
+export type TCourseDto = {};

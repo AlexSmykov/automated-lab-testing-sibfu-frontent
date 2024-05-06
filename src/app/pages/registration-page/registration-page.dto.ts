@@ -1,11 +1,11 @@
 export type TRegistrationDtoPost = {
-  login: string
-  fio: string
-  email: string
-  password: string
-}
+  login: string;
+  fio: string;
+  email: string;
+  password: string;
+};
 
 export type TRegistrationDto = {
-  token: string
-  data: any
-}
+  token: string;
+  data: any;
+};

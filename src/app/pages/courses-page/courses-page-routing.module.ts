@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { EPartialRoutes } from 'src/app/shared/router-paths'
-import { CoursesPageComponent } from 'src/app/pages/courses-page/courses-page.component'
+import { EPartialRoutes } from 'src/app/shared/router-paths';
+import { CoursesPageComponent } from 'src/app/pages/courses-page/courses-page.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
     ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

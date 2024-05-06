@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
-import { EFullRoutes } from '../../../../../../shared/router-paths'
-import { TPractice } from '../../../../../practice-page/practice-page.interface'
+import { EFullRoutes } from 'src/app/shared/router-paths';
+import { TPractice } from 'src/app/pages/practice-page/practice-page.interface';
 import {
   EPracticeStatus,
   EPracticeStatusColor,
-} from '../../../../../../shared/interfaces/practice-status.interface'
+} from 'src/app/shared/interfaces/practice-status.interface';
 
 @Component({
   selector: 'app-course-practice-item',
@@ -13,13 +13,13 @@ import {
   styleUrls: ['./course-practice-item.component.scss'],
 })
 export class CoursePracticeItemComponent {
-  @Input({ required: true }) practice!: TPractice
+  @Input({ required: true }) practice!: TPractice;
 
-  EFullRoutes = EFullRoutes
+  EFullRoutes = EFullRoutes;
 
   constructor() {}
 
   getColor(status: EPracticeStatus): string {
-    return EPracticeStatusColor[status]
+    return EPracticeStatusColor[status];
   }
 }

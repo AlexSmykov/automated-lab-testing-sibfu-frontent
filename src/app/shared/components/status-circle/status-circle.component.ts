@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
 import {
   EPracticeStatus,
   EPracticeStatusColor,
-} from '../../interfaces/practice-status.interface'
+} from 'src/app/shared/interfaces/practice-status.interface';
 
 @Component({
   selector: 'app-status-circle',
@@ -11,9 +11,9 @@ import {
   styleUrls: ['./status-circle.component.scss'],
 })
 export class StatusCircleComponent {
-  @Input({ required: true }) status!: EPracticeStatus
+  @Input({ required: true }) status!: EPracticeStatus;
 
   getColor(): string {
-    return EPracticeStatusColor[this.status]
+    return EPracticeStatusColor[this.status];
   }
 }

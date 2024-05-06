@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core'
-import { NzIconModule } from 'ng-zorro-antd/icon'
-import { NzImageModule } from 'ng-zorro-antd/experimental/image'
+import { NgModule } from '@angular/core';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzImageModule } from 'ng-zorro-antd/experimental/image';
 
-import { HeaderComponent } from './header.component'
-import { LogoModule } from '../../components/logo/logo.module'
+import { HeaderComponent } from 'src/app/layout/header/header.component';
+import { LogoModule } from 'src/app/components/logo/logo.module';
 
 @NgModule({
   declarations: [HeaderComponent],

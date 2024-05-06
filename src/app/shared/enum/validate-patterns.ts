@@ -18,17 +18,17 @@ export const EValidatePatterns: Record<EPatterns, ValidatePattern> = {
     pattern: new RegExp(/^\S+@\S+\.\S+$/),
     errorText: 'Неверно введена почта',
   },
-} as const
+} as const;
 
 type ValidatePattern = {
-  pattern: string | RegExp
-  errorText: string
-}
+  pattern: string | RegExp;
+  errorText: string;
+};
 
 export function regexLike(almostRegexString: string): string {
-  return `^${almostRegexString}$`
+  return `^${almostRegexString}$`;
 }
 
 export function unRegex(regexString: string): string {
-  return regexString.slice(1, regexString.length - 1)
+  return regexString.slice(1, regexString.length - 1);
 }

@@ -1,1 +1,1 @@
-export type TPracticeDto = {}
+export type TPracticeDto = {};

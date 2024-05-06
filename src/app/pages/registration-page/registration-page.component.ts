@@ -1,19 +1,18 @@
-import { Component } from '@angular/core'
-import { NonNullableFormBuilder, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
+import { Component } from '@angular/core';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { EValidatePatterns } from 'src/app/shared/enum/validate-patterns'
-import { addValidator } from 'src/app/shared/utils/form-validators'
-import { passwordValidatorFn } from 'src/app/shared/validators/validators'
-import { TokenService } from 'src/app/core/token/token.service'
-import { RegistrationApiService } from 'src/app/core/api/registration/registration-api.service'
+import { EValidatePatterns } from 'src/app/shared/enum/validate-patterns';
+import { addValidator } from 'src/app/shared/utils/form-validators';
+import { passwordValidatorFn } from 'src/app/shared/validators/validators';
+import { TokenService } from 'src/app/core/token/token.service';
+import { RegistrationApiService } from 'src/app/core/api/registration/registration-api.service';
+import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
+import { TRegistrationFormValue } from 'src/app/pages/registration-page/registration-page.interface';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
-import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface'
-import { TRegistrationFormValue } from './registration-page.interface'
-import { EFullRoutes } from '../../shared/router-paths'
-
-const PASSWORD_FIELD_NAME = 'password'
-const PASSWORD_CONFIRM_FIELD_NAME = 'passwordConfirm'
+const PASSWORD_FIELD_NAME = 'password';
+const PASSWORD_CONFIRM_FIELD_NAME = 'passwordConfirm';
 
 @Component({
   selector: 'app-registration-page',
@@ -36,10 +35,10 @@ export class RegistrationPageComponent {
       isTeacher: this.fb.control(false),
       [PASSWORD_FIELD_NAME]: this.fb.control('', [Validators.required]),
       [PASSWORD_CONFIRM_FIELD_NAME]: this.fb.control('', [Validators.required]),
-    })
+    });
 
-  controls = this.registrationFormGroup.controls
-  EFullRoutes = EFullRoutes
+  controls = this.registrationFormGroup.controls;
+  EFullRoutes = EFullRoutes;
 
   constructor(
     private router: Router,
@@ -52,15 +51,15 @@ export class RegistrationPageComponent {
       passwordValidatorFn,
       PASSWORD_FIELD_NAME,
       PASSWORD_CONFIRM_FIELD_NAME
-    )
+    );
   }
 
   onRegistrationClick(): void {
     this.registrationApiService
       .register(this.registrationFormGroup.getRawValue())
       .subscribe((result) => {
-        this.tokenService.setToken(result)
-        this.router.navigate(EFullRoutes.MAIN)
-      })
+        this.tokenService.setToken(result);
+        this.router.navigate(EFullRoutes.MAIN);
+      });
   }
 }

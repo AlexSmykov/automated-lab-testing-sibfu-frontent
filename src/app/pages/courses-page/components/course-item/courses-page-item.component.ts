@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
-import { CoursesPageItemService } from './courses-page-item.service'
-import { EFullRoutes } from '../../../../shared/router-paths'
-import { TCourse } from '../../pages/course-page/course-page.interface'
+import { CoursesPageItemService } from 'src/app/pages/courses-page/components/course-item/courses-page-item.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
+import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
 
 @Component({
   selector: 'app-courses-page-item',
@@ -11,13 +11,13 @@ import { TCourse } from '../../pages/course-page/course-page.interface'
   providers: [CoursesPageItemService],
 })
 export class CoursesPageItemComponent {
-  @Input({ required: true }) course!: TCourse
+  @Input({ required: true }) course!: TCourse;
 
-  EFullRoutes = EFullRoutes
+  EFullRoutes = EFullRoutes;
 
   constructor(private courseItemService: CoursesPageItemService) {}
 
   deleteCourse(): void {
-    this.courseItemService.deleteCourse(this.course.id).subscribe()
+    this.courseItemService.deleteCourse(this.course.id).subscribe();
   }
 }

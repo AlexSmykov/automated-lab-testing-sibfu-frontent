@@ -1,5 +1,5 @@
-import { TCourse } from './pages/course-page/course-page.interface'
-import { EPracticeStatus } from '../../shared/interfaces/practice-status.interface'
+import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
+import { EPracticeStatus } from 'src/app/shared/interfaces/practice-status.interface';
 
 export const mockCourses: TCourse[] = [
   {
@@ -98,4 +98,4 @@ export const mockCourses: TCourse[] = [
     deletable: true,
     practices: [],
   },
-]
+];

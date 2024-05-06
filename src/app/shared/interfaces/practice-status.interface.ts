@@ -12,4 +12,4 @@ export const EPracticeStatusColor: { [key in EPracticeStatus]: string } = {
   [EPracticeStatus.SOFT_DEADLINE]: 'var(--orange-color)',
   [EPracticeStatus.HARD_DEADLINE]: 'var(--red-color)',
   [EPracticeStatus.BAD_TRY]: 'var(--yellow-color)',
-} as const
+} as const;

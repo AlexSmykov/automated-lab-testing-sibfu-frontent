@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core'
-import { NzInputModule } from 'ng-zorro-antd/input'
+import { NgModule } from '@angular/core';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
-import { IslandComponent } from './island.component'
+import { IslandComponent } from 'src/app/shared/components/island/island.component';
 
 @NgModule({
   declarations: [IslandComponent],

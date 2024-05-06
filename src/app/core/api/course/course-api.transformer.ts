@@ -2,21 +2,21 @@ import {
   TCourse,
   TCoursePost,
   TCourseUpdate,
-} from 'src/app/core/api/course/course-api.interface'
+} from 'src/app/core/api/course/course-api.interface';
 import {
   TCourseCreateDto,
   TCourseDto,
   TCourseUpdateDto,
-} from 'src/app/core/api/course/course-api.dto'
+} from 'src/app/core/api/course/course-api.dto';
 
 export function serializeCoursePost(data: TCoursePost): TCourseCreateDto {
-  return data
+  return data;
 }
 
 export function serializeCourseUpdate(data: TCourseUpdate): TCourseUpdateDto {
-  return data
+  return data;
 }
 
 export function deserializeCourse(dto: TCourseDto): TCourse {
-  return dto
+  return dto;
 }

@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-} from '@angular/common/http'
+} from '@angular/common/http';
 
-import { LocalStorageService } from 'src/app/core/storage/local-storage.service'
-import { EStorageItems } from 'src/app/core/storage/local-storage.enum'
+import { LocalStorageService } from 'src/app/core/storage/local-storage.service';
+import { EStorageItems } from 'src/app/core/storage/local-storage.enum';
 
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class BasicAuthInterceptor implements HttpInterceptor {
@@ -19,15 +19,15 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    let clonedRequest = request
+    let clonedRequest = request;
     if (this.localStorageService.checkItem(EStorageItems.USERNAME)) {
       clonedRequest = request.clone({
         headers: request.headers.append(
           'Authorization',
           `Basic` + btoa(`${EStorageItems.USERNAME}:${EStorageItems.PASSWORD}`)
         ),
-      })
+      });
     }
-    return next.handle(clonedRequest)
+    return next.handle(clonedRequest);
   }
 }

@@ -37,14 +37,15 @@
       ></app-checkbox-input>
 
       <div class="flex row space max-w">
-        <app-router-link class="marginfull" [link]="EFullRoutes.LOGIN"
-          >Уже есть аккаунт?</app-router-link
-        >
+        <app-router-link class="marginfull" [link]="EFullRoutes.LOGIN">
+          Уже есть аккаунт?
+        </app-router-link>
         <app-form-button
           [formToWatch]="registrationFormGroup"
           (click)="onRegistrationClick()"
-          >Зарегистрироваться</app-form-button
         >
+          Зарегистрироваться
+        </app-form-button>
       </div>
     </app-form-container>
   </div>

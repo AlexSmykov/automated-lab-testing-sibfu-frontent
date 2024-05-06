@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-router-link',
@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core'
   styleUrls: ['./router-link.component.scss'],
 })
 export class RouterLinkComponent {
-  @Input({ required: true }) link!: string[]
+  @Input({ required: true }) link!: string[];
 }

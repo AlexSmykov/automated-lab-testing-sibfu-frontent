@@ -1,10 +1,10 @@
-import { Component } from '@angular/core'
-import { NonNullableFormBuilder, Validators } from '@angular/forms'
+import { Component } from '@angular/core';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
-import { TFormGroupValue } from '../../shared/interfaces/mapped-types.interface'
-import { TLogin } from './login-page.interface'
-import { LoginPageService } from './login-page.service'
-import { EFullRoutes } from '../../shared/router-paths'
+import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
+import { TLogin } from 'src/app/pages/login-page/login-page.interface';
+import { LoginPageService } from 'src/app/pages/login-page/login-page.service';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 @Component({
   selector: 'app-login-page',
@@ -16,10 +16,10 @@ export class LoginPageComponent {
   loginFormGroup: TFormGroupValue<TLogin> = this.fb.group({
     login: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required]),
-  })
+  });
 
-  controls = this.loginFormGroup.controls
-  EFullRoutes = EFullRoutes
+  controls = this.loginFormGroup.controls;
+  EFullRoutes = EFullRoutes;
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -27,6 +27,6 @@ export class LoginPageComponent {
   ) {}
 
   onLoginClick(): void {
-    this.loginPageService.login(this.loginFormGroup.getRawValue())
+    this.loginPageService.login(this.loginFormGroup.getRawValue());
   }
 }
