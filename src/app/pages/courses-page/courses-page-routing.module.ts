@@ -16,8 +16,8 @@ const routes: Routes = [
         path: EPartialRoutes.COURSE_CREATE,
         loadChildren: () =>
           import(
-            'src/app/pages/courses-page/pages/create-course-page/create-course-page.module'
-          ).then((m) => m.CreateCoursePageModule),
+            'src/app/pages/courses-page/pages/create-course-page/course-form-page.module'
+          ).then((m) => m.CourseFormPageModule),
       },
       {
         path: EPartialRoutes.COURSES_ID,
