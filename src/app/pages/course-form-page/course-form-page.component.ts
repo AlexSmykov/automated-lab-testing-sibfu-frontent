@@ -4,9 +4,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
-import { TCourseFormValue } from 'src/app/pages/courses-page/pages/create-course-page/course-form-page.interface';
 import { CourseApiService } from 'src/app/core/api/course/course-api.service';
 import { EFullRoutes } from 'src/app/shared/router-paths';
+import { TCourseFormValue } from 'src/app/pages/course-form-page/course-form-page.interface';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +25,15 @@ export class CourseFormPageComponent {
         Validators.maxLength(400),
       ],
     }),
-    image: this.fb.control<number | null>(null),
+    description: this.fb.control('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(400),
+      ],
+    }),
+    // image: this.fb.control<number | null>(null),
   });
 
   constructor(

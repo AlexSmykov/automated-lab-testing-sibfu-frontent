@@ -1,4 +1,5 @@
 export type TCourseFormValue = {
   name: string;
-  image: number | null;
+  description: string;
+  // image: number | null;
 };
