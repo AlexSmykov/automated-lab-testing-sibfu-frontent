@@ -1,5 +1,9 @@
 <nz-form-item>
-  <nz-form-label *ngIf="label" [nzRequired]="isRequired">
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
     {{ label }}
   </nz-form-label>
   <nz-form-control [nzErrorTip]="errorText">
@@ -17,7 +21,7 @@
           </ng-container>
 
           <ng-container *ngIf="loadedImage">
-            <img class="max-h max-w" [src]="loadedImage.url" />
+            <img class="max-h max-w" [src]="loadedImage.url" alt="" />
 
             <div class="image-upload__delete-button" (click)="removeImage()">
               <svg-icon
