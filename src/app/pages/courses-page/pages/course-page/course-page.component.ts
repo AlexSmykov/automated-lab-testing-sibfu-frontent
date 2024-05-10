@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CoursePageService } from 'src/app/pages/courses-page/pages/course-page/course-page.service';
 import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
+import { ERoles } from 'src/app/core/role/role.enum';
+import { EFullRoutes, ERoutesIds } from 'src/app/shared/router-paths';
 
 @UntilDestroy()
 @Component({
@@ -25,10 +27,13 @@ export class CoursePageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
-        const courseId: number = +params['id'];
+        const courseId: number = +params[ERoutesIds.COURSE_ID];
         this.coursePageService.updateCourse(courseId);
         this.sideBarService.selectCourse(courseId);
         this.sideBarService.unselectPractice();
       });
   }
+
+  protected readonly ERoles = ERoles;
+  protected readonly EFullRoutes = EFullRoutes;
 }

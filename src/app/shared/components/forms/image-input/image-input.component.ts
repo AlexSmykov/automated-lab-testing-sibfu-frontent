@@ -17,6 +17,7 @@ import { map, Observable, tap } from 'rxjs';
 export class ImageInputComponent {
   @Input({ required: true }) control!: FormControl<number | null>;
   @Input() label?: string;
+  @Input() tooltip?: string;
 
   loadedImage: NzUploadFile | null = null;
 

@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SvgIconComponent } from 'angular-svg-icon';
 
 import { CoursePageComponent } from 'src/app/pages/courses-page/pages/course-page/course-page.component';
 import { IslandModule } from 'src/app/shared/components/island/island.module';
-import { CoursesPageItemModule } from 'src/app/pages/courses-page/components/course-item/courses-page-item.module';
 import { CoursePageRoutingModule } from 'src/app/pages/courses-page/pages/course-page/course-page-routing.module';
 import { CoursePracticeItemModule } from 'src/app/pages/courses-page/pages/course-page/components/course-practice-item/course-practice-item.module';
 import { CourseHeaderModule } from 'src/app/pages/courses-page/pages/course-page/components/course-header/course-header.module';
+import { RequiredRoleModule } from 'src/app/shared/directives/required-role/required-role.module';
 
 @NgModule({
   declarations: [CoursePageComponent],
   imports: [
     CommonModule,
     IslandModule,
-    CoursesPageItemModule,
     CoursePageRoutingModule,
     CoursePracticeItemModule,
     CourseHeaderModule,
+    SvgIconComponent,
+    RequiredRoleModule,
   ],
   exports: [CoursePageComponent],
 })

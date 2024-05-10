@@ -1,5 +1,9 @@
 <nz-form-item>
-  <nz-form-label *ngIf="label" [nzRequired]="isRequired">
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
     {{ label }}
   </nz-form-label>
   <nz-form-control [nzErrorTip]="errorText">

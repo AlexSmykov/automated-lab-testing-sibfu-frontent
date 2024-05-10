@@ -1,5 +1,5 @@
 <div class="course max-w max-h flex column gapless">
-  <div [routerLink]="EFullRoutes.COURSES_ID(course.id)">
+  <div [routerLink]="EFullRoutes.PRACTICES(course.id)">
     <div
       class="island max-w max-h"
       [ngStyle]="{
@@ -11,12 +11,10 @@
     ></div>
     <h2 class="title max-w">{{ course.name }}</h2>
   </div>
-  <span
+  <svg-icon
     *ngIf="course.deletable"
-    (click)="deleteCourse()"
     class="delete"
-    nz-icon
-    nzType="delete"
-    nzTheme="outline"
-  ></span>
+    src="assets/icons/trash.svg"
+    (click)="deleteCourse()"
+  ></svg-icon>
 </div>

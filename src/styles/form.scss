@@ -1,6 +1,11 @@
 body {
+  nz-input-number .ant-input-number-handler-wrap,
+  nz-input-number.ant-input-number,
   input.ant-input,
   textarea.ant-input,
+  nz-date-picker.ant-picker,
+  nz-select.ant-select.ant-select-in-form-item
+    nz-select-top-control.ant-select-selector,
   nz-input-group.ant-input-affix-wrapper {
     border-radius: 10px;
   }

@@ -21,13 +21,6 @@ const routes: Routes = [
             (m) => m.CoursesPageModule
           ),
       },
-      {
-        path: EPartialRoutes.PRACTICE,
-        loadChildren: () =>
-          import('src/app/pages/practice-page/practice-page.module').then(
-            (m) => m.PracticePageModule
-          ),
-      },
     ],
   },
 ];

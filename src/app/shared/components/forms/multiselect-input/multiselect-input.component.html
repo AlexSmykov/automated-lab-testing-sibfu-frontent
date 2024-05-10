@@ -1,0 +1,30 @@
+<nz-form-item>
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <nz-input-group>
+      <nz-select
+        nzMode="multiple"
+        [nzMaxTagCount]="3"
+        [nzMaxTagPlaceholder]="tagPlaceHolder"
+        [nzPlaceHolder]="placeholder"
+        [formControl]="control"
+      >
+        <nz-option
+          *ngFor="let item of items"
+          [nzLabel]="item.name"
+          [nzValue]="item.id"
+        ></nz-option>
+      </nz-select>
+    </nz-input-group>
+  </nz-form-control>
+</nz-form-item>
+
+<ng-template #tagPlaceHolder let-selectedList>
+  Еще {{ selectedList.length }}
+</ng-template>

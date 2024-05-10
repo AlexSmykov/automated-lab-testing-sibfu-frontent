@@ -4,19 +4,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { SvgIconComponent } from 'angular-svg-icon';
 
-import { CreateCoursePageComponent } from 'src/app/pages/courses-page/pages/create-course-page/create-course-page.component';
-import { CreateCoursePageRoutingModule } from 'src/app/pages/courses-page/pages/create-course-page/create-course-page-routing.module';
 import { IslandModule } from 'src/app/shared/components/island/island.module';
 import { FormContainerModule } from 'src/app/shared/components/form-container/form-container.module';
 import { TextInputModule } from 'src/app/shared/components/forms/text-input/text-input.module';
 import { ImageInputModule } from 'src/app/shared/components/forms/image-input/image-input.module';
 import { FormButtonModule } from 'src/app/shared/components/button/form-button.module';
+import { CourseFormPageComponent } from 'src/app/pages/course-form-page/course-form-page.component';
+import { CourseFormPageRoutingModule } from 'src/app/pages/course-form-page/course-form-page-routing.module';
+import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-input/textarea-input.module';
 
 @NgModule({
-  declarations: [CreateCoursePageComponent],
+  declarations: [CourseFormPageComponent],
   imports: [
     CommonModule,
-    CreateCoursePageRoutingModule,
+    CourseFormPageRoutingModule,
     IslandModule,
     FormContainerModule,
     TextInputModule,
@@ -25,7 +26,8 @@ import { FormButtonModule } from 'src/app/shared/components/button/form-button.m
     SvgIconComponent,
     ImageInputModule,
     FormButtonModule,
+    TextareaInputModule,
   ],
-  exports: [CreateCoursePageComponent],
+  exports: [CourseFormPageComponent],
 })
-export class CreateCoursePageModule {}
+export class CourseFormPageModule {}

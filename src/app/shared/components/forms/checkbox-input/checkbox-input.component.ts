@@ -11,6 +11,7 @@ import { ErrorService } from 'src/app/shared/services/error.service';
 export class CheckboxInputComponent {
   @Input({ required: true }) control!: FormControl<boolean>;
   @Input() label?: string;
+  @Input() tooltip?: string;
 
   get errorText(): string {
     return this.errorService.checkError(this.control);

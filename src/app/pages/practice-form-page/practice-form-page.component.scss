@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .practice-form {
+    &__fields-group {
+      gap: 10%;
+    }
+  }
+}
+
+.min-width {
+  width: 32px;
+  min-width: 32px;
+}

@@ -6,5 +6,11 @@
   .practices {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    &__add-button {
+      height: 90px;
+      background: var(--light-gray-bg);
+      border-radius: 10px;
+    }
   }
 }

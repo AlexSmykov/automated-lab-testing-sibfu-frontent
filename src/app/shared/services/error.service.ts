@@ -7,6 +7,10 @@ import {
   unRegex,
 } from 'src/app/shared/enum/validate-patterns';
 
+const FIRST_ERROR = 0;
+const ERROR_KEY = 0;
+const ERROR_VALUE = 1;
+
 @Injectable({ providedIn: 'root' })
 export class ErrorService {
   customCheckFn?: (control: FormControl) => string;
@@ -25,20 +29,27 @@ export class ErrorService {
         }
 
         const errorList = Object.entries(control.errors);
-        switch (errorList[0][0]) {
+        switch (errorList[FIRST_ERROR][ERROR_KEY]) {
           case EErrors.PATTERN:
             return (
               Object.values(EValidatePatterns).find(
                 (item) =>
-                  item.pattern == unRegex(errorList[0][1]['requiredPattern'])
+                  item.pattern ==
+                  unRegex(
+                    errorList[FIRST_ERROR][ERROR_VALUE]['requiredPattern']
+                  )
               )?.errorText ?? (EErrorTextsBase.pattern.text as string)
             );
 
           default:
-            const errorText = EErrorTextsBase[errorList[0][0] as EErrors].text;
-            return typeof errorText === 'string'
-              ? errorText
-              : errorText(errorList[0][1]);
+            const errorText =
+              EErrorTextsBase[errorList[FIRST_ERROR][ERROR_KEY] as EErrors];
+            if (errorText === undefined) {
+              return errorList[FIRST_ERROR][ERROR_VALUE];
+            }
+            return typeof errorText.text === 'string'
+              ? errorText.text
+              : errorText.text(errorList[FIRST_ERROR][ERROR_VALUE]);
         }
       }
     }

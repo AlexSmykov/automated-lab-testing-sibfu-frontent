@@ -32,3 +32,21 @@ export const passwordValidatorFn: TGroupValidator = (
     return null;
   };
 };
+
+export const futureTimeValidator = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const controlDate = control.value;
+  if (!(controlDate instanceof Date)) {
+    return null;
+  }
+  const currentTime = new Date();
+  currentTime.setHours(0, 0, 0, 0);
+
+  if (controlDate.getTime() < currentTime.getTime()) {
+    return {
+      futureTimeError: 'Вы не можете выбрать время раньше текущего',
+    };
+  }
+  return null;
+};

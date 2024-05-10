@@ -11,7 +11,8 @@ import { ErrorService } from 'src/app/shared/services/error.service';
 export class TextareaInputComponent {
   @Input({ required: true }) control!: FormControl<string>;
   @Input() label?: string;
-  @Input() placeholder?: string;
+  @Input() tooltip?: string;
+  @Input() placeholder: string = '';
   @Input() maxLength: number = 1000;
   @Input() startSizeInLines: number = 4;
 
