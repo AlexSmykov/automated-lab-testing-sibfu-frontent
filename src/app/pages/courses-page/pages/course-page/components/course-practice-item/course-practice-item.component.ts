@@ -14,6 +14,7 @@ import {
 })
 export class CoursePracticeItemComponent {
   @Input({ required: true }) practice!: TPractice;
+  @Input({ required: true }) courseId!: number;
 
   EFullRoutes = EFullRoutes;
 

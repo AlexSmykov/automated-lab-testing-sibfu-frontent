@@ -5,8 +5,17 @@
   >
     <app-course-header [course]="course"></app-course-header>
     <div class="practices max-h max-w flex row start align-c wrap">
+      <div
+        *appRequiredRole="ERoles.TEACHER"
+        class="practices__add-button max-h max-w flex center clickable"
+        [routerLink]="EFullRoutes.PRACTICE_CREATE(course.id)"
+      >
+        <svg-icon src="assets/icons/plusIcon.svg" />
+      </div>
+
       <ng-container *ngFor="let practice of course.practices">
         <app-course-practice-item
+          [courseId]="course.id"
           [practice]="practice"
         ></app-course-practice-item>
       </ng-container>
