@@ -3,9 +3,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzGridModule } from 'ng-zorro-antd/grid';
 import { CommonModule } from '@angular/common';
-import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { PasswordInputComponent } from 'src/app/shared/components/forms/password-input/password-input.component';
 
@@ -16,9 +14,7 @@ import { PasswordInputComponent } from 'src/app/shared/components/forms/password
     ReactiveFormsModule,
     NzIconModule,
     NzFormModule,
-    NzGridModule,
     CommonModule,
-    NzUploadModule,
   ],
   exports: [PasswordInputComponent],
 })
