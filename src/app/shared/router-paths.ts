@@ -9,7 +9,9 @@ enum ERoutes {
   PRACTICES = 'PRACTICES',
   PRACTICES_ID = 'PRACTICES_ID',
   COURSE_CREATE = 'COURSE_CREATE',
+  COURSE_EDIT = 'COURSE_EDIT',
   PRACTICE_CREATE = 'PRACTICE_CREATE',
+  PRACTICE_EDIT = 'PRACTICE_EDIT',
 }
 
 export enum ERoutesIds {
@@ -24,6 +26,7 @@ enum ERoutesParts {
   COURSES = 'courses',
   PRACTICES = 'practices',
   CREATE = 'create',
+  EDIT = 'edit',
 }
 
 export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
@@ -33,9 +36,11 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.COURSES]: [ERoutesParts.COURSES].join('/'),
   [ERoutes.COURSES_ID]: [':' + ERoutesIds.COURSE_ID].join('/'),
   [ERoutes.COURSE_CREATE]: [ERoutesParts.CREATE].join('/'),
+  [ERoutes.COURSE_EDIT]: [ERoutesParts.EDIT].join('/'),
   [ERoutes.PRACTICES]: [ERoutesParts.PRACTICES].join('/'),
   [ERoutes.PRACTICES_ID]: [':' + ERoutesIds.PRACTICE_ID].join('/'),
   [ERoutes.PRACTICE_CREATE]: [ERoutesParts.CREATE].join('/'),
+  [ERoutes.PRACTICE_EDIT]: [ERoutesParts.CREATE].join('/'),
 };
 
 export const EFullRoutes = {
@@ -56,19 +61,26 @@ export const EFullRoutes = {
     ERoutesParts.COURSES,
     id,
   ],
-  [ERoutes.PRACTICES_ID]: (courseId: number, id: number) => [
+  [ERoutes.PRACTICES_ID]: (courseId: number, practiceId: number) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
     courseId,
     ERoutesParts.PRACTICES,
-    id,
+    practiceId,
   ],
   [ERoutes.COURSE_CREATE]: [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
     ERoutesParts.CREATE,
+  ],
+  [ERoutes.COURSE_EDIT]: (courseId: number) => [
+    '/',
+    ERoutesParts.MAIN,
+    ERoutesParts.COURSES,
+    courseId,
+    ERoutesParts.EDIT,
   ],
   [ERoutes.PRACTICE_CREATE]: (courseId: number) => [
     '/',
@@ -77,5 +89,14 @@ export const EFullRoutes = {
     courseId,
     ERoutesParts.PRACTICES,
     ERoutesParts.CREATE,
+  ],
+  [ERoutes.PRACTICE_EDIT]: (courseId: number, practiceId: number) => [
+    '/',
+    ERoutesParts.MAIN,
+    ERoutesParts.COURSES,
+    courseId,
+    ERoutesParts.PRACTICES,
+    practiceId,
+    ERoutesParts.EDIT,
   ],
 };

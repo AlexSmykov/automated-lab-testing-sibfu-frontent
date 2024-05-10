@@ -30,9 +30,9 @@ const routes: Routes = [
           {
             path: EPartialRoutes.PRACTICES,
             loadChildren: () =>
-              import(
-                'src/app/pages/courses-page/pages/course-page/course-page.module'
-              ).then((m) => m.CoursePageModule),
+              import('src/app/pages/course-page/course-page.module').then(
+                (m) => m.CoursePageModule
+              ),
           },
         ],
       },

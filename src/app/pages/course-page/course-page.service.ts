@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { mockCourses } from 'src/app/pages/courses-page/mock-courses';
-import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
-import { TCourseDto } from 'src/app/pages/courses-page/pages/course-page/course-page.dto';
+import { TCourse } from 'src/app/pages/course-page/course-page.interface';
+import { TCourseDto } from 'src/app/pages/course-page/course-page.dto';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 

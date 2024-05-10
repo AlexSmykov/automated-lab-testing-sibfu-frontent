@@ -4,11 +4,11 @@ import { CdkListbox } from '@angular/cdk/listbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterLink } from '@angular/router';
 
-import { CourseHeaderComponent } from 'src/app/pages/courses-page/pages/course-page/components/course-header/course-header.component';
+import { CoursePracticeItemComponent } from 'src/app/pages/course-page/components/course-practice-item/course-practice-item.component';
 
 @NgModule({
-  declarations: [CourseHeaderComponent],
+  declarations: [CoursePracticeItemComponent],
   imports: [NgStyle, CdkListbox, NzIconModule, NgIf, RouterLink],
-  exports: [CourseHeaderComponent],
+  exports: [CoursePracticeItemComponent],
 })
-export class CourseHeaderModule {}
+export class CoursePracticeItemModule {}

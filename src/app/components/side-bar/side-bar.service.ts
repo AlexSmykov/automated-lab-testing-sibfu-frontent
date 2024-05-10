@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { mockCourses } from 'src/app/pages/courses-page/mock-courses';
-import { TCourse } from 'src/app/pages/courses-page/pages/course-page/course-page.interface';
+import { TCourse } from 'src/app/pages/course-page/course-page.interface';
 
 import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CoursePageComponent } from 'src/app/pages/courses-page/pages/course-page/course-page.component';
+import { CoursePageComponent } from 'src/app/pages/course-page/course-page.component';
 import { EPartialRoutes } from 'src/app/shared/router-paths';
 
 const routes: Routes = [
