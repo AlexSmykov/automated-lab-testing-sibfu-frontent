@@ -1,4 +1,4 @@
 <section nz-form class="form-section max-w flex column" [nzLayout]="'vertical'">
-  <h2>{{ title }}</h2>
+  <h2 *ngIf="title">{{ title }}</h2>
   <ng-content></ng-content>
 </section>
