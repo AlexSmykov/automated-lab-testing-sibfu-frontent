@@ -15,16 +15,26 @@ const routes: Routes = [
       {
         path: EPartialRoutes.COURSE_CREATE,
         loadChildren: () =>
-          import(
-            'src/app/pages/courses-page/pages/create-course-page/course-form-page.module'
-          ).then((m) => m.CourseFormPageModule),
+          import('src/app/pages/course-form-page/course-form-page.module').then(
+            (m) => m.CourseFormPageModule
+          ),
       },
       {
         path: EPartialRoutes.COURSES_ID,
-        loadChildren: () =>
-          import(
-            'src/app/pages/courses-page/pages/course-page/course-page.module'
-          ).then((m) => m.CoursePageModule),
+        children: [
+          {
+            path: '',
+            redirectTo: EPartialRoutes.PRACTICES,
+            pathMatch: 'full',
+          },
+          {
+            path: EPartialRoutes.PRACTICES,
+            loadChildren: () =>
+              import(
+                'src/app/pages/courses-page/pages/course-page/course-page.module'
+              ).then((m) => m.CoursePageModule),
+          },
+        ],
       },
     ],
   },

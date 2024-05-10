@@ -10,10 +10,11 @@ import {
 
 import { PracticePageService } from 'src/app/pages/practice-page/practice-page.service';
 import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
+import { ERoutesIds } from 'src/app/shared/router-paths';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-course-page',
+  selector: 'app-practice-page',
   templateUrl: './practice-page.component.html',
   styleUrls: ['./practice-page.component.scss'],
   providers: [PracticePageService],
@@ -38,7 +39,7 @@ export class PracticePageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
-        const courseId: number = +params['id'];
+        const courseId: number = +params[ERoutesIds.COURSE_ID];
         this.practicePageService.updatePractice(courseId);
         this.sideBarService.selectPractice(courseId);
       });
