@@ -7,5 +7,5 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./form-button.component.scss'],
 })
 export class FormButtonComponent {
-  @Input({ required: true }) formToWatch!: FormControl | FormGroup;
+  @Input() formToWatch?: FormControl | FormGroup;
 }
