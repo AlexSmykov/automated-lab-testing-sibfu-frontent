@@ -14,7 +14,7 @@
           class="course-item__island__practice flex row"
           *ngFor="let practice of course.practices"
           [ngClass]="{ selected: (practiceId$ | async) === practice.id }"
-          [routerLink]="EFullRoutes.PRACTICE(practice.id)"
+          [routerLink]="EFullRoutes.PRACTICES_ID(course.id, practice.id)"
           (click)="
             onPracticeClick(practice.id); $event.stopImmediatePropagation()
           "
