@@ -3,7 +3,7 @@ import { EPracticeStatus } from 'src/app/shared/interfaces/practice-status.inter
 
 export const mockCourses: TCourse[] = [
   {
-    id: 1,
+    id: '1',
     name: 'awd',
     imageUrl: 'assets/images/img.png',
     deletable: true,
@@ -85,14 +85,14 @@ export const mockCourses: TCourse[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     name: 'qwe',
     imageUrl: 'assets/images/img_1.png',
     deletable: true,
     practices: [],
   },
   {
-    id: 3,
+    id: '3',
     name: 'zxc',
     imageUrl: 'assets/images/img_2.png',
     deletable: true,

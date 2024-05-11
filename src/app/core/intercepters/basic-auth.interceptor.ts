@@ -24,7 +24,12 @@ export class BasicAuthInterceptor implements HttpInterceptor {
       clonedRequest = request.clone({
         headers: request.headers.append(
           'Authorization',
-          `Basic ` + btoa(`${EStorageItems.USERNAME}:${EStorageItems.PASSWORD}`)
+          `Basic ` +
+            btoa(
+              `${this.localStorageService.getItem(
+                EStorageItems.USERNAME
+              )}:${this.localStorageService.getItem(EStorageItems.PASSWORD)}`
+            )
         ),
       });
     }
