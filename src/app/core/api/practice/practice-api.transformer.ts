@@ -45,6 +45,7 @@ export function serializePracticeUpdate(
 
 export function deserializePractice(dto: TPracticeDto): TPractice {
   return {
+    id: dto.id,
     courseId: dto.course_id,
     authorId: dto.author_id,
     name: dto.name,
