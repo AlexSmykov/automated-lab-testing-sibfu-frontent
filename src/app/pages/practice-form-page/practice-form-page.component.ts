@@ -13,13 +13,14 @@ import { DictionaryService } from 'src/app/core/dictionaries/dictionary.service'
 import { EDictionaries } from 'src/app/core/dictionaries/dictionary.enum';
 import { EFullRoutes, ERoutesIds } from 'src/app/shared/router-paths';
 import { PracticeApiService } from 'src/app/core/api/practice/practice-api.service';
+import { LoadService } from 'src/app/shared/services/load.service';
 
 @UntilDestroy()
 @Component({
   selector: 'app-practice-form-page',
   templateUrl: './practice-form-page.component.html',
   styleUrls: ['./practice-form-page.component.scss'],
-  providers: [PracticeApiService],
+  providers: [PracticeApiService, LoadService],
 })
 export class PracticeFormPageComponent implements OnInit {
   createCourseForm: TFormGroupValue<TPracticeFormValue> = this.fb.group({
@@ -50,12 +51,15 @@ export class PracticeFormPageComponent implements OnInit {
 
   languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
 
+  isLoading$ = this.loadService.isLoading$;
+
   get testControls(): TFormGroupValue<TPracticeFormTestcase>[] {
     return this.createCourseForm.controls.tests.controls;
   }
 
   constructor(
     private fb: NonNullableFormBuilder,
+    private loadService: LoadService,
     private dictionaryService: DictionaryService,
     private practiceApiService: PracticeApiService,
     private activatedRoute: ActivatedRoute,
@@ -112,8 +116,13 @@ export class PracticeFormPageComponent implements OnInit {
   createPractice(): void {
     const courseId: string =
       this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-    this.practiceApiService
-      .create(this.createCourseForm.getRawValue(), courseId)
+
+    this.loadService
+      .wrapObservable(
+        this.practiceApiService
+          .create(this.createCourseForm.getRawValue(), courseId)
+          .pipe(untilDestroyed(this))
+      )
       .subscribe(() => {
         this.router.navigate(EFullRoutes.PRACTICES(courseId));
       });

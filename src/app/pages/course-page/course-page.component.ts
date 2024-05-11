@@ -8,15 +8,16 @@ import { CourseApiService } from 'src/app/core/api/course/course-api.service';
 import { TCourse } from 'src/app/core/api/course/course-api.interface';
 import { TPractice } from 'src/app/core/api/practice/practice-api.interface';
 import { PracticeApiService } from 'src/app/core/api/practice/practice-api.service';
+import { LoadService } from 'src/app/shared/services/load.service';
 
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { BehaviorSubject, switchMap, take } from 'rxjs';
 
 @UntilDestroy()
 @Component({
   selector: 'app-course-page',
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.scss'],
-  providers: [CourseApiService, PracticeApiService],
+  providers: [CourseApiService, PracticeApiService, LoadService],
 })
 export class CoursePageComponent implements OnInit {
   private _course$ = new BehaviorSubject<TCourse | null>(null);
@@ -24,11 +25,13 @@ export class CoursePageComponent implements OnInit {
 
   course$ = this._course$.asObservable();
   practices$ = this._practices$.asObservable();
+  isLoading$ = this.loadService.isLoading$;
 
   readonly ERoles = ERoles;
   readonly EFullRoutes = EFullRoutes;
 
   constructor(
+    private loadService: LoadService,
     private courseApiService: CourseApiService,
     private practiceApiService: PracticeApiService,
     private router: Router,
@@ -36,17 +39,20 @@ export class CoursePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        untilDestroyed(this),
-        switchMap((params) => {
-          const courseId: string = params[ERoutesIds.COURSE_ID];
-          return this.courseApiService.get(courseId);
-        }),
-        switchMap((course) => {
-          this._course$.next(course);
-          return this.practiceApiService.getByCourse(course.id);
-        })
+    this.loadService
+      .wrapObservable(
+        this.activatedRoute.params.pipe(
+          untilDestroyed(this),
+          switchMap((params) => {
+            const courseId: string = params[ERoutesIds.COURSE_ID];
+            return this.courseApiService.get(courseId);
+          }),
+          switchMap((course) => {
+            this._course$.next(course);
+            return this.practiceApiService.getByCourse(course.id);
+          }),
+          take(1)
+        )
       )
       .subscribe((practices) => {
         this._practices$.next(practices);
