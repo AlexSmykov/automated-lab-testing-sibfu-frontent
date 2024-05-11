@@ -27,6 +27,14 @@ const routes: Routes = [
             redirectTo: EPartialRoutes.PRACTICES,
             pathMatch: 'full',
           },
+
+          {
+            path: EPartialRoutes.COURSE_EDIT,
+            loadChildren: () =>
+              import(
+                'src/app/pages/course-form-page/course-form-page.module'
+              ).then((m) => m.CourseFormPageModule),
+          },
           {
             path: EPartialRoutes.PRACTICES,
             loadChildren: () =>

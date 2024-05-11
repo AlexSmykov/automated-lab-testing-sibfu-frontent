@@ -33,7 +33,7 @@ export class CourseFormPageComponent implements OnInit {
         Validators.maxLength(400),
       ],
     }),
-    // image: this.fb.control<number | null>(null),
+    image: this.fb.control<number | null>(null),
   });
 
   isEdit: boolean = false;

@@ -2,13 +2,17 @@
   width: 100%;
 
   .image-upload {
+    &__loaded-image {
+      object-fit: cover;
+    }
+
     &__wrapper {
       height: 150px;
       position: relative;
     }
 
     &__delete-button {
-      position: fixed;
+      position: absolute;
 
       width: 20px;
       height: 20px;
@@ -19,8 +23,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      background: var(--gray-bg);
 
       &__icon {
         width: 20px;
