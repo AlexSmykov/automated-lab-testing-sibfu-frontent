@@ -1,5 +1,9 @@
 import { TNamedEntity } from 'src/app/shared/interfaces/named-entity';
 
+export type TPracticeUpdateDto = Omit<TPracticePostDto, 'testcases'> & {
+  testcases: TTestcaseUpdateDto[];
+};
+
 export type TPracticePostDto = {
   name: string;
   description: string;
@@ -33,9 +37,11 @@ export type TPracticeDto = {
   testcases: TTestcaseDto[];
 };
 
+export type TTestcaseUpdateDto = TTestcasePostDto;
+
 export type TTestcasePostDto = {
   input: string;
-  output: string;
+  excepted: string;
   hidden: boolean;
 };
 
