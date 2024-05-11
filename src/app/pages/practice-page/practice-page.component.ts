@@ -39,7 +39,7 @@ export class PracticePageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
-        const courseId: number = +params[ERoutesIds.COURSE_ID];
+        const courseId: string = params[ERoutesIds.COURSE_ID];
         this.practicePageService.updatePractice(courseId);
         this.sideBarService.selectPractice(courseId);
       });

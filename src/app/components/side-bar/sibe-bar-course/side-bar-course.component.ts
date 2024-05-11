@@ -19,7 +19,7 @@ export class SideBarCourseComponent {
 
   constructor(private sideBarService: SideBarService) {}
 
-  onPracticeClick(id: number): void {
+  onPracticeClick(id: string): void {
     this.sideBarService.selectPractice(id);
   }
 

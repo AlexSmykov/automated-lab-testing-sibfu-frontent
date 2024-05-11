@@ -16,6 +16,7 @@ export type TPracticePostDto = {
 };
 
 export type TPracticeDto = {
+  id: string;
   course_id: string;
   author_id: string;
   name: string;

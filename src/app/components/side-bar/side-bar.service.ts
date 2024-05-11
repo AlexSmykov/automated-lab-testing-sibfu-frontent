@@ -12,7 +12,7 @@ import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 export class SideBarService {
   private _courses$ = new BehaviorSubject<TCourse[]>([]);
   private _selectedCourseId$ = new BehaviorSubject<string | null>(null);
-  private _selectedCoursePracticeId$ = new BehaviorSubject<number | null>(null);
+  private _selectedCoursePracticeId$ = new BehaviorSubject<string | null>(null);
 
   get courses$(): Observable<TCourse[]> {
     return this._courses$.asObservable();
@@ -22,7 +22,7 @@ export class SideBarService {
     return this._selectedCourseId$.asObservable();
   }
 
-  get selectedCoursePracticeId$(): Observable<number | null> {
+  get selectedCoursePracticeId$(): Observable<string | null> {
     return this._selectedCoursePracticeId$.asObservable();
   }
 
@@ -52,7 +52,7 @@ export class SideBarService {
     this._selectedCourseId$.next(id);
   }
 
-  selectPractice(id: number): void {
+  selectPractice(id: string): void {
     this._selectedCoursePracticeId$.next(id);
   }
 
@@ -60,7 +60,7 @@ export class SideBarService {
     this._selectedCoursePracticeId$
       .pipe(
         untilDestroyed(this),
-        filter((id): id is number => !!id),
+        filter((id): id is string => !!id),
         switchMap((id) =>
           this._courses$.pipe(
             map((courses) => {

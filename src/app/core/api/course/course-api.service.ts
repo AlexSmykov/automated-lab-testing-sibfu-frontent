@@ -26,6 +26,12 @@ export class CourseApiService {
       .pipe(map((dto) => deserializeCourse(dto)));
   }
 
+  getAll(): Observable<TCourse[]> {
+    return this.httpClient
+      .get<TCourseDto[]>(API_COURSE)
+      .pipe(map((dto) => dto.map((courseDto) => deserializeCourse(courseDto))));
+  }
+
   delete(courseId: string): Observable<void> {
     return this.httpClient.delete<void>(API_COURSE_ID(courseId));
   }

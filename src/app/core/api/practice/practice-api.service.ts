@@ -26,6 +26,14 @@ export class PracticeApiService {
       .pipe(map((dto) => deserializePractice(dto)));
   }
 
+  getByCourse(courseId: string): Observable<TPractice[]> {
+    return this.httpClient
+      .get<TPracticeDto[]>(API_COURSE_ID_PRACTICE(courseId))
+      .pipe(
+        map((dto) => dto.map((practiceDto) => deserializePractice(practiceDto)))
+      );
+  }
+
   delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(API_PRACTICE_ID(id));
   }

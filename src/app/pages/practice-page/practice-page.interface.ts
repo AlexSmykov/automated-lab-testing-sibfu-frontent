@@ -1,7 +1,7 @@
 import { EPracticeStatus } from 'src/app/shared/interfaces/practice-status.interface';
 
 export type TPractice = {
-  id: number;
+  id: string;
   status: EPracticeStatus;
   name: string;
   description: string;
