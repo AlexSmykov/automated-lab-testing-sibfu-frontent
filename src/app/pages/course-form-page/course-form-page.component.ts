@@ -79,16 +79,24 @@ export class CourseFormPageComponent implements OnInit {
   }
 
   editCourse(): void {
-    this.courseApiService
-      .update(this.createCourseForm.getRawValue(), this.existenceCourseId!)
+    this.loadService
+      .wrapObservable(
+        this.courseApiService
+          .update(this.createCourseForm.getRawValue(), this.existenceCourseId!)
+          .pipe(untilDestroyed(this))
+      )
       .subscribe(() => {
         this.router.navigate(EFullRoutes.COURSES);
       });
   }
 
   createCourse(): void {
-    this.courseApiService
-      .create(this.createCourseForm.getRawValue())
+    this.loadService
+      .wrapObservable(
+        this.courseApiService
+          .create(this.createCourseForm.getRawValue())
+          .pipe(untilDestroyed(this))
+      )
       .subscribe(() => {
         this.router.navigate(EFullRoutes.COURSES);
       });
