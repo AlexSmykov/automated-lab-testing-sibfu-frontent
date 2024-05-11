@@ -1,37 +1,41 @@
-<section class="flex row center">
-  <app-form-container
-    [title]="isEdit ? 'Редактирование курса' : 'Создание нового курса'"
-  >
-    <app-text-input
-      label="Название курса"
-      placeholder="Введите название"
-      [control]="createCourseForm.controls.name"
-    ></app-text-input>
-
-    <app-textarea-input
-      label="Описание работы"
-      placeholder="Введите описание"
-      [control]="createCourseForm.controls.description"
-    ></app-textarea-input>
-
-    <app-image-input
-      label="Обложка курса"
-      tooltip="Изображение в форматах jpg, jpeg, png"
-      [control]="createCourseForm.controls.image"
+<nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+  <section class="flex row center">
+    <app-form-container
+      [title]="isEdit ? 'Редактирование курса' : 'Создание нового курса'"
     >
-      <div class="create-course__image-upload-button max-w flex center align-c">
-        <svg-icon src="assets/icons/plusIcon.svg" />
-      </div>
-    </app-image-input>
+      <app-text-input
+        label="Название курса"
+        placeholder="Введите название"
+        [control]="createCourseForm.controls.name"
+      ></app-text-input>
 
-    <div class="flex row end">
-      <app-form-button
-        class="create-course__create-button"
-        [formToWatch]="createCourseForm"
-        (click)="createOrEditCourse()"
+      <app-textarea-input
+        label="Описание работы"
+        placeholder="Введите описание"
+        [control]="createCourseForm.controls.description"
+      ></app-textarea-input>
+
+      <app-image-input
+        label="Обложка курса"
+        tooltip="Изображение в форматах jpg, jpeg, png"
+        [control]="createCourseForm.controls.image"
       >
-        Добавить предмет
-      </app-form-button>
-    </div>
-  </app-form-container>
-</section>
+        <div
+          class="create-course__image-upload-button max-w flex center align-c"
+        >
+          <svg-icon src="assets/icons/plusIcon.svg" />
+        </div>
+      </app-image-input>
+
+      <div class="flex row end">
+        <app-form-button
+          class="create-course__create-button"
+          [formToWatch]="createCourseForm"
+          (click)="createOrEditCourse()"
+        >
+          Добавить предмет
+        </app-form-button>
+      </div>
+    </app-form-container>
+  </section>
+</nz-spin>

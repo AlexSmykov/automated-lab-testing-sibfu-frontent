@@ -16,12 +16,14 @@
       </app-island>
     </div>
 
-    <div class="courses-layout max-h max-w flex row start align-c wrap">
-      <app-courses-page-item
-        *ngFor="let course of courses$ | async"
-        [course]="course"
-        (courseClick)="openCourse(course.id)"
-      ></app-courses-page-item>
-    </div>
+    <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+      <div class="courses-layout max-h max-w flex row start align-c wrap">
+        <app-courses-page-item
+          *ngFor="let course of courses$ | async"
+          [course]="course"
+          (courseClick)="openCourse(course.id)"
+        ></app-courses-page-item>
+      </div>
+    </nz-spin>
   </div>
 </section>

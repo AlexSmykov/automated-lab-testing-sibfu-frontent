@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { IslandModule } from 'src/app/shared/components/island/island.module';
 import { FormContainerModule } from 'src/app/shared/components/form-container/form-container.module';
@@ -27,6 +28,7 @@ import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-in
     ImageInputModule,
     FormButtonModule,
     TextareaInputModule,
+    NzSpinModule,
   ],
   exports: [CourseFormPageComponent],
 })

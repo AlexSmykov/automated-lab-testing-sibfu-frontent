@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { CoursesPageComponent } from 'src/app/pages/courses-page/courses-page.component';
 import { CoursesPageItemModule } from 'src/app/pages/courses-page/components/course-item/courses-page-item.module';
@@ -15,6 +16,7 @@ import { CoursesPageRoutingModule } from 'src/app/pages/courses-page/courses-pag
     IslandModule,
     CoursesPageRoutingModule,
     SvgIconComponent,
+    NzSpinModule,
   ],
   exports: [CoursesPageComponent],
 })
