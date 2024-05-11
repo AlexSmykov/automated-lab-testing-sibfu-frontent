@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CoursesPageItemService } from 'src/app/pages/courses-page/components/course-item/courses-page-item.service';
 import { EFullRoutes } from 'src/app/shared/router-paths';
@@ -12,6 +12,7 @@ import { TCourse } from 'src/app/core/api/course/course-api.interface';
 })
 export class CoursesPageItemComponent {
   @Input({ required: true }) course!: TCourse;
+  @Output() courseClick = new EventEmitter<void>();
 
   EFullRoutes = EFullRoutes;
 

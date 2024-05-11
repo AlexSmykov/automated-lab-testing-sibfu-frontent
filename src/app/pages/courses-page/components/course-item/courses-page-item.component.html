@@ -1,5 +1,5 @@
 <div class="course max-w max-h flex column gapless">
-  <div [routerLink]="EFullRoutes.PRACTICES(course.id)">
+  <div (click)="courseClick.emit()">
     <div
       class="island max-w max-h"
       [ngStyle]="{

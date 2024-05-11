@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RoleService } from 'src/app/core/role/role.service';
 import { EFullRoutes } from 'src/app/shared/router-paths';
 import { CourseApiService } from 'src/app/core/api/course/course-api.service';
 import { TCourse } from 'src/app/core/api/course/course-api.interface';
+import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -22,12 +24,21 @@ export class CoursesPageComponent implements OnInit {
 
   constructor(
     private courseApiService: CourseApiService,
-    private roleService: RoleService
+    private router: Router,
+    private roleService: RoleService,
+    private sideBarService: SideBarService
   ) {}
 
   ngOnInit(): void {
     this.courseApiService.getAll().subscribe((courses) => {
       this._courses$.next(courses);
+    });
+  }
+
+  openCourse(courseId: string): void {
+    this.router.navigate(EFullRoutes.COURSES_ID(courseId)).then(() => {
+      this.sideBarService.selectCourse(courseId);
+      this.sideBarService.unselectPractice();
     });
   }
 
