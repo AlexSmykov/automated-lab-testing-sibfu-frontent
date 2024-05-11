@@ -2,7 +2,9 @@
   <nz-form-label
     *ngIf="label"
     [nzRequired]="isRequired"
-    [nzTooltipTitle]="tooltip"
+    [nzTooltipTitle]="
+      (tooltip ? tooltip + ', ' : '') + 'размер ' + imageSize + 'Кб'
+    "
   >
     {{ label }}
   </nz-form-label>
@@ -12,6 +14,7 @@
         class="uploader"
         nzType="drag"
         nzAccept=".jpg,.jpeg,.png"
+        [nzSize]="imageSize"
         [title]="label"
         [nzBeforeUpload]="beforeImageUpload"
       >
@@ -21,9 +24,16 @@
           </ng-container>
 
           <ng-container *ngIf="loadedImage">
-            <img class="max-h max-w" [src]="loadedImage.url" alt="" />
+            <img
+              class="image-upload__loaded-image max-h max-w"
+              [src]="imageSrc"
+              alt=""
+            />
 
-            <div class="image-upload__delete-button" (click)="removeImage()">
+            <div
+              class="image-upload__delete-button"
+              (click)="removeImage(); $event.stopImmediatePropagation()"
+            >
               <svg-icon
                 class="image-upload__delete-button__icon"
                 src="assets\icons\trash.svg"

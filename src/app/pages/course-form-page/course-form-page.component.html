@@ -13,15 +13,16 @@
       placeholder="Введите описание"
       [control]="createCourseForm.controls.description"
     ></app-textarea-input>
-    <!--    На бэке пока не готова загрузка фотографий-->
-    <!--    <app-image-input-->
-    <!--      label="Обложка курса"-->
-    <!--      [control]="createCourseForm.controls.image"-->
-    <!--    >-->
-    <!--      <div class="create-course__image-upload-button max-w flex center align-c">-->
-    <!--        <svg-icon src="assets/icons/plusIcon.svg" />-->
-    <!--      </div>-->
-    <!--    </app-image-input>-->
+
+    <app-image-input
+      label="Обложка курса"
+      tooltip="Изображение в форматах jpg, jpeg, png"
+      [control]="createCourseForm.controls.image"
+    >
+      <div class="create-course__image-upload-button max-w flex center align-c">
+        <svg-icon src="assets/icons/plusIcon.svg" />
+      </div>
+    </app-image-input>
 
     <div class="flex row end">
       <app-form-button

@@ -14,7 +14,7 @@ export class ImageApiService {
 
   saveImage(image: NzUploadFile): Observable<TImage> {
     const formData = new FormData();
-    formData.set('files', image as any);
+    formData.set('file', image as any);
 
     return this.httpClient
       .post<TImageDto>(API_IMAGE, formData)
