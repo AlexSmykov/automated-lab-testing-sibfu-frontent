@@ -18,7 +18,7 @@ export class PracticePageService {
 
   constructor(private httpClient: HttpClient) {}
 
-  updatePractice(id: number): void {
+  updatePractice(id: string): void {
     // this.httpClient.get<TPracticeDto>('').subscribe((result) => {
     //   this._practice$.next(this.deserialize(result))
     // })

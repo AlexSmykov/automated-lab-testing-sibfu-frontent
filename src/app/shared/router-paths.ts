@@ -61,7 +61,7 @@ export const EFullRoutes = {
     ERoutesParts.COURSES,
     courseId,
   ],
-  [ERoutes.PRACTICES_ID]: (courseId: string, practiceId: number) => [
+  [ERoutes.PRACTICES_ID]: (courseId: string, practiceId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
@@ -90,7 +90,7 @@ export const EFullRoutes = {
     ERoutesParts.PRACTICES,
     ERoutesParts.CREATE,
   ],
-  [ERoutes.PRACTICE_EDIT]: (courseId: string, practiceId: number) => [
+  [ERoutes.PRACTICE_EDIT]: (courseId: string, practiceId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,

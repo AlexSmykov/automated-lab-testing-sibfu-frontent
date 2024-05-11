@@ -9,7 +9,7 @@ export const mockCourses: TCourse[] = [
     deletable: true,
     practices: [
       {
-        id: 1,
+        id: '1',
         status: EPracticeStatus.DONE,
         name: 'awdaww',
         description:
@@ -32,7 +32,7 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 2,
+        id: '2',
         status: EPracticeStatus.HARD_DEADLINE,
         name: 'wd',
         description: 'wwww',
@@ -45,14 +45,14 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 3,
+        id: '3',
         status: EPracticeStatus.SOFT_DEADLINE,
         name: 'Очень длинное название почему бы и нет ну такое норм название',
         description: 'wwww',
         examples: [],
       },
       {
-        id: 4,
+        id: '4',
         status: EPracticeStatus.BAD_TRY,
         name: 'rr',
         description: 'wwww',
@@ -70,7 +70,7 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 5,
+        id: '5',
         status: EPracticeStatus.EMPTY,
         name: 'rr',
         description: 'wwww',
