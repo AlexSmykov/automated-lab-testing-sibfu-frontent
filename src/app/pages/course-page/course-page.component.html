@@ -19,7 +19,7 @@
         (click)="editCourse()"
       />
 
-      <ng-container *ngFor="let practice of course.practices">
+      <ng-container *ngFor="let practice of practices$ | async">
         <app-course-practice-item
           [courseId]="course.id"
           [practice]="practice"
