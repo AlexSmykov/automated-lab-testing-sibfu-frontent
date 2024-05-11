@@ -17,7 +17,7 @@ export class CoursePageService {
 
   constructor(private httpClient: HttpClient) {}
 
-  updateCourse(id: number): void {
+  updateCourse(id: string): void {
     // this.httpClient.get<TCourseDto>('').subscribe((result) => {
     //   this._course$.next(this.deserialize(result))
     // })

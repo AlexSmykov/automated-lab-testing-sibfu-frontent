@@ -48,20 +48,20 @@ export const EFullRoutes = {
   [ERoutes.LOGIN]: ['/', ERoutesParts.LOGIN],
   [ERoutes.REGISTRATION]: ['/', ERoutesParts.REGISTRATION],
   [ERoutes.COURSES]: ['/', ERoutesParts.MAIN, ERoutesParts.COURSES],
-  [ERoutes.PRACTICES]: (courseId: number) => [
+  [ERoutes.PRACTICES]: (courseId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
     courseId,
     ERoutesParts.PRACTICES,
   ],
-  [ERoutes.COURSES_ID]: (id: number) => [
+  [ERoutes.COURSES_ID]: (courseId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
-    id,
+    courseId,
   ],
-  [ERoutes.PRACTICES_ID]: (courseId: number, practiceId: number) => [
+  [ERoutes.PRACTICES_ID]: (courseId: string, practiceId: number) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
@@ -75,14 +75,14 @@ export const EFullRoutes = {
     ERoutesParts.COURSES,
     ERoutesParts.CREATE,
   ],
-  [ERoutes.COURSE_EDIT]: (courseId: number) => [
+  [ERoutes.COURSE_EDIT]: (courseId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
     courseId,
     ERoutesParts.EDIT,
   ],
-  [ERoutes.PRACTICE_CREATE]: (courseId: number) => [
+  [ERoutes.PRACTICE_CREATE]: (courseId: string) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,
@@ -90,7 +90,7 @@ export const EFullRoutes = {
     ERoutesParts.PRACTICES,
     ERoutesParts.CREATE,
   ],
-  [ERoutes.PRACTICE_EDIT]: (courseId: number, practiceId: number) => [
+  [ERoutes.PRACTICE_EDIT]: (courseId: string, practiceId: number) => [
     '/',
     ERoutesParts.MAIN,
     ERoutesParts.COURSES,

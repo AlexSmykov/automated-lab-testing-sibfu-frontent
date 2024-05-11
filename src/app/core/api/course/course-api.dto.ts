@@ -11,7 +11,7 @@ export type TCourseUpdateDto = {
 };
 
 export type TCourseDto = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   // image: number | null;

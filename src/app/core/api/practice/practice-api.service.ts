@@ -30,7 +30,7 @@ export class PracticeApiService {
     return this.httpClient.delete<void>(API_PRACTICE_ID(id));
   }
 
-  create(data: TPracticeFormValueRaw, courseId: number): Observable<TPractice> {
+  create(data: TPracticeFormValueRaw, courseId: string): Observable<TPractice> {
     return this.httpClient
       .post<TPracticeDto>(
         API_COURSE_ID_PRACTICE(courseId),

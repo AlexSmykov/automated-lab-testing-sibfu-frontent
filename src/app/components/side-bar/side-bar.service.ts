@@ -11,14 +11,14 @@ import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class SideBarService {
   private _courses$ = new BehaviorSubject<TCourse[]>([]);
-  private _selectedCourseId$ = new BehaviorSubject<number | null>(null);
+  private _selectedCourseId$ = new BehaviorSubject<string | null>(null);
   private _selectedCoursePracticeId$ = new BehaviorSubject<number | null>(null);
 
   get courses$(): Observable<TCourse[]> {
     return this._courses$.asObservable();
   }
 
-  get selectedCourseId$(): Observable<number | null> {
+  get selectedCourseId$(): Observable<string | null> {
     return this._selectedCourseId$.asObservable();
   }
 
@@ -48,7 +48,7 @@ export class SideBarService {
     this._selectedCoursePracticeId$.next(null);
   }
 
-  selectCourse(id: number): void {
+  selectCourse(id: string): void {
     this._selectedCourseId$.next(id);
   }
 
