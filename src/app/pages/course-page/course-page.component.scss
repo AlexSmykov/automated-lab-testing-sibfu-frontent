@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .course {
+    &__wrapper {
+      position: relative;
+    }
+
+    &__edit-button {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      color: var(--gray-text);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+  }
+
+  .practices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    &__add-button {
+      height: 90px;
+      background: var(--light-gray-bg);
+      border-radius: 10px;
+    }
+  }
+}

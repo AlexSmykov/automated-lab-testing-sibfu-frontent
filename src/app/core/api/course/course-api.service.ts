@@ -20,14 +20,14 @@ import { map, Observable } from 'rxjs';
 export class CourseApiService {
   constructor(private httpClient: HttpClient) {}
 
-  get(id: number): Observable<TCourse> {
+  get(courseId: string): Observable<TCourse> {
     return this.httpClient
-      .get<TCourseDto>(API_COURSE_ID(id))
+      .get<TCourseDto>(API_COURSE_ID(courseId))
       .pipe(map((dto) => deserializeCourse(dto)));
   }
 
-  delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(API_COURSE_ID(id));
+  delete(courseId: string): Observable<void> {
+    return this.httpClient.delete<void>(API_COURSE_ID(courseId));
   }
 
   create(data: TCoursePost): Observable<TCourse> {
@@ -36,9 +36,9 @@ export class CourseApiService {
       .pipe(map((dto) => deserializeCourse(dto)));
   }
 
-  update(data: TCourseUpdate): Observable<TCourse> {
+  update(data: TCourseUpdate, courseId: string): Observable<TCourse> {
     return this.httpClient
-      .put<TCourseDto>(API_COURSE, serializeCourseUpdate(data))
+      .put<TCourseDto>(API_COURSE_ID(courseId), serializeCourseUpdate(data))
       .pipe(map((dto) => deserializeCourse(dto)));
   }
 }

@@ -1,7 +1,9 @@
 <section class="flex row center">
-  <app-form-container title="Создание нового курса">
+  <app-form-container
+    [title]="isEdit ? 'Редактирование курса' : 'Создание нового курса'"
+  >
     <app-text-input
-      label="Название нового курса"
+      label="Название курса"
       placeholder="Введите название"
       [control]="createCourseForm.controls.name"
     ></app-text-input>
@@ -25,7 +27,7 @@
       <app-form-button
         class="create-course__create-button"
         [formToWatch]="createCourseForm"
-        (click)="createCourse()"
+        (click)="createOrEditCourse()"
       >
         Добавить предмет
       </app-form-button>

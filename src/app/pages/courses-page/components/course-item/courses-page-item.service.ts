@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class CoursesPageItemService {
   constructor(private httpClient: HttpClient) {}
 
-  deleteCourse(courseId: number): Observable<void> {
+  deleteCourse(courseId: string): Observable<void> {
     return this.httpClient.delete<void>('');
   }
 }

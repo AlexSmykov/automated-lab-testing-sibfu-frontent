@@ -1,7 +1,7 @@
 import { TPractice } from 'src/app/pages/practice-page/practice-page.interface';
 
 export type TCourse = {
-  id: number;
+  id: string;
   name: string;
   imageUrl: string;
   deletable: boolean;

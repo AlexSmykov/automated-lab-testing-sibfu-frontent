@@ -110,7 +110,7 @@ export class PracticeFormPageComponent implements OnInit {
   }
 
   createPractice(): void {
-    const courseId: number =
+    const courseId: string =
       this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
     this.practiceApiService
       .create(this.createCourseForm.getRawValue(), courseId)
