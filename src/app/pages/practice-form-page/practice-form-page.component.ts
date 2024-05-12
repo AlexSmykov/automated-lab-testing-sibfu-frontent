@@ -29,7 +29,7 @@ export class PracticeFormPageComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(100),
     ]),
-    description: this.fb.control<string>('', [Validators.maxLength(4000)]),
+    description: this.fb.control<string>('', []),
     // TODO учтонить, может ли мягкий дедлайн идти после обычного
     // TODO Дедлайны вообще обязательны или нет
     isDeadline: this.fb.control<boolean>(true, []),
