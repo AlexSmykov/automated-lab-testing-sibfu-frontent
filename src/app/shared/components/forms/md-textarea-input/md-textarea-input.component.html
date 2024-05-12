@@ -1,0 +1,43 @@
+<nz-form-item>
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <div class="md-buttons">
+      <button
+        class="md-buttons__button"
+        [ngClass]="{ selected: currentState === EFieldState.EDIT }"
+        (click)="setState(EFieldState.EDIT)"
+      >
+        Редактирование
+      </button>
+
+      <button
+        class="md-buttons__button"
+        [ngClass]="{ selected: currentState === EFieldState.PREVIEW }"
+        (click)="setState(EFieldState.PREVIEW)"
+      >
+        Предпросмотр
+      </button>
+    </div>
+
+    <quill-editor
+      *ngIf="currentState === EFieldState.EDIT"
+      [title]="label"
+      [styles]="{ height: '200px' }"
+      [placeholder]="placeholder"
+      [formControl]="control"
+    ></quill-editor>
+
+    <div *ngIf="currentState === EFieldState.PREVIEW" class="preview-container">
+      <quill-view-html
+        [content]="control.value ? control.value : '<em>Пусто</em>'"
+        theme="snow"
+      ></quill-view-html>
+    </div>
+  </nz-form-control>
+</nz-form-item>

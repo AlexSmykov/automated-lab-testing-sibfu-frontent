@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterOutlet } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { provideQuillConfig, QuillModule } from 'ngx-quill';
 
 import { BasicAuthInterceptor } from 'src/app/core/intercepters/basic-auth.interceptor';
 import { AppComponent } from 'src/app/app.component';
@@ -20,6 +21,12 @@ registerLocaleData(ru);
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    QuillModule.forRoot({
+      modules: {
+        syntax: true,
+        toolbar: [[{ color: [] }, { background: [] }]],
+      },
+    }),
     AngularSvgIconModule.forRoot(),
     BrowserModule,
     FormsModule,
@@ -31,6 +38,21 @@ registerLocaleData(ru);
     HeaderModule,
   ],
   providers: [
+    provideQuillConfig({
+      customOptions: [
+        {
+          import: 'formats/font',
+          whitelist: [
+            'mirza',
+            'roboto',
+            'aref',
+            'serif',
+            'sansserif',
+            'monospace',
+          ],
+        },
+      ],
+    }),
     { provide: NZ_I18N, useValue: ru_RU },
     {
       provide: HTTP_INTERCEPTORS,

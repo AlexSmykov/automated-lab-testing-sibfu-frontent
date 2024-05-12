@@ -18,6 +18,7 @@ import { DateInputModule } from 'src/app/shared/components/forms/date-input/date
 import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-input/checkbox-input.module';
 import { MultiselectInputModule } from 'src/app/shared/components/forms/multiselect-input/multiselect-input.module';
 import { NumberInputModule } from 'src/app/shared/components/forms/number-input/number-input.module';
+import { MdTextareaInputModule } from 'src/app/shared/components/forms/md-textarea-input/md-textarea-input.module';
 
 @NgModule({
   declarations: [PracticeFormPageComponent],
@@ -39,6 +40,7 @@ import { NumberInputModule } from 'src/app/shared/components/forms/number-input/
     NumberInputModule,
     NzSelectModule,
     NzSpinModule,
+    MdTextareaInputModule,
   ],
   exports: [PracticeFormPageComponent],
 })
