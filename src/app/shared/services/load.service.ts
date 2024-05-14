@@ -16,7 +16,7 @@ export class LoadService {
     this._isLoading$.next(false);
   }
 
-  wrapObservable(observable: Observable<any>): Observable<any> {
+  wrapObservable<T>(observable: Observable<T>): Observable<T> {
     this.startLoad();
     return observable.pipe(
       finalize(() => {
