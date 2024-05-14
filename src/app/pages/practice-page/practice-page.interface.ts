@@ -20,3 +20,8 @@ export type TPracticeExample = {
   inputData: string;
   outputData: string;
 };
+
+export type TPracticeAnswerFormValue = {
+  language: number;
+  code: string;
+};
