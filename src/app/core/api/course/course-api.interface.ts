@@ -7,4 +7,6 @@ export type TCoursePost = TCourseCreateDto;
 
 export type TCourseUpdate = TCourseCreateDto;
 
-export type TCourse = TCourseDto;
+export type TCourse = Omit<TCourseDto, 'image_id'> & {
+  image: string;
+};
