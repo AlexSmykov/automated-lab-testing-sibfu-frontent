@@ -17,7 +17,7 @@ import { map, Observable, tap } from 'rxjs';
   providers: [ImageApiService],
 })
 export class ImageInputComponent {
-  @Input({ required: true }) control!: FormControl<number | null>;
+  @Input({ required: true }) control!: FormControl<string>;
   @Input() label?: string;
   @Input() tooltip?: string;
   @Input() imageSize: number = 2048;
@@ -59,6 +59,6 @@ export class ImageInputComponent {
 
   removeImage(): void {
     this.loadedImage = null;
-    this.control.patchValue(null);
+    this.control.patchValue('');
   }
 }
