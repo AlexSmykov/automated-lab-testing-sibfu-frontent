@@ -8,6 +8,7 @@ import {
   TCourseDto,
   TCourseUpdateDto,
 } from 'src/app/core/api/course/course-api.dto';
+import { API_STATIC_IMAGES } from 'src/app/core/api/api-urls';
 
 export function serializeCoursePost(data: TCoursePost): TCourseCreateDto {
   return data;
@@ -18,5 +19,10 @@ export function serializeCourseUpdate(data: TCourseUpdate): TCourseUpdateDto {
 }
 
 export function deserializeCourse(dto: TCourseDto): TCourse {
-  return dto;
+  return {
+    id: dto.id,
+    name: dto.name,
+    description: dto.description,
+    image: dto.image_id ? API_STATIC_IMAGES + dto.image_id : '',
+  };
 }

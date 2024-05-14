@@ -17,7 +17,7 @@ import { map, Observable, tap } from 'rxjs';
   providers: [ImageApiService],
 })
 export class ImageInputComponent {
-  @Input({ required: true }) control!: FormControl<number | null>;
+  @Input({ required: true }) control!: FormControl<string>;
   @Input() label?: string;
   @Input() tooltip?: string;
   @Input() imageSize: number = 2048;
@@ -46,8 +46,8 @@ export class ImageInputComponent {
   beforeImageUpload = (file: NzUploadFile): Observable<boolean> => {
     return this.ImageApiService.saveImage(file).pipe(
       tap((image: TImage) => {
-        file.url = image.file;
-        file.uid = image.id + '';
+        file.url = API_STATIC_IMAGES + image.id;
+        file.uid = image.id;
         file.status = 'done';
         this.loadedImage = file;
 
@@ -59,6 +59,6 @@ export class ImageInputComponent {
 
   removeImage(): void {
     this.loadedImage = null;
-    this.control.patchValue(null);
+    this.control.patchValue('');
   }
 }

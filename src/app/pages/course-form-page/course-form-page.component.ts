@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FormBuilder, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
@@ -18,23 +18,13 @@ import { LoadService } from 'src/app/shared/services/load.service';
 })
 export class CourseFormPageComponent implements OnInit {
   createCourseForm: TFormGroupValue<TCourseFormValue> = this.fb.group({
-    name: this.fb.control('', {
-      nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(400),
-      ],
-    }),
-    description: this.fb.control('', {
-      nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(400),
-      ],
-    }),
-    image: this.fb.control<number | null>(null),
+    name: this.fb.control('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(400),
+    ]),
+    description: this.fb.control('', [Validators.maxLength(4000)]),
+    image_id: this.fb.control<string>(''),
   });
 
   isLoading$ = this.loadService.isLoading$;
@@ -43,7 +33,7 @@ export class CourseFormPageComponent implements OnInit {
   existenceCourseId: string | null = null;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: NonNullableFormBuilder,
     private router: Router,
     private loadService: LoadService,
     private activatedRoute: ActivatedRoute,
@@ -59,9 +49,9 @@ export class CourseFormPageComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe((params) => {
         const courseId: string = params[ERoutesIds.COURSE_ID];
-        this.isEdit = true;
 
         if (courseId) {
+          this.isEdit = true;
           this.loadService
             .wrapObservable(
               this.courseApiService.get(courseId).pipe(untilDestroyed(this))

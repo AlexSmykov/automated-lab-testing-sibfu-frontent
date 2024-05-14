@@ -6,7 +6,7 @@ const V1 = '/v1';
 
 const API_V1 = API + V1;
 
-const IMAGE = '/image/';
+const IMAGE = '/image';
 const IMAGES = '/images';
 const STATIC = '/static';
 const COURSE = '/course';
@@ -31,5 +31,5 @@ export const API_PRACTICE_ID = (id: number) => API_PRACTICE + '/' + id;
 export const API_LANGUAGES = API_V1 + LANGUAGE;
 
 // Utils
-export const API_IMAGE = API_V1 + IMAGE;
-export const API_STATIC_IMAGES = API_V1 + STATIC + IMAGES;
+export const API_IMAGE = API_V1 + IMAGE + '/';
+export const API_STATIC_IMAGES = API_V1 + STATIC + IMAGES + '/';

@@ -1,15 +1,20 @@
-<div class="course max-w max-h flex column gapless">
+<div class="course-card max-w max-h flex column gapless">
   <div (click)="courseClick.emit()">
     <div
-      class="island max-w max-h"
+      class="course-card__image max-w max-h"
       [ngStyle]="{
         'background-image':
           'linear-gradient(to bottom, rgba(0, 0, 0, 0) 15%, var(--very-light-gray-bg)), url(' +
+          course.image +
           ')'
       }"
     ></div>
-    <h2 class="title max-w">{{ course.name }}</h2>
+
+    <div class="course-card__title max-w">
+      <h2 class="course-card__title__text max-w max-h">{{ course.name }}</h2>
+    </div>
   </div>
+
   <svg-icon
     class="delete"
     src="assets/icons/trash.svg"
