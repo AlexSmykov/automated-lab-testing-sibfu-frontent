@@ -8,14 +8,27 @@
       height: 80px;
       border-radius: 10px;
     }
+    &__action-buttons {
+      &__button {
+        border-radius: 10px;
+        background: var(--light-gray-text);
+
+        width: 40px;
+        height: 40px;
+      }
+    }
 
     &__description {
-      height: fit-content;
-      font-weight: 600;
-
-      * img {
-        border-radius: 10px;
+      ::ng-deep {
+        .ql-editor {
+          padding: 0;
+        }
       }
+    }
+
+    &__separator {
+      background: var(--light-gray-text);
+      height: 1px;
     }
 
     &__example {

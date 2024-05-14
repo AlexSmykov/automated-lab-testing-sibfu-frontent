@@ -20,9 +20,9 @@ import { map, Observable } from 'rxjs';
 export class PracticeApiService {
   constructor(private httpClient: HttpClient) {}
 
-  get(id: number): Observable<TPractice> {
+  get(practiceId: string): Observable<TPractice> {
     return this.httpClient
-      .get<TPracticeDto>(API_PRACTICE_ID(id))
+      .get<TPracticeDto>(API_PRACTICE_ID(practiceId))
       .pipe(map((dto) => deserializePractice(dto)));
   }
 
@@ -34,8 +34,8 @@ export class PracticeApiService {
       );
   }
 
-  delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(API_PRACTICE_ID(id));
+  delete(practiceId: string): Observable<void> {
+    return this.httpClient.delete<void>(API_PRACTICE_ID(practiceId));
   }
 
   create(data: TPracticeFormValueRaw, courseId: string): Observable<TPractice> {
@@ -47,9 +47,15 @@ export class PracticeApiService {
       .pipe(map((dto) => deserializePractice(dto)));
   }
 
-  update(data: TPracticeFormValueRaw, id: number): Observable<TPractice> {
+  update(
+    data: TPracticeFormValueRaw,
+    practiceId: string
+  ): Observable<TPractice> {
     return this.httpClient
-      .put<TPracticeDto>(API_PRACTICE_ID(id), serializePracticeUpdate(data))
+      .put<TPracticeDto>(
+        API_PRACTICE_ID(practiceId),
+        serializePracticeUpdate(data)
+      )
       .pipe(map((dto) => deserializePractice(dto)));
   }
 }

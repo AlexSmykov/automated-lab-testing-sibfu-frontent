@@ -40,7 +40,7 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.PRACTICES]: [ERoutesParts.PRACTICES].join('/'),
   [ERoutes.PRACTICES_ID]: [':' + ERoutesIds.PRACTICE_ID].join('/'),
   [ERoutes.PRACTICE_CREATE]: [ERoutesParts.CREATE].join('/'),
-  [ERoutes.PRACTICE_EDIT]: [ERoutesParts.CREATE].join('/'),
+  [ERoutes.PRACTICE_EDIT]: [ERoutesParts.EDIT].join('/'),
 };
 
 export const EFullRoutes = {

@@ -9,10 +9,7 @@
   <nz-form-control [nzErrorTip]="errorText">
     <nz-input-group>
       <nz-select
-        nzMode="multiple"
         [title]="label"
-        [nzMaxTagCount]="3"
-        [nzMaxTagPlaceholder]="tagPlaceHolder"
         [nzPlaceHolder]="placeholder"
         [formControl]="control"
       >
@@ -25,7 +22,3 @@
     </nz-input-group>
   </nz-form-control>
 </nz-form-item>
-
-<ng-template #tagPlaceHolder let-selectedList>
-  Еще {{ selectedList.length }}
-</ng-template>

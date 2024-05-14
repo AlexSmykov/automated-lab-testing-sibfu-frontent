@@ -2,14 +2,27 @@ import {
   TPracticeDto,
   TPracticePostDto,
   TPracticeUpdateDto,
+  TTestcaseDto,
   TTestcasePostDto,
   TTestcaseUpdateDto,
 } from 'src/app/core/api/practice/practice-api.dto';
-import { TPractice } from 'src/app/core/api/practice/practice-api.interface';
+import {
+  TPractice,
+  TTestcase,
+} from 'src/app/core/api/practice/practice-api.interface';
 import {
   TPracticeFormTestcase,
   TPracticeFormValueRaw,
 } from 'src/app/pages/practice-form-page/practice-form-page.interface';
+
+function deserializePracticeTests(data: TTestcaseDto): TTestcase {
+  return {
+    id: data.id,
+    input: data.input,
+    output: data.excepted,
+    hidden: data.hidden,
+  };
+}
 
 function serializePracticeTests(
   data: TPracticeFormTestcase
@@ -36,7 +49,7 @@ export function serializePracticePost(
     network: data.isNetworkAvailable,
     allow_multi_file: data.isMultiFileAvailable,
     command_line_args: data.commandLineArgs,
-    testcases: data.tests.map(serializePracticeTests),
+    testcases: data.testcases.map(serializePracticeTests),
   };
 }
 
@@ -55,7 +68,7 @@ export function serializePracticeUpdate(
     network: data.isNetworkAvailable,
     allow_multi_file: data.isMultiFileAvailable,
     command_line_args: data.commandLineArgs,
-    testcases: data.tests.map(serializePracticeTests),
+    testcases: data.testcases.map(serializePracticeTests),
   };
 }
 
@@ -75,6 +88,6 @@ export function deserializePractice(dto: TPracticeDto): TPractice {
     network: dto.network,
     allowMultiFile: dto.allow_multi_file,
     commandLineArgs: dto.command_line_args,
-    testcases: dto.testcases,
+    testcases: dto.testcases?.map(deserializePracticeTests) ?? [],
   };
 }

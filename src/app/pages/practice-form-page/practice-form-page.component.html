@@ -1,30 +1,36 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
   <section class="practice-form flex column center">
-    <app-form-container title="Создание новой практической работы">
+    <app-form-container
+      [title]="
+        isEdit
+          ? 'Редактирование практической работы'
+          : 'Создание новой практической работы'
+      "
+    >
       <app-text-input
         label="Название работы"
         placeholder="Введите название"
-        [control]="createCourseForm.controls.name"
+        [control]="practiceForm.controls.name"
       ></app-text-input>
 
       <app-md-textarea-input
         label="Описание работы"
         placeholder="Введите описание"
-        [control]="createCourseForm.controls.description"
+        [control]="practiceForm.controls.description"
       ></app-md-textarea-input>
     </app-form-container>
 
     <app-form-container>
-      <div class="practice-form__fields-group flex row space">
+      <div class="fields-group flex row space">
         <div>
           <app-checkbox-input
             label="Дедлайн"
             tooltip="Жесткий дедлайн, по истечении которого закрывается доступ для загрузки работ"
-            [control]="createCourseForm.controls.isDeadline"
+            [control]="practiceForm.controls.isDeadline"
           ></app-checkbox-input>
           <app-date-input
-            *ngIf="createCourseForm.controls.isDeadline.value"
-            [control]="createCourseForm.controls.deadline"
+            *ngIf="practiceForm.controls.isDeadline.value"
+            [control]="practiceForm.controls.deadline"
             [minDate]="currentDate"
           ></app-date-input>
         </div>
@@ -33,11 +39,11 @@
           <app-checkbox-input
             label="Мягкий дедлайн"
             tooltip="Мягкий дедлайн, по истечении которого остается доступ для загрузки работ, но помечается, что работа не сдана вовремя"
-            [control]="createCourseForm.controls.isSoftDeadline"
+            [control]="practiceForm.controls.isSoftDeadline"
           ></app-checkbox-input>
           <app-date-input
-            *ngIf="createCourseForm.controls.isSoftDeadline.value"
-            [control]="createCourseForm.controls.softDeadline"
+            *ngIf="practiceForm.controls.isSoftDeadline.value"
+            [control]="practiceForm.controls.softDeadline"
             [minDate]="currentDate"
           ></app-date-input>
         </div>
@@ -47,7 +53,7 @@
         label="Доступные языки программирования"
         tooltip="Список языков программирования, с использованием которых можно выполнить работу"
         placeholder="Выберите языки из списка"
-        [control]="createCourseForm.controls.languages"
+        [control]="practiceForm.controls.languages"
         [items]="languages"
       ></app-multiselect-input>
 
@@ -57,34 +63,34 @@
           tooltip="В килобайтах"
           [min]="1"
           [max]="1048576"
-          [control]="createCourseForm.controls.memoryLimit"
+          [control]="practiceForm.controls.memoryLimit"
         ></app-number-input>
 
         <app-number-input
           label="Лимит по времени"
           tooltip="В миллисекундах"
           [min]="1"
-          [control]="createCourseForm.controls.timeLimit"
+          [control]="practiceForm.controls.timeLimit"
         ></app-number-input>
 
         <app-number-input
           label="Кол-во потоков"
           [min]="1"
           [max]="10"
-          [control]="createCourseForm.controls.maxThreads"
+          [control]="practiceForm.controls.maxThreads"
         ></app-number-input>
       </div>
 
       <div class="practice-form__fields-group flex row space">
         <app-checkbox-input
           label="Доступ к сети"
-          [control]="createCourseForm.controls.isNetworkAvailable"
+          [control]="practiceForm.controls.isNetworkAvailable"
         ></app-checkbox-input>
 
         <app-checkbox-input
           label="Несколько файлов"
           tooltip="Студент моет загрузить работу архивом, содержащим несколько файлов"
-          [control]="createCourseForm.controls.isMultiFileAvailable"
+          [control]="practiceForm.controls.isMultiFileAvailable"
         ></app-checkbox-input>
       </div>
 
@@ -92,7 +98,7 @@
         label="Доп. аругменты для запуска"
         tooltip="Аргументы командной строки, будут добавляться к вызову программы"
         placeholder="Введите строку с агументами"
-        [control]="createCourseForm.controls.commandLineArgs"
+        [control]="practiceForm.controls.commandLineArgs"
       ></app-text-input>
     </app-form-container>
 
@@ -132,11 +138,21 @@
         </app-form-button>
 
         <app-form-button
+          *ngIf="!isEdit"
           class="create-course__buttons__create-button"
-          [formToWatch]="createCourseForm"
+          [formToWatch]="practiceForm"
           (click)="createPractice()"
         >
           Добавить работу
+        </app-form-button>
+
+        <app-form-button
+          *ngIf="isEdit"
+          class="create-course__buttons__create-button"
+          [formToWatch]="practiceForm"
+          (click)="updatePractice()"
+        >
+          Сохранить работу
         </app-form-button>
       </div>
     </app-form-container>

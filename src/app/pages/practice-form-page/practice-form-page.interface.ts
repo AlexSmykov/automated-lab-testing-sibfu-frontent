@@ -16,7 +16,7 @@ export type TPracticeFormValue = {
   isNetworkAvailable: boolean;
   isMultiFileAvailable: boolean;
   commandLineArgs: string;
-  tests: FormArray<TFormGroupValue<TPracticeFormTestcase>>;
+  testcases: FormArray<TFormGroupValue<TPracticeFormTestcase>>;
 };
 
 export type TPracticeFormTestcase = {
@@ -39,5 +39,5 @@ export type TPracticeFormValueRaw = {
   isNetworkAvailable: boolean;
   isMultiFileAvailable: boolean;
   commandLineArgs: string;
-  tests: TPracticeFormTestcase[];
+  testcases: TPracticeFormTestcase[];
 };

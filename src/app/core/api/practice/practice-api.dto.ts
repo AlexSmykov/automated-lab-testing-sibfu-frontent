@@ -34,7 +34,7 @@ export type TPracticeDto = {
   network: boolean;
   allow_multi_file: boolean;
   command_line_args: string;
-  testcases: TTestcaseDto[];
+  testcases: TTestcaseDto[] | null;
 };
 
 export type TTestcaseUpdateDto = TTestcasePostDto;
@@ -48,6 +48,6 @@ export type TTestcasePostDto = {
 export type TTestcaseDto = {
   id: number;
   input: string;
-  output: string;
+  excepted: string;
   hidden: boolean;
 };

@@ -16,9 +16,9 @@ import { PracticeFormPageRoutingModule } from 'src/app/pages/practice-form-page/
 import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-input/textarea-input.module';
 import { DateInputModule } from 'src/app/shared/components/forms/date-input/date-input.module';
 import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-input/checkbox-input.module';
-import { MultiselectInputModule } from 'src/app/shared/components/forms/multiselect-input/multiselect-input.module';
 import { NumberInputModule } from 'src/app/shared/components/forms/number-input/number-input.module';
 import { MdTextareaInputModule } from 'src/app/shared/components/forms/md-textarea-input/md-textarea-input.module';
+import { MultiselectInputModule } from 'src/app/shared/components/forms/multiselect-input/multiselect-input.module';
 
 @NgModule({
   declarations: [PracticeFormPageComponent],
@@ -36,11 +36,11 @@ import { MdTextareaInputModule } from 'src/app/shared/components/forms/md-textar
     TextareaInputModule,
     DateInputModule,
     CheckboxInputModule,
-    MultiselectInputModule,
     NumberInputModule,
     NzSelectModule,
     NzSpinModule,
     MdTextareaInputModule,
+    MultiselectInputModule,
   ],
   exports: [PracticeFormPageComponent],
 })

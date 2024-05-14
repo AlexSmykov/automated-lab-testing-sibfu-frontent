@@ -23,7 +23,7 @@ import { LoadService } from 'src/app/shared/services/load.service';
   providers: [PracticeApiService, LoadService],
 })
 export class PracticeFormPageComponent implements OnInit {
-  createCourseForm: TFormGroupValue<TPracticeFormValue> = this.fb.group({
+  practiceForm: TFormGroupValue<TPracticeFormValue> = this.fb.group({
     name: this.fb.control<string>('', [
       Validators.required,
       Validators.minLength(3),
@@ -44,8 +44,14 @@ export class PracticeFormPageComponent implements OnInit {
     isNetworkAvailable: this.fb.control<boolean>(true, []),
     isMultiFileAvailable: this.fb.control<boolean>(true, []),
     commandLineArgs: this.fb.control<string>('', [Validators.maxLength(1000)]),
-    tests: this.fb.array<TFormGroupValue<TPracticeFormTestcase>>([]),
+    testcases: this.fb.array<TFormGroupValue<TPracticeFormTestcase>>([]),
   });
+
+  isEdit: boolean = false;
+  private courseId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+  private practiceId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
 
   currentDate = new Date();
 
@@ -54,7 +60,7 @@ export class PracticeFormPageComponent implements OnInit {
   isLoading$ = this.loadService.isLoading$;
 
   get testControls(): TFormGroupValue<TPracticeFormTestcase>[] {
-    return this.createCourseForm.controls.tests.controls;
+    return this.practiceForm.controls.testcases.controls;
   }
 
   constructor(
@@ -68,33 +74,56 @@ export class PracticeFormPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.subOnDeadlineCheckboxChanges();
+    this.subOnExistencePractice();
+
     this.addTest();
   }
 
+  subOnExistencePractice(): void {
+    if (this.practiceId) {
+      this.isEdit = true;
+      this.loadService
+        .wrapObservable(
+          this.practiceApiService
+            .get(this.practiceId!)
+            .pipe(untilDestroyed(this))
+        )
+        .subscribe((practice) => {
+          for (let i = 0; i < practice.testcases.length - 1; i++) {
+            this.addTest();
+          }
+          this.practiceForm.patchValue({
+            ...practice,
+            languages: practice.languages.map((language) => language.id),
+          });
+        });
+    }
+  }
+
   subOnDeadlineCheckboxChanges(): void {
-    this.createCourseForm.controls.isDeadline.valueChanges
+    this.practiceForm.controls.isDeadline.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe((value) => {
         if (value) {
-          this.createCourseForm.controls.deadline.enable();
+          this.practiceForm.controls.deadline.enable();
         } else {
-          this.createCourseForm.controls.deadline.disable();
+          this.practiceForm.controls.deadline.disable();
         }
       });
 
-    this.createCourseForm.controls.isSoftDeadline.valueChanges
+    this.practiceForm.controls.isSoftDeadline.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe((value) => {
         if (value) {
-          this.createCourseForm.controls.softDeadline.enable();
+          this.practiceForm.controls.softDeadline.enable();
         } else {
-          this.createCourseForm.controls.softDeadline.disable();
+          this.practiceForm.controls.softDeadline.disable();
         }
       });
   }
 
   addTest(): void {
-    this.createCourseForm.controls.tests.push(
+    this.practiceForm.controls.testcases.push(
       this.fb.group({
         input: this.fb.control<string>('', [
           Validators.required,
@@ -110,21 +139,30 @@ export class PracticeFormPageComponent implements OnInit {
   }
 
   deleteTest(testIndex: number): void {
-    this.createCourseForm.controls.tests.removeAt(testIndex);
+    this.practiceForm.controls.testcases.removeAt(testIndex);
   }
 
   createPractice(): void {
-    const courseId: string =
-      this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-
     this.loadService
       .wrapObservable(
         this.practiceApiService
-          .create(this.createCourseForm.getRawValue(), courseId)
+          .create(this.practiceForm.getRawValue(), this.courseId!)
           .pipe(untilDestroyed(this))
       )
       .subscribe(() => {
-        this.router.navigate(EFullRoutes.PRACTICES(courseId));
+        this.router.navigate(EFullRoutes.PRACTICES(this.courseId!));
+      });
+  }
+
+  updatePractice(): void {
+    this.loadService
+      .wrapObservable(
+        this.practiceApiService
+          .update(this.practiceForm.getRawValue(), this.practiceId!)
+          .pipe(untilDestroyed(this))
+      )
+      .subscribe(() => {
+        this.router.navigate(EFullRoutes.PRACTICES(this.courseId!));
       });
   }
 }

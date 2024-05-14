@@ -29,11 +29,21 @@
 
       <div class="flex row end">
         <app-form-button
+          *ngIf="!isEdit"
           class="create-course__create-button"
           [formToWatch]="createCourseForm"
-          (click)="createOrEditCourse()"
+          (click)="createCourse()"
         >
           Добавить предмет
+        </app-form-button>
+
+        <app-form-button
+          *ngIf="isEdit"
+          class="create-course__create-button"
+          [formToWatch]="createCourseForm"
+          (click)="updateCourse()"
+        >
+          Сохранить предмет
         </app-form-button>
       </div>
     </app-form-container>
