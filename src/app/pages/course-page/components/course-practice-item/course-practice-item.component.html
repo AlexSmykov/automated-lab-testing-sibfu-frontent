@@ -1,11 +1,6 @@
 <div class="max-w max-h flex column gapless">
   <div
     class="island max-w max-h flex column center"
-    [ngStyle]="{
-      'background-image':
-        'linear-gradient(to bottom, var(--light-gray-bg) 75%, rgba(' +
-        ',  0.3))'
-    }"
     [routerLink]="EFullRoutes.PRACTICES_ID(courseId, practice.id)"
   >
     <h4 class="practice-text">{{ practice.name }}</h4>
