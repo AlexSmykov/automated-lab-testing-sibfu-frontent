@@ -45,30 +45,23 @@ export class CourseFormPageComponent implements OnInit {
   }
 
   subOnRouteParams(): void {
-    this.activatedRoute.params
-      .pipe(untilDestroyed(this))
-      .subscribe((params) => {
-        const courseId: string = params[ERoutesIds.COURSE_ID];
+    const courseId: string =
+      this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
 
-        if (courseId) {
-          this.isEdit = true;
-          this.loadService
-            .wrapObservable(
-              this.courseApiService.get(courseId).pipe(untilDestroyed(this))
-            )
-            .subscribe((data) => {
-              this.createCourseForm.patchValue(data);
-              this.existenceCourseId = data.id;
-            });
-        }
-      });
+    if (courseId) {
+      this.isEdit = true;
+      this.loadService
+        .wrapObservable(
+          this.courseApiService.get(courseId).pipe(untilDestroyed(this))
+        )
+        .subscribe((data) => {
+          this.createCourseForm.patchValue(data);
+          this.existenceCourseId = data.id;
+        });
+    }
   }
 
-  createOrEditCourse(): void {
-    this.isEdit ? this.editCourse() : this.createCourse();
-  }
-
-  editCourse(): void {
+  updateCourse(): void {
     this.loadService
       .wrapObservable(
         this.courseApiService
