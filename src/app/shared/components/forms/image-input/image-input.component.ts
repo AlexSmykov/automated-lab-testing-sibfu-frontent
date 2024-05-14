@@ -46,8 +46,8 @@ export class ImageInputComponent {
   beforeImageUpload = (file: NzUploadFile): Observable<boolean> => {
     return this.ImageApiService.saveImage(file).pipe(
       tap((image: TImage) => {
-        file.url = image.file;
-        file.uid = image.id + '';
+        file.url = API_STATIC_IMAGES + image.id;
+        file.uid = image.id;
         file.status = 'done';
         this.loadedImage = file;
 
