@@ -11,22 +11,16 @@ import { EDictionaries } from 'src/app/core/dictionaries/dictionary.enum';
 import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
 import { TPracticeAnswerFormValue } from 'src/app/pages/practice-page/practice-page.interface';
 import { ERoles } from 'src/app/core/role/role.enum';
+import { LoadService } from 'src/app/shared/services/load.service';
 
-import {
-  BehaviorSubject,
-  filter,
-  map,
-  Observable,
-  switchMap,
-  take,
-} from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 
 @UntilDestroy()
 @Component({
   selector: 'app-practice-page',
   templateUrl: './practice-page.component.html',
   styleUrls: ['./practice-page.component.scss'],
-  providers: [PracticeApiService],
+  providers: [PracticeApiService, LoadService],
 })
 export class PracticePageComponent implements OnInit {
   private _practice$ = new BehaviorSubject<TPractice | null>(null);
@@ -36,6 +30,7 @@ export class PracticePageComponent implements OnInit {
     filter((practice): practice is TPractice => !!practice)
   );
 
+  readonly ERoles = ERoles;
   languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
 
   answerFormGroup: TFormGroupValue<TPracticeAnswerFormValue> = this.fb.group({
@@ -46,6 +41,12 @@ export class PracticePageComponent implements OnInit {
     code: this.fb.control<string>('', Validators.required),
   });
 
+  isLoading$ = this.loadService.isLoading$;
+  private courseId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+  private practiceId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
+
   get languagesNames$(): Observable<string> {
     return this.practiceSafe$.pipe(
       map((practice) => {
@@ -55,22 +56,22 @@ export class PracticePageComponent implements OnInit {
   }
 
   constructor(
-    private practiceApiService: PracticeApiService,
-    private dictionaryService: DictionaryService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
-    private fb: NonNullableFormBuilder
+    private loadService: LoadService,
+    private fb: NonNullableFormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private dictionaryService: DictionaryService,
+    private practiceApiService: PracticeApiService
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        untilDestroyed(this),
-        switchMap((params) => {
-          const practiceId: string = params[ERoutesIds.PRACTICE_ID];
-          return this.practiceApiService.get(practiceId);
-        }),
-        take(1)
+    this.subOnPractice();
+  }
+
+  subOnPractice(): void {
+    this.loadService
+      .wrapObservable(
+        this.practiceApiService.get(this.practiceId!).pipe(untilDestroyed(this))
       )
       .subscribe((practice) => {
         this._practice$.next(practice);
@@ -85,24 +86,14 @@ export class PracticePageComponent implements OnInit {
           return this.practiceApiService.delete(practice.id);
         })
       )
-      .subscribe();
+      .subscribe(() => {
+        this.router.navigate(EFullRoutes.COURSES_ID(this.courseId!));
+      });
   }
 
   edit(): void {
-    this.activatedRoute.params
-      .pipe(
-        untilDestroyed(this),
-        switchMap((params) => {
-          const courseId: string = params[ERoutesIds.COURSE_ID];
-          const practiceId: string = params[ERoutesIds.PRACTICE_ID];
-          return this.router.navigate(
-            EFullRoutes.PRACTICE_EDIT(courseId, practiceId)
-          );
-        }),
-        take(1)
-      )
-      .subscribe();
+    this.router.navigate(
+      EFullRoutes.PRACTICE_EDIT(this.courseId!, this.practiceId!)
+    );
   }
-
-  protected readonly ERoles = ERoles;
 }

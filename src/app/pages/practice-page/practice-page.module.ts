@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuillViewHTMLComponent } from 'ngx-quill';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-input/textarea-input.module';
 import { PracticePageComponent } from 'src/app/pages/practice-page/practice-page.component';
@@ -29,6 +30,7 @@ import { RequiredRoleModule } from 'src/app/shared/directives/required-role/requ
     RequiredRoleModule,
     QuillViewHTMLComponent,
     SvgIconComponent,
+    NzSpinModule,
   ],
   exports: [PracticePageComponent],
 })
