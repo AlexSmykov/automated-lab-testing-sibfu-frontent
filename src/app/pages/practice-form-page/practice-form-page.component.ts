@@ -44,7 +44,7 @@ export class PracticeFormPageComponent implements OnInit {
     isNetworkAvailable: this.fb.control<boolean>(true, []),
     isMultiFileAvailable: this.fb.control<boolean>(true, []),
     commandLineArgs: this.fb.control<string>('', [Validators.maxLength(1000)]),
-    tests: this.fb.array<TFormGroupValue<TPracticeFormTestcase>>([]),
+    testcases: this.fb.array<TFormGroupValue<TPracticeFormTestcase>>([]),
   });
 
   currentDate = new Date();

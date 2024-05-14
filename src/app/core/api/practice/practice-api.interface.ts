@@ -1,5 +1,4 @@
 import { TNamedEntity } from 'src/app/shared/interfaces/named-entity';
-import { TTestcaseDto } from 'src/app/core/api/practice/practice-api.dto';
 
 export type TPractice = {
   id: string;
@@ -16,7 +15,7 @@ export type TPractice = {
   network: boolean;
   allowMultiFile: boolean;
   commandLineArgs: string;
-  testcases: TTestcaseDto[];
+  testcases: TTestcase[];
 };
 
 export type TTestcase = {
