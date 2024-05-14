@@ -25,7 +25,7 @@ export const API_COURSE_ID = (id: string) => API_COURSE + id;
 export const API_COURSE_ID_PRACTICE = (id: string) =>
   API_COURSE_ID(id) + PRACTICE;
 export const API_PRACTICE = API_V1 + PRACTICE;
-export const API_PRACTICE_ID = (id: number) => API_PRACTICE + '/' + id;
+export const API_PRACTICE_ID = (id: string) => API_PRACTICE + '/' + id;
 
 // Словари
 export const API_LANGUAGES = API_V1 + LANGUAGE;
