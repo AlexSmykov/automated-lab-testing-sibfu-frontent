@@ -1,11 +1,15 @@
-<div class="course max-w max-h flex column gapless">
+<div class="course-header max-w max-h flex column gapless">
   <div
-    class="island max-w max-h"
+    class="course-header__image max-w max-h"
     [ngStyle]="{
       'background-image':
-        'linear-gradient(to bottom, rgba(0, 0, 0, 0) 15%, var(--very-light-gray-bg)), url(' +
+        'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, var(--very-light-gray-bg)), url(' +
+        course.image +
         ')'
     }"
   ></div>
-  <h2 class="title max-w">{{ course.name }}</h2>
+
+  <div class="course-header__title max-w">
+    <h2 class="course-header__title__text max-w max-h">{{ course.name }}</h2>
+  </div>
 </div>
