@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { EPartialRoutes } from '../../shared/router-paths'
-import { MainComponent } from './main.component'
+import { EPartialRoutes } from 'src/app/shared/router-paths';
+import { MainComponent } from 'src/app/layout/main/main.component';
 
 const routes: Routes = [
   {
@@ -17,27 +17,13 @@ const routes: Routes = [
       {
         path: EPartialRoutes.COURSES,
         loadChildren: () =>
-          import('../../pages/courses-page/courses-page.module').then(
+          import('src/app/pages/courses-page/courses-page.module').then(
             (m) => m.CoursesPageModule
           ),
       },
-      {
-        path: EPartialRoutes.COURSE,
-        loadChildren: () =>
-          import(
-            '../../pages/courses-page/pages/course-page/course-page.module'
-          ).then((m) => m.CoursePageModule),
-      },
-      {
-        path: EPartialRoutes.PRACTICE,
-        loadChildren: () =>
-          import(
-            '../../pages/courses-page/pages/course-page/pages/practice-page/practice-page.module'
-          ).then((m) => m.PracticePageModule),
-      },
     ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

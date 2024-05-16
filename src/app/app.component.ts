@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
-import { ErrorService } from 'as-form-controls'
+import { Component } from '@angular/core';
+
+import { ErrorService } from 'src/app/shared/services/error.service';
 
 @Component({
   selector: 'app-root',

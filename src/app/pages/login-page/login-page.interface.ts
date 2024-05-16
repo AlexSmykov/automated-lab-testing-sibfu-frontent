@@ -1,4 +1,4 @@
 export type TLogin = {
-  login: string
-  password: string
-}
+  login: string;
+  password: string;
+};

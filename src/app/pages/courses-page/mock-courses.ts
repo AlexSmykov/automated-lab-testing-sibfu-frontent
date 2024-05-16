@@ -1,16 +1,15 @@
-import { EPracticeStatus } from './pages/course-page/pages/practice-page/practice-page.interface'
-import { TCourse } from './pages/course-page/course-page.interface'
+import { TCourse } from 'src/app/pages/course-page/course-page.interface';
+import { EPracticeStatus } from 'src/app/shared/interfaces/practice-status.interface';
 
 export const mockCourses: TCourse[] = [
   {
-    id: 1,
+    id: '1',
     name: 'awd',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img.png',
     deletable: true,
     practices: [
       {
-        id: 1,
+        id: '1',
         status: EPracticeStatus.DONE,
         name: 'awdaww',
         description:
@@ -33,7 +32,7 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 2,
+        id: '2',
         status: EPracticeStatus.HARD_DEADLINE,
         name: 'wd',
         description: 'wwww',
@@ -46,14 +45,14 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 3,
+        id: '3',
         status: EPracticeStatus.SOFT_DEADLINE,
         name: 'Очень длинное название почему бы и нет ну такое норм название',
         description: 'wwww',
         examples: [],
       },
       {
-        id: 4,
+        id: '4',
         status: EPracticeStatus.BAD_TRY,
         name: 'rr',
         description: 'wwww',
@@ -71,7 +70,7 @@ export const mockCourses: TCourse[] = [
         ],
       },
       {
-        id: 5,
+        id: '5',
         status: EPracticeStatus.EMPTY,
         name: 'rr',
         description: 'wwww',
@@ -86,19 +85,17 @@ export const mockCourses: TCourse[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     name: 'qwe',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img_1.png',
     deletable: true,
     practices: [],
   },
   {
-    id: 3,
+    id: '3',
     name: 'zxc',
-    imageUrl:
-      'https://bairesdev.mo.cloudinary.net/blog/2020/10/Top-100-programming-languages.jpg?tx=w_3840,q_auto',
+    imageUrl: 'assets/images/img_2.png',
     deletable: true,
     practices: [],
   },
-]
+];

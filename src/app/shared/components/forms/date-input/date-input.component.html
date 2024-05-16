@@ -1,0 +1,19 @@
+<nz-form-item>
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <nz-input-group>
+      <nz-date-picker
+        nzFormat="yyyy-MM-dd"
+        [title]="label"
+        [nzDisabledDate]="disabledDate"
+        [formControl]="control"
+      ></nz-date-picker>
+    </nz-input-group>
+  </nz-form-control>
+</nz-form-item>

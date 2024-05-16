@@ -1,29 +1,30 @@
 <section class="main-section max-h flex column center align-center">
   <app-logo></app-logo>
-  <form class="form-sizer">
+  <div class="form-sizer">
     <app-form-container [title]="'Вход'">
-      <as-label-wrapper [control]="controls.login" [title]="'Логин'">
-        <as-text-input
-          [control]="controls.login"
-          [placeholder]="'Введите логин'"
-        ></as-text-input>
-      </as-label-wrapper>
+      <app-text-input
+        label="Логин"
+        [control]="controls.login"
+        [placeholder]="'Введите логин'"
+      ></app-text-input>
 
-      <as-label-wrapper [control]="controls.password" [title]="'Пароль'">
-        <as-password-input
-          [control]="controls.password"
-          [placeholder]="'Введите пароль'"
-        ></as-password-input>
-      </as-label-wrapper>
+      <app-password-input
+        label="Пароль"
+        [control]="controls.password"
+        [placeholder]="'Введите пароль'"
+      ></app-password-input>
 
       <div class="flex row space max-w">
-        <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION"
-          >Еще не зарегистрированы?</app-router-link
+        <app-router-link class="marginfull" [link]="EFullRoutes.REGISTRATION">
+          Еще не зарегистрированы?
+        </app-router-link>
+        <app-form-button
+          [formToWatch]="loginFormGroup"
+          (click)="onLoginClick()"
         >
-        <app-form-button [formToWatch]="loginFormGroup" (click)="onLoginClick()"
-          >Войти</app-form-button
-        >
+          Войти
+        </app-form-button>
       </div>
     </app-form-container>
-  </form>
+  </div>
 </section>

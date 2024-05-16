@@ -1,0 +1,14 @@
+<nz-form-item>
+  <nz-form-label
+    *ngIf="label"
+    [nzRequired]="isRequired"
+    [nzTooltipTitle]="tooltip"
+  >
+    {{ label }}
+  </nz-form-label>
+  <nz-form-control [nzErrorTip]="errorText">
+    <nz-input-group>
+      <label nz-checkbox [title]="label" [formControl]="control"></label>
+    </nz-input-group>
+  </nz-form-control>
+</nz-form-item>

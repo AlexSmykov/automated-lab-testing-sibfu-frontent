@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { EPartialRoutes } from './shared/router-paths'
+import { EPartialRoutes } from 'src/app/shared/router-paths';
+import { dictResolver } from 'src/app/core/dictionaries/dictionary.resolver';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: EPartialRoutes.MAIN,
+    resolve: [dictResolver],
     loadChildren: () =>
       import('./layout/main/main.module').then((m) => m.MainModule),
   },
@@ -28,7 +30,7 @@ const routes: Routes = [
         (m) => m.RegistrationPageModule
       ),
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

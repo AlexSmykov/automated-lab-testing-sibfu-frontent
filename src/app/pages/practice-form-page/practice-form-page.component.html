@@ -1,0 +1,160 @@
+<nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+  <section class="practice-form flex column center">
+    <app-form-container
+      [title]="
+        isEdit
+          ? 'Редактирование практической работы'
+          : 'Создание новой практической работы'
+      "
+    >
+      <app-text-input
+        label="Название работы"
+        placeholder="Введите название"
+        [control]="practiceForm.controls.name"
+      ></app-text-input>
+
+      <app-md-textarea-input
+        label="Описание работы"
+        placeholder="Введите описание"
+        [control]="practiceForm.controls.description"
+      ></app-md-textarea-input>
+    </app-form-container>
+
+    <app-form-container>
+      <div class="fields-group flex row space">
+        <div>
+          <app-checkbox-input
+            label="Дедлайн"
+            tooltip="Жесткий дедлайн, по истечении которого закрывается доступ для загрузки работ"
+            [control]="practiceForm.controls.isDeadline"
+          ></app-checkbox-input>
+          <app-date-input
+            *ngIf="practiceForm.controls.isDeadline.value"
+            [control]="practiceForm.controls.deadline"
+            [minDate]="currentDate"
+          ></app-date-input>
+        </div>
+
+        <div>
+          <app-checkbox-input
+            label="Мягкий дедлайн"
+            tooltip="Мягкий дедлайн, по истечении которого остается доступ для загрузки работ, но помечается, что работа не сдана вовремя"
+            [control]="practiceForm.controls.isSoftDeadline"
+          ></app-checkbox-input>
+          <app-date-input
+            *ngIf="practiceForm.controls.isSoftDeadline.value"
+            [control]="practiceForm.controls.softDeadline"
+            [minDate]="currentDate"
+          ></app-date-input>
+        </div>
+      </div>
+
+      <app-multiselect-input
+        label="Доступные языки программирования"
+        tooltip="Список языков программирования, с использованием которых можно выполнить работу"
+        placeholder="Выберите языки из списка"
+        [control]="practiceForm.controls.languages"
+        [items]="languages"
+      ></app-multiselect-input>
+
+      <div class="practice-form__fields-group flex row space">
+        <app-number-input
+          label="Лимит по памяти"
+          tooltip="В килобайтах"
+          [min]="1"
+          [max]="1048576"
+          [control]="practiceForm.controls.memoryLimit"
+        ></app-number-input>
+
+        <app-number-input
+          label="Лимит по времени"
+          tooltip="В миллисекундах"
+          [min]="1"
+          [control]="practiceForm.controls.timeLimit"
+        ></app-number-input>
+
+        <app-number-input
+          label="Кол-во потоков"
+          [min]="1"
+          [max]="10"
+          [control]="practiceForm.controls.maxThreads"
+        ></app-number-input>
+      </div>
+
+      <div class="practice-form__fields-group flex row space">
+        <app-checkbox-input
+          label="Доступ к сети"
+          [control]="practiceForm.controls.isNetworkAvailable"
+        ></app-checkbox-input>
+
+        <app-checkbox-input
+          label="Несколько файлов"
+          tooltip="Студент моет загрузить работу архивом, содержащим несколько файлов"
+          [control]="practiceForm.controls.isMultiFileAvailable"
+        ></app-checkbox-input>
+      </div>
+
+      <app-text-input
+        label="Доп. аругменты для запуска"
+        tooltip="Аргументы командной строки, будут добавляться к вызову программы"
+        placeholder="Введите строку с агументами"
+        [control]="practiceForm.controls.commandLineArgs"
+      ></app-text-input>
+    </app-form-container>
+
+    <app-form-container>
+      <ng-container *ngFor="let testForm of testControls; let i = index">
+        <div class="practice-form__fields-group flex row space align-l">
+          <app-textarea-input
+            placeholder="Введите входные данные"
+            [startSizeInLines]="2"
+            [label]="'Тест ' + (i + 1) + ' - входные данные'"
+            [control]="testForm.controls.input"
+          ></app-textarea-input>
+
+          <app-textarea-input
+            placeholder="Введите выходные данные"
+            [startSizeInLines]="2"
+            [label]="'Тест ' + (i + 1) + ' - выходные данные'"
+            [control]="testForm.controls.output"
+          ></app-textarea-input>
+
+          <div class="min-width">
+            <svg-icon
+              *ngIf="testControls.length > 1"
+              src="assets/icons/trash.svg"
+              (click)="deleteTest(i)"
+            ></svg-icon>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="create-course__buttons flex row end">
+        <app-form-button
+          class="create-course__buttons__create-button"
+          (click)="addTest()"
+        >
+          Добавить тест
+        </app-form-button>
+
+        <app-form-button
+          *ngIf="!isEdit"
+          class="create-course__buttons__create-button"
+          [formToWatch]="practiceForm"
+          (click)="createPractice()"
+        >
+          Добавить работу
+        </app-form-button>
+
+        <app-form-button
+          *ngIf="isEdit"
+          class="create-course__buttons__create-button"
+          [formToWatch]="practiceForm"
+          (click)="updatePractice()"
+        >
+          Сохранить работу
+        </app-form-button>
+      </div>
+    </app-form-container>
+  </section>
+</nz-spin>
