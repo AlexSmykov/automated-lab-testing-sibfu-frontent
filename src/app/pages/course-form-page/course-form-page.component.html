@@ -10,7 +10,7 @@
       ></app-text-input>
 
       <app-textarea-input
-        label="Описание работы"
+        label="Описание курса"
         placeholder="Введите описание"
         [control]="createCourseForm.controls.description"
       ></app-textarea-input>
@@ -34,7 +34,7 @@
           [formToWatch]="createCourseForm"
           (click)="createCourse()"
         >
-          Добавить предмет
+          Добавить курс
         </app-form-button>
 
         <app-form-button
@@ -43,7 +43,7 @@
           [formToWatch]="createCourseForm"
           (click)="updateCourse()"
         >
-          Сохранить предмет
+          Сохранить курс
         </app-form-button>
       </div>
     </app-form-container>
