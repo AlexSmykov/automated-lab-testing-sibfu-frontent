@@ -1,12 +1,19 @@
-import {
-  TCourseCreateDto,
-  TCourseDto,
-} from 'src/app/core/api/course/course-api.dto';
+export type TCoursePost = {
+  name: string;
+  description: string;
+  imageId: string;
+};
 
-export type TCoursePost = TCourseCreateDto;
+export type TCourseUpdate = {
+  name: string;
+  description: string;
+  imageId: string;
+};
 
-export type TCourseUpdate = TCourseCreateDto;
-
-export type TCourse = Omit<TCourseDto, 'image_id'> & {
+export type TCourse = {
+  id: string;
+  name: string;
+  description: string;
   image: string;
+  imageId: string;
 };

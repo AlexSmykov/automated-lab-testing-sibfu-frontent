@@ -8,16 +8,13 @@
       position: relative;
     }
 
-    &__edit-button {
+    &__action-buttons {
       position: absolute;
+      height: min-content;
       top: 14px;
       right: 14px;
 
-      svg {
-        width: 20px;
-        height: 20px;
-
-        filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.2));
+      &__button {
       }
     }
   }

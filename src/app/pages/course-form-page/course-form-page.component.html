@@ -10,7 +10,7 @@
       ></app-text-input>
 
       <app-textarea-input
-        label="Описание работы"
+        label="Описание курса"
         placeholder="Введите описание"
         [control]="createCourseForm.controls.description"
       ></app-textarea-input>
@@ -18,7 +18,7 @@
       <app-image-input
         label="Обложка курса"
         tooltip="Изображение в форматах jpg, jpeg, png"
-        [control]="createCourseForm.controls.image_id"
+        [control]="createCourseForm.controls.imageId"
       >
         <div
           class="create-course__image-upload-button max-w flex center align-c"
@@ -34,7 +34,7 @@
           [formToWatch]="createCourseForm"
           (click)="createCourse()"
         >
-          Добавить предмет
+          Добавить курс
         </app-form-button>
 
         <app-form-button
@@ -43,7 +43,7 @@
           [formToWatch]="createCourseForm"
           (click)="updateCourse()"
         >
-          Сохранить предмет
+          Сохранить курс
         </app-form-button>
       </div>
     </app-form-container>
