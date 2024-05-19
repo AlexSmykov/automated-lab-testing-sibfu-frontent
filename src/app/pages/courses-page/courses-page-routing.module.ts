@@ -20,6 +20,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: EPartialRoutes.COURSE_SEARCH,
+        loadChildren: () =>
+          import(
+            'src/app/pages/course-find-page/course-search-page.module'
+          ).then((m) => m.CourseSearchPageModule),
+      },
+      {
         path: EPartialRoutes.COURSES_ID,
         children: [
           {

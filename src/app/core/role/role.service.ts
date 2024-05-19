@@ -29,6 +29,8 @@ export class RoleService {
   constructor(private localStorageService: LocalStorageService) {
     if (this.localStorageService.getItem(EStorageItems.IS_TEACHER) === 'true') {
       this._currentRole$.next(ERoles.TEACHER);
+    } else {
+      this._currentRole$.next(ERoles.STUDENT);
     }
   }
 
