@@ -20,6 +20,7 @@ export const API_REGISTRATIONS = API_V1 + REGISTRATION;
 // Курс
 export const API_COURSE = API_V1 + COURSE + '/';
 export const API_COURSE_ID = (id: string) => API_COURSE + id;
+export const API_COURSE_SEARCH = API_COURSE;
 
 // Практическая работа
 export const API_COURSE_ID_PRACTICE = (id: string) =>
