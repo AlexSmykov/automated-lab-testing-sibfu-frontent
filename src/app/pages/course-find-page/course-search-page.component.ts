@@ -72,7 +72,7 @@ export class CourseSearchPageComponent implements OnInit {
     this.loadService
       .wrapObservable(
         this.participationApiService
-          .sendParticipation(courseId)
+          .createParticipation(courseId)
           .pipe(untilDestroyed(this))
       )
       .subscribe(() => {
