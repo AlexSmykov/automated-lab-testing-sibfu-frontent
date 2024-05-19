@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { RoleService } from 'src/app/core/role/role.service';
 import { EFullRoutes } from 'src/app/shared/router-paths';
 import { CourseApiService } from 'src/app/core/api/course/course-api.service';
 import { TCourse } from 'src/app/core/api/course/course-api.interface';
 import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
 import { LoadService } from 'src/app/shared/services/load.service';
+import { ERoles } from 'src/app/core/role/role.enum';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -24,12 +24,12 @@ export class CoursesPageComponent implements OnInit {
   courses$ = this._courses$.asObservable();
   isLoading$ = this.loadService.isLoading$;
 
-  isTeacher = this.roleService.isTeacher;
+  readonly EFullRoutes = EFullRoutes;
+  readonly ERoles = ERoles;
 
   constructor(
     private router: Router,
     private loadService: LoadService,
-    private roleService: RoleService,
     private sideBarService: SideBarService,
     private courseApiService: CourseApiService
   ) {}
@@ -48,6 +48,4 @@ export class CoursesPageComponent implements OnInit {
       this.sideBarService.unselectPractice();
     });
   }
-
-  protected readonly EFullRoutes = EFullRoutes;
 }

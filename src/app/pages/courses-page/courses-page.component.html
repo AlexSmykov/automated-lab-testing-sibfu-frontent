@@ -2,17 +2,20 @@
   <div class="max-h max-w flex column start align-l">
     <h1 class="title max-w">Мои курсы</h1>
 
-    <div class="plus-button max-w">
+    <div class="buttons max-w">
       <app-island
         class="clickable"
-        *ngIf="isTeacher"
+        *appRequiredRole="ERoles.TEACHER"
         [routerLink]="EFullRoutes.COURSE_CREATE"
       >
         <svg-icon src="assets/icons/plus.svg"></svg-icon>
       </app-island>
 
-      <app-island *ngIf="!isTeacher">
-        <svg-icon src="assets/icons/search.svg" />
+      <app-island
+        *appRequiredRole="ERoles.STUDENT"
+        [routerLink]="EFullRoutes.COURSE_SEARCH"
+      >
+        <svg-icon src="assets/icons/search.svg"></svg-icon>
       </app-island>
     </div>
 
