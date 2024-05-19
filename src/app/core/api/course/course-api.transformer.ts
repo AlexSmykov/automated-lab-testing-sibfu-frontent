@@ -27,7 +27,6 @@ export function serializeCourseUpdate(data: TCourseUpdate): TCourseUpdateDto {
 }
 
 export function deserializeCourse(dto: TCourseDto): TCourse {
-  console.log(API_STATIC_IMAGES + dto.image_id);
   return {
     id: dto.id,
     name: dto.name,
