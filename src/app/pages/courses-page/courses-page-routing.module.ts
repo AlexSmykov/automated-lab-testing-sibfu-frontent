@@ -34,7 +34,13 @@ const routes: Routes = [
             redirectTo: EPartialRoutes.PRACTICES,
             pathMatch: 'full',
           },
-
+          {
+            path: EPartialRoutes.COURSE_PARTICIPATION,
+            loadChildren: () =>
+              import(
+                'src/app/pages/course-participations-page/course-participations-page.module'
+              ).then((m) => m.CourseParticipationsPageModule),
+          },
           {
             path: EPartialRoutes.COURSE_EDIT,
             loadChildren: () =>

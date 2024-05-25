@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .participations-page {
+    &__title {
+      text-align: center;
+    }
+
+    &__list {
+      border-radius: 10px;
+      background: var(--light-gray-bg);
+    }
+
+    &__participation {
+      padding: 10px;
+
+      &__text {
+        width: max-content;
+      }
+
+      &__buttons {
+        width: min-content;
+
+        &__icon {
+          color: var(--dark-gray-text);
+        }
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--gray-text);
+      }
+    }
+
+    &__message {
+      margin: 50px 0;
+      width: 100%;
+
+      text-align: center;
+    }
+  }
+}

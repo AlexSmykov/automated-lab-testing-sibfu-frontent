@@ -1,0 +1,65 @@
+<section class="participations-page flex column center">
+  <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+    <app-island
+      *ngIf="participations$ | async as participations; else noParticipations"
+      [padding]="10"
+    >
+      <h1 class="participations-page__title max-w">Заявки на курс</h1>
+
+      <div class="participations-page__list flex column gapless">
+        <ng-container *ngFor="let participation of participations">
+          <div class="participations-page__participation flex row space">
+            <span class="participations-page__participation__text">
+              {{ participation.displayName }}
+            </span>
+
+            <div class="participations-page__participation__buttons flex row">
+              <svg-icon
+                class="participations-page__participation__buttons__icon clickable"
+                src="assets/icons/plus.svg"
+                (click)="acceptParticipation(participation.userId)"
+              ></svg-icon>
+
+              <svg-icon
+                class="participations-page__participation__buttons__icon clickable"
+                src="assets/icons/trash.svg"
+                (click)="declineParticipation(participation.userId)"
+              ></svg-icon>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngFor="let participation of participations">
+          <div class="participations-page__participation flex row space">
+            <span class="participations-page__participation__text">
+              {{ participation.displayName }}
+            </span>
+
+            <div class="participations-page__participation__buttons flex row">
+              <svg-icon
+                class="participations-page__participation__buttons__icon clickable"
+                src="assets/icons/plus.svg"
+              ></svg-icon>
+
+              <svg-icon
+                class="participations-page__participation__buttons__icon clickable"
+                src="assets/icons/trash.svg"
+              ></svg-icon>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!participations.length">
+          <p class="participations-page__message">
+            По вашему запросу ничего не найдено
+          </p>
+        </ng-container>
+      </div>
+    </app-island>
+  </nz-spin>
+</section>
+
+<ng-template #noParticipations>
+  <p class="participations-page__message">
+    <em>Заявок больше нет</em>
+  </p>
+</ng-template>

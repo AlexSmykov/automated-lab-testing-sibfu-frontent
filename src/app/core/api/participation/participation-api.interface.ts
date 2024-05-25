@@ -2,6 +2,7 @@ import { EParticipationStatuses } from 'src/app/core/api/participation/participa
 
 export type TParticipation = {
   username: string;
+  userId: string;
   displayName: string;
   email: string;
   isTeacher: boolean;
