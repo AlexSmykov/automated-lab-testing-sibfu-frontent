@@ -59,6 +59,12 @@ export class CoursePageComponent implements OnInit {
       });
   }
 
+  checkParticipations(): void {
+    this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
+      this.router.navigate(EFullRoutes.COURSE_PARTICIPATION(course!.id));
+    });
+  }
+
   editCourse(): void {
     this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
       this.router.navigate(EFullRoutes.COURSE_EDIT(course!.id));
