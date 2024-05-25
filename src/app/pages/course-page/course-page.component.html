@@ -11,14 +11,31 @@
           class="practices__add-button max-h max-w flex center clickable"
           [routerLink]="EFullRoutes.PRACTICE_CREATE(course.id)"
         >
-          <svg-icon src="assets/icons/plusIcon.svg" />
+          <svg-icon src="assets/icons/plus.svg" />
         </div>
 
-        <svg-icon
-          class="course__edit-button clickable"
-          src="assets/icons/edit.svg"
-          (click)="editCourse()"
-        />
+        <div
+          class="course__action-buttons flex row align-c end"
+          *appRequiredRole="ERoles.TEACHER"
+        >
+          <svg-icon
+            class="course__action-buttons__button clickable shadow"
+            src="assets/icons/add-users.svg"
+            (click)="checkParticipations()"
+          />
+
+          <svg-icon
+            class="course__action-buttons__button clickable shadow"
+            src="assets/icons/edit.svg"
+            (click)="editCourse()"
+          />
+
+          <svg-icon
+            src="assets/icons/trash.svg"
+            class="course__action-buttons__button clickable shadow"
+            (click)="deleteCourse()"
+          />
+        </div>
 
         <ng-container *ngFor="let practice of practices$ | async">
           <app-course-practice-item

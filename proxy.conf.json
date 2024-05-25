@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://45.82.152.40",
+    "target": "https://sibfu-code.ru",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

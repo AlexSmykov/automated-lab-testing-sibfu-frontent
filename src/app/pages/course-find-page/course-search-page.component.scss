@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .course-search {
+    &__searchbar {
+      &__icon {
+        svg {
+          height: 20px;
+        }
+      }
+    }
+
+    &__list {
+      border-radius: 10px;
+      background: var(--light-gray-bg);
+    }
+
+    &__course {
+      padding: 10px;
+
+      &__icon {
+        color: var(--dark-gray-text);
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--gray-text);
+      }
+    }
+
+    &__message {
+      margin: 50px 0;
+      width: 100%;
+
+      text-align: center;
+    }
+  }
+}

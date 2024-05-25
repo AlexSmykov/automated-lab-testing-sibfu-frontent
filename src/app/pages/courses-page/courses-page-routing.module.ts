@@ -20,6 +20,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: EPartialRoutes.COURSE_SEARCH,
+        loadChildren: () =>
+          import(
+            'src/app/pages/course-find-page/course-search-page.module'
+          ).then((m) => m.CourseSearchPageModule),
+      },
+      {
         path: EPartialRoutes.COURSES_ID,
         children: [
           {
@@ -27,7 +34,13 @@ const routes: Routes = [
             redirectTo: EPartialRoutes.PRACTICES,
             pathMatch: 'full',
           },
-
+          {
+            path: EPartialRoutes.COURSE_PARTICIPATION,
+            loadChildren: () =>
+              import(
+                'src/app/pages/course-participations-page/course-participations-page.module'
+              ).then((m) => m.CourseParticipationsPageModule),
+          },
           {
             path: EPartialRoutes.COURSE_EDIT,
             loadChildren: () =>

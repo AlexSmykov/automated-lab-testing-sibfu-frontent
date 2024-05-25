@@ -11,11 +11,19 @@ import {
 import { API_STATIC_IMAGES } from 'src/app/core/api/api-urls';
 
 export function serializeCoursePost(data: TCoursePost): TCourseCreateDto {
-  return data;
+  return {
+    name: data.name,
+    description: data.description,
+    image_id: data.imageId,
+  };
 }
 
 export function serializeCourseUpdate(data: TCourseUpdate): TCourseUpdateDto {
-  return data;
+  return {
+    name: data.name,
+    description: data.description,
+    image_id: data.imageId,
+  };
 }
 
 export function deserializeCourse(dto: TCourseDto): TCourse {
@@ -24,5 +32,6 @@ export function deserializeCourse(dto: TCourseDto): TCourse {
     name: dto.name,
     description: dto.description,
     image: dto.image_id ? API_STATIC_IMAGES + dto.image_id : '',
+    imageId: dto.image_id,
   };
 }

@@ -1,0 +1,59 @@
+<section class="course-search flex column center">
+  <app-island class="course-search__searchbar" [padding]="10">
+    <nz-input-group [nzSuffix]="suffixIconSearch">
+      <input
+        nz-input
+        title="Поиск курса"
+        placeholder="Введите название курса"
+        [formControl]="searchControl"
+        [maxLength]="100"
+      />
+    </nz-input-group>
+
+    <ng-template #suffixIconSearch>
+      <svg-icon
+        class="course-search__searchbar__icon"
+        src="assets/icons/search.svg"
+      ></svg-icon>
+    </ng-template>
+  </app-island>
+
+  <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+    <app-island
+      *ngIf="searchedCourses$ | async as searchedCourses; else noCourses"
+      [padding]="10"
+    >
+      <div class="course-search__list flex column gapless">
+        <ng-container *ngFor="let course of searchedCourses">
+          <div class="course-search__course flex row space">
+            <span class="course-search__course__text">{{ course.name }}</span>
+
+            <svg-icon
+              *ngIf="!course.isHasActiveParticipation"
+              class="course-search__course__icon clickable"
+              src="assets/icons/plus.svg"
+              (click)="sendParticipationToCourse(course.id)"
+            ></svg-icon>
+
+            <svg-icon
+              *ngIf="course.isHasActiveParticipation"
+              class="course-search__course__icon"
+              src="assets/icons/check.svg"
+            ></svg-icon>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!searchedCourses.length">
+          <p class="course-search__message">
+            По вашему запросу ничего не найдено
+          </p>
+        </ng-container>
+      </div>
+    </app-island>
+  </nz-spin>
+</section>
+
+<ng-template #noCourses>
+  <p class="course-search__message">
+    <em>Начните вводить название курса</em>
+  </p>
+</ng-template>

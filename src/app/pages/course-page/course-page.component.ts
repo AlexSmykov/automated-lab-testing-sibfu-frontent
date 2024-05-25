@@ -59,9 +59,28 @@ export class CoursePageComponent implements OnInit {
       });
   }
 
+  checkParticipations(): void {
+    this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
+      this.router.navigate(EFullRoutes.COURSE_PARTICIPATION(course!.id));
+    });
+  }
+
   editCourse(): void {
     this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
-      this.router.navigate(EFullRoutes.COURSE_EDIT(course?.id!));
+      this.router.navigate(EFullRoutes.COURSE_EDIT(course!.id));
     });
+  }
+
+  deleteCourse(): void {
+    this.course$
+      .pipe(
+        untilDestroyed(this),
+        switchMap((course) => {
+          return this.courseApiService.delete(course!.id);
+        })
+      )
+      .subscribe(() => {
+        this.router.navigate(EFullRoutes.COURSES);
+      });
   }
 }

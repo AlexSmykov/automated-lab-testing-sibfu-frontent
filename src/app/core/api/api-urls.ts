@@ -13,6 +13,8 @@ const COURSE = '/course';
 const PRACTICE = '/practice';
 const LANGUAGE = '/language';
 const REGISTRATION = '/registration';
+const PARTICIPATION = '/participation';
+const PARTICIPATION_UPDATE = '/participation_update';
 
 // Регистрация / логин
 export const API_REGISTRATIONS = API_V1 + REGISTRATION;
@@ -20,12 +22,19 @@ export const API_REGISTRATIONS = API_V1 + REGISTRATION;
 // Курс
 export const API_COURSE = API_V1 + COURSE + '/';
 export const API_COURSE_ID = (id: string) => API_COURSE + id;
+export const API_COURSE_SEARCH = API_COURSE;
 
 // Практическая работа
 export const API_COURSE_ID_PRACTICE = (id: string) =>
   API_COURSE_ID(id) + PRACTICE;
 export const API_PRACTICE = API_V1 + PRACTICE;
 export const API_PRACTICE_ID = (id: string) => API_PRACTICE + '/' + id;
+
+// Заявки на курс
+export const API_COURSE_ID_SEND_PARTICIPATION = (id: string) =>
+  API_COURSE_ID(id) + PARTICIPATION;
+export const API_COURSE_ID_SEND_PARTICIPATION_UPDATE = (id: string) =>
+  API_COURSE_ID(id) + PARTICIPATION_UPDATE;
 
 // Словари
 export const API_LANGUAGES = API_V1 + LANGUAGE;

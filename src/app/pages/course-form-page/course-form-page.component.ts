@@ -24,7 +24,7 @@ export class CourseFormPageComponent implements OnInit {
       Validators.maxLength(400),
     ]),
     description: this.fb.control('', [Validators.maxLength(4000)]),
-    image_id: this.fb.control<string>(''),
+    imageId: this.fb.control<string>(''),
   });
 
   isLoading$ = this.loadService.isLoading$;

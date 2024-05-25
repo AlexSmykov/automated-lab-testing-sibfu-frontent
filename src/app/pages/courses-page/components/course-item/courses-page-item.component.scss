@@ -44,13 +44,5 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
-    .delete {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      color: rgb(var(--red-color));
-      filter: drop-shadow(0 0 0.5rem var(--black-text));
-    }
   }
 }
