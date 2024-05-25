@@ -12,6 +12,7 @@ export function deserializeParticipation(
 ): TParticipation {
   return {
     username: dto.username,
+    userId: dto.user_id,
     displayName: dto.display_name,
     email: dto.email,
     isTeacher: dto.is_teacher,
