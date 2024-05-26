@@ -6,6 +6,8 @@ const V1 = '/v1';
 
 const API_V1 = API + V1;
 
+const ME = '/me';
+const USER = '/user';
 const IMAGE = '/image';
 const IMAGES = '/images';
 const STATIC = '/static';
@@ -14,10 +16,14 @@ const PRACTICE = '/practice';
 const LANGUAGE = '/language';
 const REGISTRATION = '/registration';
 const PARTICIPATION = '/participation';
+const AUTHENTICATION = '/authentication';
 const PARTICIPATION_UPDATE = '/participation_update';
 
 // Регистрация / логин
-export const API_REGISTRATIONS = API_V1 + REGISTRATION;
+export const API_REGISTRATION = API_V1 + REGISTRATION;
+export const API_LOGIN = API_V1 + AUTHENTICATION;
+export const API_USER = API_V1 + USER;
+export const API_USER_ME = API_USER + ME;
 
 // Курс
 export const API_COURSE = API_V1 + COURSE + '/';
