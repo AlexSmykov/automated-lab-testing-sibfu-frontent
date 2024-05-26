@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 
 import { TokenService } from 'src/app/core/token/token.service';
+import { UserService } from 'src/app/core/user/user.service';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _isAuth$ = new BehaviorSubject<boolean>(!!this.tokenService.token);
+  isAuth$ = this.tokenService.token$.pipe(map((token) => !!token));
 
-  get isAuth$(): Observable<boolean> {
-    return this._isAuth$.asObservable();
+  constructor(
+    private tokenService: TokenService,
+    private userService: UserService
+  ) {}
+
+  logout(): void {
+    this.userService.clearUser();
+    this.tokenService.clearToken();
   }
-
-  get isAuth(): boolean {
-    return this._isAuth$.getValue();
-  }
-
-  constructor(private tokenService: TokenService) {}
 }
