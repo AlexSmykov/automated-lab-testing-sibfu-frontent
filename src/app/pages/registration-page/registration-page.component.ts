@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 import { EValidatePatterns } from 'src/app/shared/enum/validate-patterns';
 import { addValidator } from 'src/app/shared/utils/form-validators';
 import { passwordValidatorFn } from 'src/app/shared/validators/validators';
-import { TokenService } from 'src/app/core/token/token.service';
 import { RegistrationApiService } from 'src/app/core/api/registration/registration-api.service';
 import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
 import { TRegistrationFormValue } from 'src/app/pages/registration-page/registration-page.interface';
 import { EFullRoutes } from 'src/app/shared/router-paths';
+import { TokenService } from 'src/app/core/token/token.service';
 
 const PASSWORD_FIELD_NAME = 'password';
 const PASSWORD_CONFIRM_FIELD_NAME = 'passwordConfirm';
@@ -24,10 +25,8 @@ export class RegistrationPageComponent {
   registrationFormGroup: TFormGroupValue<TRegistrationFormValue> =
     this.fb.group({
       login: this.fb.control('', [Validators.required]),
-      fio: this.fb.control('', [
-        Validators.required,
-        Validators.pattern(EValidatePatterns.FIO.pattern),
-      ]),
+      name: this.fb.control('', [Validators.required]),
+      surname: this.fb.control('', [Validators.required]),
       email: this.fb.control('', [
         Validators.required,
         Validators.pattern(EValidatePatterns.EMAIL.pattern),
@@ -44,6 +43,7 @@ export class RegistrationPageComponent {
     private router: Router,
     private fb: NonNullableFormBuilder,
     private tokenService: TokenService,
+    private nzNotificationService: NzNotificationService,
     private registrationApiService: RegistrationApiService
   ) {
     addValidator(
@@ -55,11 +55,20 @@ export class RegistrationPageComponent {
   }
 
   onRegistrationClick(): void {
-    this.registrationApiService
-      .register(this.registrationFormGroup.getRawValue())
-      .subscribe((result) => {
-        this.tokenService.setToken(result);
+    const formValue = this.registrationFormGroup.getRawValue();
+    this.registrationApiService.register(formValue).subscribe({
+      next: (result) => {
+        this.tokenService.setToken(
+          btoa(`${formValue.login}:${formValue.password}`)
+        );
         this.router.navigate(EFullRoutes.MAIN);
-      });
+      },
+      error: (error) => {
+        this.nzNotificationService.error(
+          '',
+          'Не удалось авторизоваться по текущим данным'
+        );
+      },
+    });
   }
 }
