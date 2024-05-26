@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 import { TextInputModule } from 'src/app/shared/components/forms/text-input/text-input.module';
 import { PasswordInputModule } from 'src/app/shared/components/forms/password-input/password-input.module';
@@ -9,6 +10,7 @@ import { RegistrationPageRoutingModule } from 'src/app/pages/registration-page/r
 import { FormContainerModule } from 'src/app/shared/components/form-container/form-container.module';
 import { RouterLinkModule } from 'src/app/shared/components/router-link/router-link.module';
 import { FormButtonModule } from 'src/app/shared/components/button/form-button.module';
+import { DateInputModule } from 'src/app/shared/components/forms/date-input/date-input.module';
 
 @NgModule({
   declarations: [RegistrationPageComponent],
@@ -23,6 +25,8 @@ import { FormButtonModule } from 'src/app/shared/components/button/form-button.m
     TextInputModule,
     PasswordInputModule,
     CheckboxInputModule,
+    DateInputModule,
+    NgIf,
   ],
   exports: [RegistrationPageComponent],
 })

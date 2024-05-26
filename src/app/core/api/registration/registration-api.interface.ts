@@ -1,6 +1,7 @@
 export type TRegistrationPost = {
   login: string;
-  fio: string;
+  name: string;
+  surname: string;
   isTeacher: boolean;
   email: string;
   password: string;

@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
       clonedRequest = request.clone({
         headers: request.headers.append(
           'Authorization',
-          `Token ${this.tokenService.token}`
+          `Basic ${this.tokenService.token}`
         ),
       });
     }

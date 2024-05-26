@@ -1,0 +1,10 @@
+.profile-info {
+  gap: 20px;
+
+  &__icon {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
