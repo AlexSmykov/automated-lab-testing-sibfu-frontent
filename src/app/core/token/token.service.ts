@@ -31,6 +31,7 @@ export class TokenService {
 
   clearToken(): void {
     this.setToken(null);
+    this.localStorageService.removeItem(EStorageItems.TOKEN);
   }
 
   constructor(private localStorageService: LocalStorageService) {}
