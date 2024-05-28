@@ -64,7 +64,7 @@
       </span>
     </div>
 
-    <ng-container *appRequiredRole="ERoles.STUDENT">
+    <ng-container>
       <app-form-container>
         <div class="fields-group flex row space">
           <div>
@@ -89,10 +89,19 @@
       </app-form-container>
 
       <div class="flex row end">
-        <app-form-button [formToWatch]="answerFormGroup">
+        <app-form-button
+          [formToWatch]="answerFormGroup"
+          (click)="sendAttempt()"
+        >
           Загрузить работу
         </app-form-button>
       </div>
     </ng-container>
+
+    <app-attempt-list
+      *ngIf="attempts$ | async as attempts"
+      withName="false"
+      [attempts]="attempts"
+    ></app-attempt-list>
   </section>
 </nz-spin>

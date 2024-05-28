@@ -4,7 +4,7 @@
       *ngIf="participations$ | async as participations; else noParticipations"
       [padding]="10"
     >
-      <h1 class="participations-page__title max-w">Заявки на курс</h1>
+      <h1 class="text-center max-w">Заявки на курс</h1>
 
       <div class="participations-page__list flex column gapless">
         <ng-container *ngFor="let participation of participations">

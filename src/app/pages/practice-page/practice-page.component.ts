@@ -12,6 +12,8 @@ import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interfac
 import { TPracticeAnswerFormValue } from 'src/app/pages/practice-page/practice-page.interface';
 import { ERoles } from 'src/app/core/role/role.enum';
 import { LoadService } from 'src/app/shared/services/load.service';
+import { AttemptApiService } from 'src/app/core/api/attempt/attempt-api.service';
+import { TAttempt } from 'src/app/core/api/attempt/attempt-api.interface';
 
 import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 
@@ -20,15 +22,17 @@ import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
   selector: 'app-practice-page',
   templateUrl: './practice-page.component.html',
   styleUrls: ['./practice-page.component.scss'],
-  providers: [PracticeApiService, LoadService],
+  providers: [PracticeApiService, LoadService, AttemptApiService],
 })
 export class PracticePageComponent implements OnInit {
   private _practice$ = new BehaviorSubject<TPractice | null>(null);
-
   practice$ = this._practice$.asObservable();
   private practiceSafe$ = this.practice$.pipe(
     filter((practice): practice is TPractice => !!practice)
   );
+
+  private _attempts$ = new BehaviorSubject<TAttempt[] | null>(null);
+  attempts$ = this._attempts$.asObservable();
 
   readonly ERoles = ERoles;
   languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
@@ -61,7 +65,8 @@ export class PracticePageComponent implements OnInit {
     private fb: NonNullableFormBuilder,
     private activatedRoute: ActivatedRoute,
     private dictionaryService: DictionaryService,
-    private practiceApiService: PracticeApiService
+    private practiceApiService: PracticeApiService,
+    private attemptApiService: AttemptApiService
   ) {}
 
   ngOnInit(): void {
@@ -71,10 +76,16 @@ export class PracticePageComponent implements OnInit {
   subOnPractice(): void {
     this.loadService
       .wrapObservable(
-        this.practiceApiService.get(this.practiceId!).pipe(untilDestroyed(this))
+        this.practiceApiService.get(this.practiceId!).pipe(
+          untilDestroyed(this),
+          switchMap((practice) => {
+            this._practice$.next(practice);
+            return this.attemptApiService.getAttempts(this.practiceId);
+          })
+        )
       )
-      .subscribe((practice) => {
-        this._practice$.next(practice);
+      .subscribe((attempts) => {
+        this._attempts$.next(attempts);
       });
   }
 
@@ -95,5 +106,17 @@ export class PracticePageComponent implements OnInit {
     this.router.navigate(
       EFullRoutes.PRACTICE_EDIT(this.courseId!, this.practiceId!)
     );
+  }
+
+  sendAttempt(): void {
+    this.loadService
+      .wrapObservable(
+        this.attemptApiService.sendAttempt(
+          this.practiceId,
+          this.answerFormGroup.getRawValue()
+        )
+      )
+      .pipe(untilDestroyed(this))
+      .subscribe(() => {});
   }
 }

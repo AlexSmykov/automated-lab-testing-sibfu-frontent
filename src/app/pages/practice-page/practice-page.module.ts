@@ -14,6 +14,7 @@ import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-in
 import { DateInputModule } from 'src/app/shared/components/forms/date-input/date-input.module';
 import { SelectInputModule } from 'src/app/shared/components/forms/select-input/select-input.module';
 import { RequiredRoleModule } from 'src/app/shared/directives/required-role/required-role.module';
+import { AttemptListModule } from 'src/app/shared/components/attempt-list/attempt-list.module';
 
 @NgModule({
   declarations: [PracticePageComponent],
@@ -31,6 +32,7 @@ import { RequiredRoleModule } from 'src/app/shared/directives/required-role/requ
     QuillViewHTMLComponent,
     SvgIconComponent,
     NzSpinModule,
+    AttemptListModule,
   ],
   exports: [PracticePageComponent],
 })

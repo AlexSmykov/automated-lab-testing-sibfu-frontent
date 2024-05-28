@@ -12,6 +12,7 @@ const IMAGE = '/image';
 const IMAGES = '/images';
 const STATIC = '/static';
 const COURSE = '/course';
+const ATTEMPT = '/attempt';
 const PRACTICE = '/practice';
 const LANGUAGE = '/language';
 const REGISTRATION = '/registration';
@@ -35,6 +36,8 @@ export const API_COURSE_ID_PRACTICE = (id: string) =>
   API_COURSE_ID(id) + PRACTICE;
 export const API_PRACTICE = API_V1 + PRACTICE;
 export const API_PRACTICE_ID = (id: string) => API_PRACTICE + '/' + id;
+export const API_PRACTICE_ID_ATTEMPT = (id: string) =>
+  API_PRACTICE_ID(id) + ATTEMPT;
 
 // Заявки на курс
 export const API_COURSE_ID_SEND_PARTICIPATION = (id: string) =>
