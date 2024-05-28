@@ -1,0 +1,29 @@
+:host {
+  width: 100%;
+
+  .list {
+    &__item {
+      padding: 5px;
+
+      &__field {
+        .status {
+          color: rgb(var(--red-color));
+
+          .IN_QUEUE {
+            color: var(--black-text);
+          }
+
+          .APPROVE {
+            color: rgb(var(--green-color));
+          }
+        }
+      }
+
+      &__circle {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
