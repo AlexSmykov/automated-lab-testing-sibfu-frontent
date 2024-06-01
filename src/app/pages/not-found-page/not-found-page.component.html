@@ -1,0 +1,23 @@
+<section class="not-found flex row center">
+  <div class="max-h max-w flex column start align-l">
+    <h1 class="not-found__title max-w text-center weight-600">404</h1>
+    <span class="not-found__text max-w text-center size-l">
+      Ресурс, к которому вы пытались обратиться, не существует
+    </span>
+
+    <span class="not-found__text max-w text-center size-l">
+      Это означает, что вы попробовали перейти на несуществующую страницу, или
+      же обратились к несуществующим данным
+    </span>
+
+    <div class="not-found__buttons buttons max-w flex row">
+      <div class="buttons__button clickable size-l" (click)="toMainPage()">
+        На главную страницу
+      </div>
+
+      <div class="buttons__button clickable size-l" (click)="toLogin()">
+        Выйти из профиля
+      </div>
+    </div>
+  </div>
+</section>
