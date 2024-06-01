@@ -27,6 +27,12 @@
           (courseClick)="openCourse(course.id)"
         ></app-courses-page-item>
       </div>
+
+      <app-intersection-trigger
+        *ngIf="hasNextPage$ | async"
+        [isLoading]="isLoading$ | async"
+        (trigger)="loadMoreCourses()"
+      ></app-intersection-trigger>
     </nz-spin>
   </div>
 </section>

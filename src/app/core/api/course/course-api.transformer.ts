@@ -14,7 +14,7 @@ export function serializeCoursePost(data: TCoursePost): TCourseCreateDto {
   return {
     name: data.name,
     description: data.description,
-    image_id: data.imageId,
+    image_id: data.imageId ? data.imageId : undefined,
   };
 }
 
