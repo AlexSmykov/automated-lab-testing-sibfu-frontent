@@ -15,6 +15,7 @@ import { FooterModule } from 'src/app/layout/footer/footer.module';
 import { HeaderModule } from 'src/app/layout/header/header.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthInterceptor } from 'src/app/core/intercepters/auth.interceptor';
+import { ErrorInterceptor } from 'src/app/core/intercepters/error.interceptor';
 
 registerLocaleData(ru);
 
@@ -57,6 +58,11 @@ registerLocaleData(ru);
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

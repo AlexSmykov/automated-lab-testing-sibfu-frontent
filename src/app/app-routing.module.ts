@@ -9,11 +9,6 @@ import { noAuthGuard } from 'src/app/core/auth/no-auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: EPartialRoutes.LOGIN,
-    pathMatch: 'full',
-  },
-  {
     path: EPartialRoutes.LOGIN,
     canActivate: [noAuthGuard],
     canMatch: [noAuthGuard],
@@ -39,6 +34,26 @@ const routes: Routes = [
     loadChildren: () =>
       import('./layout/main/main.module').then((m) => m.MainModule),
   },
+  {
+    path: EPartialRoutes.SERVER_ERROR,
+    loadChildren: () =>
+      import('./pages/server-error-page/server-error-page.module').then(
+        (m) => m.ServerErrorPageModule
+      ),
+  },
+  {
+    path: EPartialRoutes.NOT_FOUND,
+    loadChildren: () =>
+      import('./pages/not-found-page/not-found-page.module').then(
+        (m) => m.NotFoundPageModule
+      ),
+  },
+  {
+    path: '',
+    redirectTo: EPartialRoutes.LOGIN,
+    pathMatch: 'full',
+  },
+  { path: '**', redirectTo: EPartialRoutes.NOT_FOUND, pathMatch: 'full' },
 ];
 
 @NgModule({
