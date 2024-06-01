@@ -14,6 +14,8 @@ enum ERoutes {
   PRACTICE_EDIT = 'PRACTICE_EDIT',
   COURSE_SEARCH = 'COURSE_SEARCH',
   COURSE_PARTICIPATION = 'COURSE_PARTICIPATION',
+  SERVER_ERROR = 'SERVER_ERROR',
+  NOT_FOUND = 'NOT_FOUND',
 }
 
 export enum ERoutesIds {
@@ -31,6 +33,8 @@ enum ERoutesParts {
   EDIT = 'edit',
   SEARCH = 'search',
   PARTICIPATIONS = 'participations',
+  SERVER_ERROR = 'server-error-500',
+  NOT_FOUND = 'not-found-404',
 }
 
 export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
@@ -47,6 +51,8 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.PRACTICE_EDIT]: [ERoutesParts.EDIT].join('/'),
   [ERoutes.COURSE_SEARCH]: [ERoutesParts.SEARCH].join('/'),
   [ERoutes.COURSE_PARTICIPATION]: [ERoutesParts.PARTICIPATIONS].join('/'),
+  [ERoutes.SERVER_ERROR]: [ERoutesParts.SERVER_ERROR].join('/'),
+  [ERoutes.NOT_FOUND]: [ERoutesParts.NOT_FOUND].join('/'),
 };
 
 export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
@@ -118,4 +124,6 @@ export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
     courseId,
     ERoutesParts.PARTICIPATIONS,
   ],
+  [ERoutes.SERVER_ERROR]: ['/', ERoutesParts.SERVER_ERROR],
+  [ERoutes.NOT_FOUND]: ['/', ERoutesParts.NOT_FOUND],
 };
