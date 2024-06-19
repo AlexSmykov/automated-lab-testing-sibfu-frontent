@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CourseSearchPageComponent } from 'src/app/pages/course-find-page/course-search-page.component';
+import { CourseSearchPageComponent } from 'src/app/pages/course-search-page/course-search-page.component';
 
 const routes: Routes = [
   {

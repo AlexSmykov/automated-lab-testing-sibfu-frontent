@@ -1,31 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ERoles } from 'src/app/core/role/role.enum';
 import { EFullRoutes, ERoutesIds } from 'src/app/shared/router-paths';
 import { CourseApiService } from 'src/app/core/api/course/course-api.service';
 import { TCourse } from 'src/app/core/api/course/course-api.interface';
-import { TPractice } from 'src/app/core/api/practice/practice-api.interface';
 import { PracticeApiService } from 'src/app/core/api/practice/practice-api.service';
 import { LoadService } from 'src/app/shared/services/load.service';
+import { CoursePaginatedListService } from 'src/app/core/api/practice/practice-paginated-list.service';
+import { PARTICIPATION_STATUS } from 'src/app/pages/course-participations-page/course-participations-page.const';
+import { EParticipationFilterStatuses } from 'src/app/core/api/participation/participation-api.enum';
 
-import { BehaviorSubject, switchMap, take } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
 @UntilDestroy()
 @Component({
   selector: 'app-course-page',
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.scss'],
-  providers: [CourseApiService, PracticeApiService, LoadService],
+  providers: [
+    CourseApiService,
+    CoursePaginatedListService,
+    PracticeApiService,
+    LoadService,
+  ],
 })
 export class CoursePageComponent implements OnInit {
-  private _course$ = new BehaviorSubject<TCourse | null>(null);
-  private _practices$ = new BehaviorSubject<TPractice[] | null>(null);
+  course: TCourse | null = null;
 
-  course$ = this._course$.asObservable();
-  practices$ = this._practices$.asObservable();
-  isLoading$ = this.loadService.isLoading$;
+  practices$ = this.coursePaginatedListService.list$;
+  count$ = this.coursePaginatedListService.count$;
+  size$ = this.coursePaginatedListService.size$;
+
+  get isLoading$(): Observable<boolean> {
+    return combineLatest(
+      this.loadService.isLoading$,
+      this.coursePaginatedListService.isLoading$,
+      (first, second) => {
+        return first || second;
+      }
+    );
+  }
 
   readonly ERoles = ERoles;
   readonly EFullRoutes = EFullRoutes;
@@ -33,54 +49,61 @@ export class CoursePageComponent implements OnInit {
   constructor(
     private loadService: LoadService,
     private courseApiService: CourseApiService,
-    private practiceApiService: PracticeApiService,
+    private coursePaginatedListService: CoursePaginatedListService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.subOnCourse();
+
+    this.coursePaginatedListService.courseId =
+      this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+
+    this.coursePaginatedListService.updateList();
+  }
+
+  subOnCourse(): void {
     this.loadService
       .wrapObservable(
-        this.activatedRoute.params.pipe(
-          untilDestroyed(this),
-          switchMap((params) => {
-            const courseId: string = params[ERoutesIds.COURSE_ID];
-            return this.courseApiService.get(courseId);
-          }),
-          switchMap((course) => {
-            this._course$.next(course);
-            return this.practiceApiService.getByCourse(course.id);
-          }),
-          take(1)
+        this.courseApiService.get(
+          this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID]
         )
       )
-      .subscribe((practices) => {
-        this._practices$.next(practices);
+      .subscribe((course) => {
+        this.course = course;
       });
   }
 
+  checkRequests(): void {
+    this.router.navigate(EFullRoutes.COURSE_PARTICIPATION(this.course!.id), {
+      queryParams: {
+        [PARTICIPATION_STATUS]: EParticipationFilterStatuses.REQUEST,
+      },
+    });
+  }
+
   checkParticipations(): void {
-    this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
-      this.router.navigate(EFullRoutes.COURSE_PARTICIPATION(course!.id));
+    this.router.navigate(EFullRoutes.COURSE_PARTICIPATION(this.course!.id), {
+      queryParams: {
+        [PARTICIPATION_STATUS]: EParticipationFilterStatuses.PARTICIPANT,
+      },
     });
   }
 
   editCourse(): void {
-    this.course$.pipe(untilDestroyed(this)).subscribe((course) => {
-      this.router.navigate(EFullRoutes.COURSE_EDIT(course!.id));
-    });
+    this.router.navigate(EFullRoutes.COURSE_EDIT(this.course!.id));
   }
 
   deleteCourse(): void {
-    this.course$
-      .pipe(
-        untilDestroyed(this),
-        switchMap((course) => {
-          return this.courseApiService.delete(course!.id);
-        })
-      )
+    this.loadService
+      .wrapObservable(this.courseApiService.delete(this.course!.id))
       .subscribe(() => {
         this.router.navigate(EFullRoutes.COURSES);
       });
+  }
+
+  loadPage(page: number): void {
+    this.coursePaginatedListService.updateAtPage(page);
   }
 }

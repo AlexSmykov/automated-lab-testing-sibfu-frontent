@@ -6,6 +6,7 @@ import { LoadService } from 'src/app/shared/services/load.service';
 import { SearchCourseApiService } from 'src/app/core/api/search-course/search-course-api.service';
 import { ParticipationApiService } from 'src/app/core/api/participation/participation-api.service';
 import { TSearchedCourse } from 'src/app/core/api/search-course/search-course-api.interface';
+import { ECourseParticipationStatuses } from 'src/app/core/api/search-course/search-course-api.enum';
 
 import {
   BehaviorSubject,
@@ -77,12 +78,21 @@ export class CourseSearchPageComponent implements OnInit {
       )
       .subscribe(() => {
         const currentCourses = this._searchedCourses$.getValue()!;
+        console.log(currentCourses, courseId);
         for (const currentCourse of currentCourses) {
           if (currentCourse.id === courseId) {
-            currentCourse.isHasActiveParticipation = true;
+            console.log(currentCourse.id);
+            currentCourse.participationStatus =
+              ECourseParticipationStatuses.REQUESTOR;
           }
         }
+
+        console.log(currentCourses);
         this._searchedCourses$.next(currentCourses);
       });
+  }
+
+  isPossibleSendRequest(course: TSearchedCourse): boolean {
+    return course.participationStatus === ECourseParticipationStatuses.NONE;
   }
 }
