@@ -1,5 +1,7 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
   <section class="practice-form flex column center">
+    <app-back-button [backPath]="backPath"></app-back-button>
+
     <app-form-container
       [title]="
         isEdit

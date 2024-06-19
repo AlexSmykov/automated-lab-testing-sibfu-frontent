@@ -16,6 +16,7 @@ import { DateInputModule } from 'src/app/shared/components/forms/date-input/date
 import { SelectInputModule } from 'src/app/shared/components/forms/select-input/select-input.module';
 import { RequiredRoleModule } from 'src/app/shared/directives/required-role/required-role.module';
 import { MyAttemptsListModule } from 'src/app/pages/practice-page/components/my-attempts-list/my-attempts-list.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [PracticePageComponent],
@@ -35,6 +36,7 @@ import { MyAttemptsListModule } from 'src/app/pages/practice-page/components/my-
     NzSpinModule,
     MyAttemptsListModule,
     NzToolTipModule,
+    BackButtonModule,
   ],
   exports: [PracticePageComponent],
 })

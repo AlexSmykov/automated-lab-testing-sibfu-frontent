@@ -7,6 +7,7 @@ import { SearchCourseApiService } from 'src/app/core/api/search-course/search-co
 import { ParticipationApiService } from 'src/app/core/api/participation/participation-api.service';
 import { TSearchedCourse } from 'src/app/core/api/search-course/search-course-api.interface';
 import { ECourseParticipationStatuses } from 'src/app/core/api/search-course/search-course-api.enum';
+import { EFullRoutes } from 'src/app/shared/router-paths';
 
 import {
   BehaviorSubject,
@@ -34,6 +35,8 @@ export class CourseSearchPageComponent implements OnInit {
   searchedCourses$ = this._searchedCourses$.asObservable();
 
   isLoading$ = this.loadService.isLoading$;
+
+  EFullRoutes = EFullRoutes;
 
   constructor(
     private participationApiService: ParticipationApiService,

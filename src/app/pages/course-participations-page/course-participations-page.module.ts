@@ -13,6 +13,7 @@ import { IslandModule } from 'src/app/shared/components/island/island.module';
 import { CourseParticipationsPageComponent } from 'src/app/pages/course-participations-page/course-participations-page.component';
 import { CourseParticipationsPageRoutingModule } from 'src/app/pages/course-participations-page/course-participations-page-routing.module';
 import { PaginationModule } from 'src/app/shared/components/pagination/pagination.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [CourseParticipationsPageComponent],
@@ -29,6 +30,7 @@ import { PaginationModule } from 'src/app/shared/components/pagination/paginatio
     IslandModule,
     SvgIconComponent,
     PaginationModule,
+    BackButtonModule,
   ],
   exports: [CourseParticipationsPageComponent],
 })

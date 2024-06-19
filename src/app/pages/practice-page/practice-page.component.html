@@ -1,112 +1,122 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
-  <section class="flex column center" *ngIf="practice$ | async as practice">
-    <div class="practice__header max-w very-light-gray flex row center align-c">
-      <h1>{{ practice.name }}</h1>
-    </div>
+  <section class="flex column center">
+    <app-back-button
+      [backPath]="EFullRoutes.COURSES_ID(courseId)"
+    ></app-back-button>
 
-    <div
-      class="practice__action-buttons flex row align-c end"
-      *appRequiredRole="ERoles.TEACHER"
-    >
-      <svg-icon
-        src="assets/icons/summary.svg"
-        nz-tooltip="Статистика по работе"
-        class="practice__action-buttons__button clickable"
-        (click)="summary()"
-      />
-
-      <svg-icon
-        src="assets/icons/edit.svg"
-        nz-tooltip="Редактировать"
-        class="practice__action-buttons__button clickable"
-        (click)="edit()"
-      />
-
-      <svg-icon
-        src="assets/icons/trash.svg"
-        nz-tooltip="Удалить"
-        class="practice__action-buttons__button clickable"
-        (click)="delete()"
-      />
-    </div>
-
-    <quill-view-html
-      class="practice__description max-w"
-      [content]="practice.description ? practice.description : '<em>Пусто</em>'"
-      theme="snow"
-    ></quill-view-html>
-
-    <div class="practice__separator max-w"></div>
-
-    <div class="fields-group flex row space">
-      <span>Дедлайн: {{ practice.deadline | date: "yyyy.MM.dd" }}</span>
-
-      <span>
-        Мягкий дедлайн: {{ practice.softDeadline | date: "yyyy.MM.dd" }}
-      </span>
-    </div>
-
-    <div class="practice__separator max-w"></div>
-
-    <div class="practice__other-info max-w flex column align-s">
-      <div class="practice__other-info max-w flex row space">
-        <span>Память: {{ practice.memoryLimit }} Кб</span>
-        <span>Доступ к сети: {{ practice.network ? "Да" : "Нет" }}</span>
+    <ng-container *ngIf="practice$ | async as practice">
+      <div
+        class="practice__header max-w very-light-gray flex row center align-c"
+      >
+        <h1>{{ practice.name }}</h1>
       </div>
 
-      <div class="practice__other-info max-w flex row space">
-        <span>Время: {{ practice.timeLimit }} мс</span>
+      <div
+        class="practice__action-buttons flex row align-c end"
+        *appRequiredRole="ERoles.TEACHER"
+      >
+        <svg-icon
+          src="assets/icons/summary.svg"
+          nz-tooltip="Статистика по работе"
+          class="practice__action-buttons__button clickable"
+          (click)="summary()"
+        />
+
+        <svg-icon
+          src="assets/icons/edit.svg"
+          nz-tooltip="Редактировать"
+          class="practice__action-buttons__button clickable"
+          (click)="edit()"
+        />
+
+        <svg-icon
+          src="assets/icons/trash.svg"
+          nz-tooltip="Удалить"
+          class="practice__action-buttons__button clickable"
+          (click)="delete()"
+        />
+      </div>
+
+      <quill-view-html
+        class="practice__description max-w"
+        [content]="
+          practice.description ? practice.description : '<em>Пусто</em>'
+        "
+        theme="snow"
+      ></quill-view-html>
+
+      <div class="practice__separator max-w"></div>
+
+      <div class="fields-group flex row space">
+        <span>Дедлайн: {{ practice.deadline | date: "yyyy.MM.dd" }}</span>
+
         <span>
-          Несколько файлов: {{ practice.allowMultiFile ? "Да" : "Нет" }}
+          Мягкий дедлайн: {{ practice.softDeadline | date: "yyyy.MM.dd" }}
         </span>
       </div>
 
-      <div class="practice__other-info max-w flex row space">
-        <span>Кол-во потоков: {{ practice.maxThreads }}</span>
-        <span *ngIf="practice.commandLineArgs">
-          Доп. аргументы: "{{ practice.commandLineArgs }}"
-        </span>
-      </div>
+      <div class="practice__separator max-w"></div>
 
-      <span *appRequiredRole="ERoles.TEACHER">
-        Доступные языки: {{ languagesNames$ | async }}
-      </span>
-    </div>
-
-    <ng-container>
-      <app-form-container>
-        <div class="fields-group flex row space">
-          <div>
-            <app-select-input
-              label="Язык программы"
-              placeholder="Выберите язык для проверки"
-              [control]="answerFormGroup.controls.language"
-              [items]="languages"
-            ></app-select-input>
-          </div>
-
-          <div></div>
+      <div class="practice__other-info max-w flex column align-s">
+        <div class="practice__other-info max-w flex row space">
+          <span>Память: {{ practice.memoryLimit }} Кб</span>
+          <span>Доступ к сети: {{ practice.network ? "Да" : "Нет" }}</span>
         </div>
 
-        <app-textarea-input
-          [label]="'Загрузка работы'"
-          [control]="answerFormGroup.controls.code"
-          [placeholder]="'Паста javascript здесь'"
-          [startSizeInLines]="10"
-          [maxLength]="10000"
-        ></app-textarea-input>
-      </app-form-container>
+        <div class="practice__other-info max-w flex row space">
+          <span>Время: {{ practice.timeLimit }} мс</span>
+          <span>
+            Несколько файлов: {{ practice.allowMultiFile ? "Да" : "Нет" }}
+          </span>
+        </div>
 
-      <div class="flex row end">
-        <app-form-button
-          [formToWatch]="answerFormGroup"
-          (click)="sendAttempt()"
-        >
-          Загрузить работу
-        </app-form-button>
+        <div class="practice__other-info max-w flex row space">
+          <span>Кол-во потоков: {{ practice.maxThreads }}</span>
+          <span *ngIf="practice.commandLineArgs">
+            Доп. аргументы: "{{ practice.commandLineArgs }}"
+          </span>
+        </div>
+
+        <span *appRequiredRole="ERoles.TEACHER">
+          Доступные языки: {{ languagesNames$ | async }}
+        </span>
       </div>
-    </ng-container>
 
-    <app-my-attempts-list [practiceId]="practiceId"></app-my-attempts-list>
+      <ng-container>
+        <app-form-container>
+          <div class="fields-group flex row space">
+            <div>
+              <app-select-input
+                label="Язык программы"
+                placeholder="Выберите язык для проверки"
+                [control]="answerFormGroup.controls.language"
+                [items]="languages"
+              ></app-select-input>
+            </div>
+
+            <div></div>
+          </div>
+
+          <app-textarea-input
+            [label]="'Загрузка работы'"
+            [control]="answerFormGroup.controls.code"
+            [placeholder]="'Паста javascript здесь'"
+            [startSizeInLines]="10"
+            [maxLength]="10000"
+          ></app-textarea-input>
+        </app-form-container>
+
+        <div class="flex row end">
+          <app-form-button
+            [formToWatch]="answerFormGroup"
+            (click)="sendAttempt()"
+          >
+            Загрузить работу
+          </app-form-button>
+        </div>
+      </ng-container>
+
+      <app-my-attempts-list [practiceId]="practiceId"></app-my-attempts-list>
+    </ng-container>
   </section>
 </nz-spin>

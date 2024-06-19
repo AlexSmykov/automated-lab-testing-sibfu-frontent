@@ -1,4 +1,8 @@
 <section class="participations-page flex column center">
+  <app-back-button
+    [backPath]="EFullRoutes.PRACTICES_ID(courseId, practiceId)"
+  ></app-back-button>
+
   <app-summary-attempts-list
     [practiceId]="practiceId"
   ></app-summary-attempts-list>
