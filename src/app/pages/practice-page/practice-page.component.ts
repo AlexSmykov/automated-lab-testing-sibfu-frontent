@@ -24,6 +24,10 @@ import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
   providers: [PracticeApiService, LoadService],
 })
 export class PracticePageComponent implements OnInit {
+  practiceId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
+  courseId: string = this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+
   private _practice$ = new BehaviorSubject<TPractice | null>(null);
   practice$ = this._practice$.asObservable();
   private practiceSafe$ = this.practice$.pipe(
@@ -32,14 +36,10 @@ export class PracticePageComponent implements OnInit {
 
   languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
 
-  practiceId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
-  private courseId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-
   isLoading$ = this.loadService.isLoading$;
 
-  readonly ERoles = ERoles;
+  EFullRoutes = EFullRoutes;
+  ERoles = ERoles;
 
   answerFormGroup: TFormGroupValue<TPracticeAnswerFormValue> = this.fb.group({
     language: this.fb.control<number>(

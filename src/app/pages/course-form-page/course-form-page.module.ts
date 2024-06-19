@@ -13,6 +13,7 @@ import { FormButtonModule } from 'src/app/shared/components/button/form-button.m
 import { CourseFormPageComponent } from 'src/app/pages/course-form-page/course-form-page.component';
 import { CourseFormPageRoutingModule } from 'src/app/pages/course-form-page/course-form-page-routing.module';
 import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-input/textarea-input.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [CourseFormPageComponent],
@@ -29,6 +30,7 @@ import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-in
     FormButtonModule,
     TextareaInputModule,
     NzSpinModule,
+    BackButtonModule,
   ],
   exports: [CourseFormPageComponent],
 })

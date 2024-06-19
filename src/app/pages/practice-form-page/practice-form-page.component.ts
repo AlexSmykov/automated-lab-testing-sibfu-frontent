@@ -23,6 +23,10 @@ import { LoadService } from 'src/app/shared/services/load.service';
   providers: [PracticeApiService, LoadService],
 })
 export class PracticeFormPageComponent implements OnInit {
+  courseId: string = this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+  practiceId: string | undefined =
+    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
+
   practiceForm: TFormGroupValue<TPracticeFormValue> = this.fb.group({
     name: this.fb.control<string>('', [
       Validators.required,
@@ -48,10 +52,6 @@ export class PracticeFormPageComponent implements OnInit {
   });
 
   isEdit: boolean = false;
-  private courseId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-  private practiceId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
 
   currentDate = new Date();
 
@@ -61,6 +61,14 @@ export class PracticeFormPageComponent implements OnInit {
 
   get testControls(): TFormGroupValue<TPracticeFormTestcase>[] {
     return this.practiceForm.controls.testcases.controls;
+  }
+
+  get backPath(): string[] {
+    if (this.practiceId) {
+      return EFullRoutes.PRACTICES_ID(this.courseId, this.practiceId);
+    }
+
+    return EFullRoutes.COURSES_ID(this.courseId);
   }
 
   constructor(

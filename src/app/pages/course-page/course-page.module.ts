@@ -13,6 +13,7 @@ import { CourseHeaderModule } from 'src/app/pages/course-page/components/course-
 import { RequiredRoleModule } from 'src/app/shared/directives/required-role/required-role.module';
 import { IntersectionTriggerModule } from 'src/app/shared/components/intersection-trigger/intersection-trigger.module';
 import { PaginationModule } from 'src/app/shared/components/pagination/pagination.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [CoursePageComponent],
@@ -29,6 +30,7 @@ import { PaginationModule } from 'src/app/shared/components/pagination/paginatio
     NzPaginationModule,
     PaginationModule,
     NzToolTipModule,
+    BackButtonModule,
   ],
   exports: [CoursePageComponent],
 })

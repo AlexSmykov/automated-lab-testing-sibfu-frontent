@@ -12,6 +12,7 @@ import { TextInputModule } from 'src/app/shared/components/forms/text-input/text
 import { IslandModule } from 'src/app/shared/components/island/island.module';
 import { CourseSearchPageRoutingModule } from 'src/app/pages/course-search-page/course-search-page-routing.module';
 import { CourseSearchPageComponent } from 'src/app/pages/course-search-page/course-search-page.component';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [CourseSearchPageComponent],
@@ -27,6 +28,7 @@ import { CourseSearchPageComponent } from 'src/app/pages/course-search-page/cour
     NzInputModule,
     IslandModule,
     SvgIconComponent,
+    BackButtonModule,
   ],
   exports: [CourseSearchPageComponent],
 })

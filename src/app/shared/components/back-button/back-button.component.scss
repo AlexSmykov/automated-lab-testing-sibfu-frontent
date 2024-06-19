@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+
+  .regular-button {
+    color: var(--black-text);
+    background: var(--light-gray-bg);
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    transition: 0.33s;
+
+    &:hover {
+      background: var(--very-light-gray-bg);
+    }
+  }
+}

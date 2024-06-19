@@ -1,15 +1,19 @@
 <section class="participations-page flex column center">
-  <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
-    <ng-container *ngIf="participations$ | async as participations">
-      <app-island
-        *ngIf="participations.length; else noParticipations"
-        [padding]="10"
-      >
-        <h1 class="text-center max-w">
-          {{ EParticipationFilterDescription[participationStatus] }}
-        </h1>
+  <app-back-button
+    [backPath]="EFullRoutes.COURSES_ID(courseId)"
+  ></app-back-button>
 
-        <div class="participations-page__list flex column gapless">
+  <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+    <app-island [padding]="10">
+      <h1 class="text-center max-w">
+        {{ EParticipationFilterDescription[participationStatus] }}
+      </h1>
+
+      <ng-container *ngIf="participations$ | async as participations">
+        <div
+          *ngIf="participations.length; else noParticipations"
+          class="participations-page__list flex column gapless"
+        >
           <ng-container *ngFor="let participation of participations">
             <div class="participations-page__participation flex row space">
               <span class="participations-page__participation__text">
@@ -47,8 +51,8 @@
           [count$]="count$"
           (pageChanged)="loadPage($event)"
         ></app-pagination>
-      </app-island>
-    </ng-container>
+      </ng-container>
+    </app-island>
   </nz-spin>
 </section>
 

@@ -14,6 +14,7 @@ import { PaginationModule } from 'src/app/shared/components/pagination/paginatio
 import { PracticeSummaryPageComponent } from 'src/app/pages/practice-summary-page/practice-summary-page.component';
 import { PracticeSummaryPageRoutingModule } from 'src/app/pages/practice-summary-page/practice-summary-page-routing.module';
 import { SummaryAttemptsListModule } from 'src/app/pages/practice-summary-page/components/my-attempts-list/summary-attempts-list.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [PracticeSummaryPageComponent],
@@ -31,6 +32,7 @@ import { SummaryAttemptsListModule } from 'src/app/pages/practice-summary-page/c
     SvgIconComponent,
     PaginationModule,
     SummaryAttemptsListModule,
+    BackButtonModule,
   ],
   exports: [PracticeSummaryPageComponent],
 })

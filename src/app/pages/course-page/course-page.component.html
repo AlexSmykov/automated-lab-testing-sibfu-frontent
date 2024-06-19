@@ -1,5 +1,7 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
-  <section class="flex row center">
+  <section class="flex column center">
+    <app-back-button [backPath]="EFullRoutes.COURSES"></app-back-button>
+
     <div
       class="course__wrapper max-h max-w flex column start align-r"
       *ngIf="course"

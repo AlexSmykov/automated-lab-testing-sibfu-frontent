@@ -19,6 +19,7 @@ import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-in
 import { NumberInputModule } from 'src/app/shared/components/forms/number-input/number-input.module';
 import { MdTextareaInputModule } from 'src/app/shared/components/forms/md-textarea-input/md-textarea-input.module';
 import { MultiselectInputModule } from 'src/app/shared/components/forms/multiselect-input/multiselect-input.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [PracticeFormPageComponent],
@@ -41,6 +42,7 @@ import { MultiselectInputModule } from 'src/app/shared/components/forms/multisel
     NzSpinModule,
     MdTextareaInputModule,
     MultiselectInputModule,
+    BackButtonModule,
   ],
   exports: [PracticeFormPageComponent],
 })

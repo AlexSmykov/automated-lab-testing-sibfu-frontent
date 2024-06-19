@@ -1,5 +1,7 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
-  <section class="flex row center">
+  <section class="flex column center">
+    <app-back-button [backPath]="backPath"></app-back-button>
+
     <app-form-container
       [title]="isEdit ? 'Редактирование курса' : 'Создание нового курса'"
     >

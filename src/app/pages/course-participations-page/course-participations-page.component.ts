@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { LoadService } from 'src/app/shared/services/load.service';
 import { ParticipationApiService } from 'src/app/core/api/participation/participation-api.service';
-import { ERoutesIds } from 'src/app/shared/router-paths';
+import { EFullRoutes, ERoutesIds } from 'src/app/shared/router-paths';
 import {
   EParticipationFilterDescription,
   EParticipationFilterStatuses,
@@ -31,6 +31,7 @@ export class CourseParticipationsPageComponent implements OnInit {
   count$ = this.participationPaginatedListService.count$;
   size$ = this.participationPaginatedListService.size$;
 
+  EFullRoutes = EFullRoutes;
   EParticipationFilterDescription = EParticipationFilterDescription;
   EParticipationFilterStatuses = EParticipationFilterStatuses;
 
