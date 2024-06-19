@@ -22,11 +22,12 @@ export abstract class AbstractCursorPageableService<T> {
   protected page = 1;
   protected previous: string | null = null;
 
+  private _pages = new BehaviorSubject<number>(0);
   private _isLoading$ = new BehaviorSubject<boolean>(false);
   private _list$ = new BehaviorSubject<T[] | null>(null);
   private _hasNextPage$ = new BehaviorSubject<boolean>(false);
   private _isCanceled$ = new BehaviorSubject<boolean>(false);
-  private _size$ = new BehaviorSubject<number>(0);
+  private _count$ = new BehaviorSubject<number>(0);
   private _currentPage$ = new BehaviorSubject<number>(0);
 
   constructor(pageSize: number = DEFAULT_PAGE_SIZE) {
@@ -42,8 +43,11 @@ export abstract class AbstractCursorPageableService<T> {
   public get hasNextPage$(): Observable<boolean> {
     return this._hasNextPage$.asObservable();
   }
+  public get count$(): Observable<number> {
+    return this._count$.asObservable();
+  }
   public get size$(): Observable<number> {
-    return this._size$.asObservable();
+    return of(this.size);
   }
 
   public get currentPage$(): Observable<number> {
@@ -64,7 +68,7 @@ export abstract class AbstractCursorPageableService<T> {
           }
           return this.loadList({ size: this.size, page: this.page }).pipe(
             tap((pageableDataList) => {
-              this._size$.next(pageableDataList.count);
+              this._count$.next(pageableDataList.count);
               this._currentPage$.next(this.page + 1);
               this._hasNextPage$.next(
                 this.page < pageableDataList.count / this.size
@@ -126,7 +130,7 @@ export abstract class AbstractCursorPageableService<T> {
     this.previous = null;
   }
 
-  nextPage(): Observable<boolean> {
+  nextPage(isStack = true): Observable<boolean> {
     if (this._isLoading$.getValue()) {
       return EMPTY;
     }
@@ -135,7 +139,7 @@ export abstract class AbstractCursorPageableService<T> {
       return EMPTY;
     }
 
-    this._loadList(true);
+    this._loadList(isStack);
     return this._isLoading$.pipe(
       skipWhile((isLoading) => isLoading),
       first()
