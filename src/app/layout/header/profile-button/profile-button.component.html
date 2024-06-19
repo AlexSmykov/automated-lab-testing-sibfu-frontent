@@ -4,6 +4,7 @@
     <span class="weight-600">{{ user.isTeacher | roleName }}</span>
   </div>
   <svg-icon
+    nz-tooltip="Выйти"
     class="profile-info__icon clickable shadow"
     src="assets/icons/exit.svg"
     (click)="logout()"
