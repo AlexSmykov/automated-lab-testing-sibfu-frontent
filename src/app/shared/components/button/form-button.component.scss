@@ -11,6 +11,12 @@
     border: none;
     cursor: pointer;
 
+    transition: 0.33s;
+
+    &:hover {
+      background: var(--light-gray-bg);
+    }
+
     &:disabled {
       opacity: 0.5;
       cursor: default;

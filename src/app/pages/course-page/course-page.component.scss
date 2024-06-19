@@ -27,6 +27,12 @@
       height: 90px;
       background: var(--light-gray-bg);
       border-radius: 10px;
+
+      transition: 0.33s;
+
+      &:hover {
+        background: var(--very-light-gray-bg);
+      }
     }
   }
 }

@@ -1,0 +1,25 @@
+<nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+  <app-island [padding]="10">
+    <h1 class="text-center max-w">Текущие попытки</h1>
+
+    <div class="list__wrapper flex column gapless">
+      <ng-container *ngFor="let attempt of attempts$ | async">
+        <div class="list__item flex row space">
+          <span class="list__item__field">
+            {{ attempt.sentTime | date: "dd.MM.yyyy, mm:HH" }}
+          </span>
+
+          <span class="list__item__field status" [ngClass]="attempt.status">
+            {{ attempt.status | attemptStatusName }}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+
+    <app-pagination
+      [size$]="attemptsPageSize$"
+      [count$]="attemptsCount$"
+      (pageChanged)="loadAttemptPage($event)"
+    ></app-pagination>
+  </app-island>
+</nz-spin>

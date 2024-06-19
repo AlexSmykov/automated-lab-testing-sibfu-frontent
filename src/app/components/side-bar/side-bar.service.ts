@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { mockCourses } from 'src/app/pages/courses-page/mock-courses';
-import { TCourse } from 'src/app/pages/course-page/course-page.interface';
+import { TCourse } from 'src/app/core/api/course/course-api.interface';
 
-import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @UntilDestroy()
 @Injectable({ providedIn: 'root' })
@@ -26,17 +24,12 @@ export class SideBarService {
     return this._selectedCoursePracticeId$.asObservable();
   }
 
-  constructor(private httpClient: HttpClient) {
-    this.subOnPracticeIdSet();
+  constructor() {
     this.updateCourses();
   }
 
   updateCourses(): void {
-    this._courses$.next(mockCourses);
-
-    // this.httpClient.get<TCourse[]>(API_COURSES).subscribe((result) => {
-    //   this._courses$.next(result)
-    // })
+    this._courses$.next([]);
   }
 
   unselectCourse(): void {
@@ -54,26 +47,5 @@ export class SideBarService {
 
   selectPractice(id: string): void {
     this._selectedCoursePracticeId$.next(id);
-  }
-
-  subOnPracticeIdSet(): void {
-    this._selectedCoursePracticeId$
-      .pipe(
-        untilDestroyed(this),
-        filter((id): id is string => !!id),
-        switchMap((id) =>
-          this._courses$.pipe(
-            map((courses) => {
-              return courses.find(
-                (course) =>
-                  course.practices.find((practice) => practice.id === id)!
-              )!;
-            })
-          )
-        )
-      )
-      .subscribe((course) => {
-        this._selectedCourseId$.next(course!.id);
-      });
   }
 }

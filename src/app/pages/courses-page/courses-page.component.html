@@ -2,7 +2,7 @@
   <div class="max-h max-w flex column start align-l">
     <h1 class="title max-w">Мои курсы</h1>
 
-    <div class="buttons max-w">
+    <div class="buttons max-w flex row">
       <app-island
         class="clickable"
         *appRequiredRole="ERoles.TEACHER"
@@ -27,6 +27,12 @@
           (courseClick)="openCourse(course.id)"
         ></app-courses-page-item>
       </div>
+
+      <app-intersection-trigger
+        *ngIf="hasNextPage$ | async"
+        [isLoading]="isLoading$ | async"
+        (trigger)="loadMoreCourses()"
+      ></app-intersection-trigger>
     </nz-spin>
   </div>
 </section>

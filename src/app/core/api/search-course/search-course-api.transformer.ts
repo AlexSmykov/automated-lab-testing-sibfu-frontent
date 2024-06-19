@@ -10,6 +10,6 @@ export function deserializeSearchedCourse(
     name: dto.name,
     description: dto.description,
     image: dto.image_id ? API_STATIC_IMAGES + dto.image_id : '',
-    isHasActiveParticipation: dto.has_participation,
+    participationStatus: dto.participation_status,
   };
 }

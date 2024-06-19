@@ -1,5 +1,5 @@
 <section class="main-section max-h flex column center align-center">
-  <div class="form-sizer">
+  <div class="form-sizer flex align-c">
     <app-form-container [title]="'Регистрация'">
       <app-text-input
         label="Логин"
@@ -7,11 +7,19 @@
         [placeholder]="'Введите логин'"
       ></app-text-input>
 
-      <app-text-input
-        label="ФИО"
-        [control]="controls.fio"
-        [placeholder]="'Введите ваше ФИО'"
-      ></app-text-input>
+      <div class="fields-group flex row space">
+        <app-text-input
+          label="Имя"
+          [control]="controls.name"
+          [placeholder]="'Введите ваше имя'"
+        ></app-text-input>
+
+        <app-text-input
+          label="Фамилия"
+          [control]="controls.surname"
+          [placeholder]="'Введите ваше фамилия'"
+        ></app-text-input>
+      </div>
 
       <app-text-input
         label="Почта"
@@ -19,20 +27,23 @@
         [placeholder]="'Введите почту'"
       ></app-text-input>
 
-      <app-password-input
-        label="Пароль"
-        [control]="controls.password"
-        [placeholder]="'Введите пароль'"
-      ></app-password-input>
+      <div class="fields-group flex row space">
+        <app-password-input
+          label="Пароль"
+          [control]="controls.password"
+          [placeholder]="'Введите пароль'"
+        ></app-password-input>
 
-      <app-password-input
-        label="Подтверждение пароля"
-        [control]="controls.passwordConfirm"
-        [placeholder]="'Повторите пароль'"
-      ></app-password-input>
+        <app-password-input
+          label="Подтверждение пароля"
+          [control]="controls.passwordConfirm"
+          [placeholder]="'Повторите пароль'"
+        ></app-password-input>
+      </div>
 
       <app-checkbox-input
         label="Я преподаватель"
+        tooltip="В случае регистрации как преподаватель, вашу заявку должен будет одобрить модератор"
         [control]="controls.isTeacher"
       ></app-checkbox-input>
 

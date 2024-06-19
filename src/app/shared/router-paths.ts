@@ -12,8 +12,11 @@ enum ERoutes {
   COURSE_EDIT = 'COURSE_EDIT',
   PRACTICE_CREATE = 'PRACTICE_CREATE',
   PRACTICE_EDIT = 'PRACTICE_EDIT',
+  PRACTICE_SUMMARY = 'PRACTICE_SUMMARY',
   COURSE_SEARCH = 'COURSE_SEARCH',
   COURSE_PARTICIPATION = 'COURSE_PARTICIPATION',
+  SERVER_ERROR = 'SERVER_ERROR',
+  NOT_FOUND = 'NOT_FOUND',
 }
 
 export enum ERoutesIds {
@@ -29,8 +32,11 @@ enum ERoutesParts {
   PRACTICES = 'practices',
   CREATE = 'create',
   EDIT = 'edit',
+  SUMMARY = 'summary',
   SEARCH = 'search',
   PARTICIPATIONS = 'participations',
+  SERVER_ERROR = 'server-error-500',
+  NOT_FOUND = 'not-found-404',
 }
 
 export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
@@ -45,8 +51,11 @@ export const EPartialRoutes: TKeyInEnum<ERoutes, string> = {
   [ERoutes.PRACTICES_ID]: [':' + ERoutesIds.PRACTICE_ID].join('/'),
   [ERoutes.PRACTICE_CREATE]: [ERoutesParts.CREATE].join('/'),
   [ERoutes.PRACTICE_EDIT]: [ERoutesParts.EDIT].join('/'),
+  [ERoutes.PRACTICE_SUMMARY]: [ERoutesParts.SUMMARY].join('/'),
   [ERoutes.COURSE_SEARCH]: [ERoutesParts.SEARCH].join('/'),
   [ERoutes.COURSE_PARTICIPATION]: [ERoutesParts.PARTICIPATIONS].join('/'),
+  [ERoutes.SERVER_ERROR]: [ERoutesParts.SERVER_ERROR].join('/'),
+  [ERoutes.NOT_FOUND]: [ERoutesParts.NOT_FOUND].join('/'),
 };
 
 export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
@@ -105,6 +114,15 @@ export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
     practiceId,
     ERoutesParts.EDIT,
   ],
+  [ERoutes.PRACTICE_SUMMARY]: (courseId: string, practiceId: string) => [
+    '/',
+    ERoutesParts.MAIN,
+    ERoutesParts.COURSES,
+    courseId,
+    ERoutesParts.PRACTICES,
+    practiceId,
+    ERoutesParts.SUMMARY,
+  ],
   [ERoutes.COURSE_SEARCH]: [
     '/',
     ERoutesParts.MAIN,
@@ -118,4 +136,6 @@ export const EFullRoutes: TKeyInEnum<ERoutes, any> = {
     courseId,
     ERoutesParts.PARTICIPATIONS,
   ],
+  [ERoutes.SERVER_ERROR]: ['/', ERoutesParts.SERVER_ERROR],
+  [ERoutes.NOT_FOUND]: ['/', ERoutesParts.NOT_FOUND],
 };

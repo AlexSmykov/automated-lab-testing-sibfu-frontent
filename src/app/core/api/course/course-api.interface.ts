@@ -17,3 +17,5 @@ export type TCourse = {
   image: string;
   imageId: string;
 };
+
+export type TCourseFilters = {};

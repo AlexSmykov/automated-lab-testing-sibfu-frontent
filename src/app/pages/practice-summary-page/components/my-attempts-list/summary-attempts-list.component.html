@@ -1,0 +1,32 @@
+<nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
+  <app-island [padding]="10">
+    <h1 class="text-center max-w">Статистика по студентам</h1>
+
+    <ng-container *ngIf="attempts$ | async as attempts">
+      <ng-container *ngIf="!attempts.length">Нет данных</ng-container>
+
+      <div class="list__wrapper flex column gapless">
+        <ng-container *ngFor="let attempt of attempts">
+          <div class="list__item flex row space">
+            <span class="list__item__field">
+              {{ attempt.displayName }}
+            </span>
+
+            <span
+              class="list__item__field status"
+              [class.accepted]="attempt.accepted"
+            >
+              {{ attempt.accepted ? "Принято" : "Не сдано" }}
+            </span>
+          </div>
+        </ng-container>
+      </div>
+
+      <app-pagination
+        [size$]="attemptsPageSize$"
+        [count$]="attemptsCount$"
+        (pageChanged)="loadAttemptPage($event)"
+      ></app-pagination>
+    </ng-container>
+  </app-island>
+</nz-spin>

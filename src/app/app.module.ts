@@ -10,11 +10,12 @@ import { RouterOutlet } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { provideQuillConfig, QuillModule } from 'ngx-quill';
 
-import { BasicAuthInterceptor } from 'src/app/core/intercepters/basic-auth.interceptor';
 import { AppComponent } from 'src/app/app.component';
 import { FooterModule } from 'src/app/layout/footer/footer.module';
 import { HeaderModule } from 'src/app/layout/header/header.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AuthInterceptor } from 'src/app/core/intercepters/auth.interceptor';
+import { ErrorInterceptor } from 'src/app/core/intercepters/error.interceptor';
 
 registerLocaleData(ru);
 
@@ -56,7 +57,12 @@ registerLocaleData(ru);
     { provide: NZ_I18N, useValue: ru_RU },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: BasicAuthInterceptor,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

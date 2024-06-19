@@ -1,89 +1,103 @@
 import { Component, OnInit } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ActivatedRoute } from '@angular/router';
 
 import { LoadService } from 'src/app/shared/services/load.service';
-import { SearchCourseApiService } from 'src/app/core/api/search-course/search-course-api.service';
 import { ParticipationApiService } from 'src/app/core/api/participation/participation-api.service';
-import { TParticipation } from 'src/app/core/api/participation/participation-api.interface';
-import { ERoutesIds } from 'src/app/shared/router-paths';
-import { EParticipationStatuses } from 'src/app/core/api/participation/participation-api.enum';
+import { EFullRoutes, ERoutesIds } from 'src/app/shared/router-paths';
+import {
+  EParticipationFilterDescription,
+  EParticipationFilterStatuses,
+  EParticipationStatuses,
+} from 'src/app/core/api/participation/participation-api.enum';
+import { ParticipationPaginatedListService } from 'src/app/core/api/participation/participation-paginated-list.service';
+import { PARTICIPATION_STATUS } from 'src/app/pages/course-participations-page/course-participations-page.const';
 
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
 @UntilDestroy()
 @Component({
   selector: 'app-course-participations-page',
   templateUrl: './course-participations-page.component.html',
   styleUrls: ['./course-participations-page.component.scss'],
-  providers: [SearchCourseApiService, LoadService, ParticipationApiService],
+  providers: [LoadService, ParticipationPaginatedListService],
 })
 export class CourseParticipationsPageComponent implements OnInit {
-  private _participations$ = new BehaviorSubject<TParticipation[] | null>(null);
-  participations$ = this._participations$.asObservable();
+  courseId: string = this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+  participationStatus: EParticipationFilterStatuses =
+    this.activatedRoute.snapshot.queryParams[PARTICIPATION_STATUS];
 
-  isLoading$ = this.loadService.isLoading$;
-  courseId: string | null = null;
+  participations$ = this.participationPaginatedListService.list$;
+  count$ = this.participationPaginatedListService.count$;
+  size$ = this.participationPaginatedListService.size$;
+
+  EFullRoutes = EFullRoutes;
+  EParticipationFilterDescription = EParticipationFilterDescription;
+  EParticipationFilterStatuses = EParticipationFilterStatuses;
+
+  get isLoading$(): Observable<boolean> {
+    return combineLatest(
+      this.loadService.isLoading$,
+      this.participationPaginatedListService.isLoading$,
+      (first, second) => {
+        return first || second;
+      }
+    );
+  }
 
   constructor(
+    private participationPaginatedListService: ParticipationPaginatedListService,
     private participationApiService: ParticipationApiService,
     private activatedRoute: ActivatedRoute,
     private loadService: LoadService
   ) {}
 
   ngOnInit(): void {
-    this.subOnRouteParams();
-  }
-
-  subOnRouteParams(): void {
-    this.activatedRoute.params
-      .pipe(
-        untilDestroyed(this),
-        switchMap((params) => {
-          this.courseId = params[ERoutesIds.COURSE_ID];
-          return this.loadService.wrapObservable(
-            this.participationApiService.getParticipationByCourse(
-              this.courseId!
-            )
-          );
-        })
-      )
-      .subscribe((participations) => {
-        this._participations$.next(participations);
-      });
+    this.participationPaginatedListService.courseId = this.courseId;
+    this.participationPaginatedListService.setQueryParam(
+      'participationStatus',
+      this.participationStatus
+    );
+    this.participationPaginatedListService.updateList();
   }
 
   acceptParticipation(userId: string) {
-    this.participationApiService
-      .updateParticipationByCourse(this.courseId!, [
-        {
-          userId: userId,
-          status: EParticipationStatuses.APPROVE,
-        },
-      ])
+    this.loadService
+      .wrapObservable(
+        this.participationApiService.updateParticipationByCourse(
+          this.courseId!,
+          [
+            {
+              userId: userId,
+              status: EParticipationStatuses.APPROVE,
+            },
+          ]
+        )
+      )
       .subscribe(() => {
-        this.removeParticipationFromList(userId);
+        this.participationPaginatedListService.updateCurrentPage();
       });
   }
 
   declineParticipation(userId: string) {
-    this.participationApiService
-      .updateParticipationByCourse(this.courseId!, [
-        {
-          userId: userId,
-          status: EParticipationStatuses.REMOVE,
-        },
-      ])
+    this.loadService
+      .wrapObservable(
+        this.participationApiService.updateParticipationByCourse(
+          this.courseId!,
+          [
+            {
+              userId: userId,
+              status: EParticipationStatuses.REMOVE,
+            },
+          ]
+        )
+      )
       .subscribe(() => {
-        this.removeParticipationFromList(userId);
+        this.participationPaginatedListService.updateCurrentPage();
       });
   }
 
-  private removeParticipationFromList(userId: string) {
-    this._participations$.next(
-      this._participations$
-        .getValue()!
-        .filter((participation) => participation.userId !== userId)
-    );
+  loadPage(page: number): void {
+    this.participationPaginatedListService.updateAtPage(page);
   }
 }

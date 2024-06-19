@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuillViewHTMLComponent } from 'ngx-quill';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 import { TextareaInputModule } from 'src/app/shared/components/forms/textarea-input/textarea-input.module';
 import { PracticePageComponent } from 'src/app/pages/practice-page/practice-page.component';
@@ -14,6 +15,8 @@ import { CheckboxInputModule } from 'src/app/shared/components/forms/checkbox-in
 import { DateInputModule } from 'src/app/shared/components/forms/date-input/date-input.module';
 import { SelectInputModule } from 'src/app/shared/components/forms/select-input/select-input.module';
 import { RequiredRoleModule } from 'src/app/shared/directives/required-role/required-role.module';
+import { MyAttemptsListModule } from 'src/app/pages/practice-page/components/my-attempts-list/my-attempts-list.module';
+import { BackButtonModule } from 'src/app/shared/components/back-button/back-button.module';
 
 @NgModule({
   declarations: [PracticePageComponent],
@@ -31,6 +34,9 @@ import { RequiredRoleModule } from 'src/app/shared/directives/required-role/requ
     QuillViewHTMLComponent,
     SvgIconComponent,
     NzSpinModule,
+    MyAttemptsListModule,
+    NzToolTipModule,
+    BackButtonModule,
   ],
   exports: [PracticePageComponent],
 })

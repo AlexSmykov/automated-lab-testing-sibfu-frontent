@@ -1,0 +1,23 @@
+<section class="server-error flex row center">
+  <div class="max-h max-w flex column start align-l">
+    <h1 class="server-error__title max-w text-center weight-600">500</h1>
+    <span class="server-error__text max-w text-center size-l">
+      При попытке обратиться к серверу произошла ошибка
+    </span>
+
+    <span class="server-error__text max-w text-center size-l">
+      Это означает, что в текущий момент сервер не работает полностью или
+      частично. Можете попробовать обратиться вновь позже
+    </span>
+
+    <div class="server-error__buttons buttons max-w flex row">
+      <div class="buttons__button clickable size-l" (click)="toMainPage()">
+        На главную страницу
+      </div>
+
+      <div class="buttons__button clickable size-l" (click)="toLogin()">
+        Выйти из профиля
+      </div>
+    </div>
+  </div>
+</section>

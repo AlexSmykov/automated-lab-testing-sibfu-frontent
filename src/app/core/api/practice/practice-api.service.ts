@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import {
   API_COURSE_ID_PRACTICE,
@@ -10,9 +10,15 @@ import {
   serializePracticePost,
   serializePracticeUpdate,
 } from 'src/app/core/api/practice/practice-api.transformer';
-import { TPractice } from 'src/app/core/api/practice/practice-api.interface';
+import {
+  TPractice,
+  TPracticeFilters,
+} from 'src/app/core/api/practice/practice-api.interface';
 import { TPracticeDto } from 'src/app/core/api/practice/practice-api.dto';
 import { TPracticeFormValueRaw } from 'src/app/pages/practice-form-page/practice-form-page.interface';
+import { TCursorPageable } from 'src/app/core/api/pagination/abstract-cursor-pageable.interface';
+import { TCursorPageableDto } from 'src/app/core/api/pagination/abstract-cursor-pageable.dto';
+import { deserializePagination } from 'src/app/core/api/pagination/abstract-cursor-pageable.transformer';
 
 import { map, Observable } from 'rxjs';
 
@@ -26,11 +32,22 @@ export class PracticeApiService {
       .pipe(map((dto) => deserializePractice(dto)));
   }
 
-  getByCourse(courseId: string): Observable<TPractice[]> {
+  getByCourse(
+    courseId: string,
+    query: TPracticeFilters
+  ): Observable<TCursorPageable<TPractice>> {
+    const params = new HttpParams({ fromObject: query });
+
     return this.httpClient
-      .get<TPracticeDto[]>(API_COURSE_ID_PRACTICE(courseId))
+      .get<TCursorPageableDto<TPracticeDto>>(API_COURSE_ID_PRACTICE(courseId), {
+        params: params,
+      })
       .pipe(
-        map((dto) => dto.map((practiceDto) => deserializePractice(practiceDto)))
+        map((dto) =>
+          deserializePagination(dto, (practiceDto) =>
+            deserializePractice(practiceDto)
+          )
+        )
       );
   }
 

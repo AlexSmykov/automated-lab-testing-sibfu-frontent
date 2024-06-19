@@ -1,8 +1,10 @@
 <nz-spin class="spinner" [nzSpinning]="isLoading$ | async">
-  <section class="flex row center">
+  <section class="flex column center">
+    <app-back-button [backPath]="EFullRoutes.COURSES"></app-back-button>
+
     <div
-      class="course__wrapper max-h max-w flex column start align-l"
-      *ngIf="course$ | async as course"
+      class="course__wrapper max-h max-w flex column start align-r"
+      *ngIf="course"
     >
       <app-course-header [course]="course"></app-course-header>
       <div class="practices max-h max-w flex row start align-c wrap">
@@ -20,19 +22,29 @@
         >
           <svg-icon
             class="course__action-buttons__button clickable shadow"
-            src="assets/icons/add-users.svg"
+            src="assets/icons/users.svg"
+            nz-tooltip="Студенты на курсе"
             (click)="checkParticipations()"
           />
 
           <svg-icon
             class="course__action-buttons__button clickable shadow"
+            src="assets/icons/add-users.svg"
+            nz-tooltip="Заявки на курс"
+            (click)="checkRequests()"
+          />
+
+          <svg-icon
+            class="course__action-buttons__button clickable shadow"
+            nz-tooltip="Редактировать курс"
             src="assets/icons/edit.svg"
             (click)="editCourse()"
           />
 
           <svg-icon
-            src="assets/icons/trash.svg"
             class="course__action-buttons__button clickable shadow"
+            src="assets/icons/trash.svg"
+            nz-tooltip="Удалить курс"
             (click)="deleteCourse()"
           />
         </div>
@@ -44,6 +56,12 @@
           ></app-course-practice-item>
         </ng-container>
       </div>
+
+      <app-pagination
+        [size$]="size$"
+        [count$]="count$"
+        (pageChanged)="loadPage($event)"
+      ></app-pagination>
     </div>
   </section>
 </nz-spin>

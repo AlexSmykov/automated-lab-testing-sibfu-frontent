@@ -1,7 +1,7 @@
 export type TCourseCreateDto = {
   name: string;
   description: string;
-  image_id: string;
+  image_id?: string;
 };
 
 export type TCourseUpdateDto = {

@@ -17,6 +17,9 @@ import { LoadService } from 'src/app/shared/services/load.service';
   providers: [CourseApiService, LoadService],
 })
 export class CourseFormPageComponent implements OnInit {
+  courseId: string | undefined =
+    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+
   createCourseForm: TFormGroupValue<TCourseFormValue> = this.fb.group({
     name: this.fb.control('', [
       Validators.required,
@@ -32,6 +35,14 @@ export class CourseFormPageComponent implements OnInit {
   isEdit: boolean = false;
   existenceCourseId: string | null = null;
 
+  get backPath(): string[] {
+    if (this.courseId) {
+      return EFullRoutes.COURSES_ID(this.courseId);
+    }
+
+    return EFullRoutes.COURSES;
+  }
+
   constructor(
     private fb: NonNullableFormBuilder,
     private router: Router,
@@ -45,14 +56,11 @@ export class CourseFormPageComponent implements OnInit {
   }
 
   subOnRouteParams(): void {
-    const courseId: string =
-      this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-
-    if (courseId) {
+    if (this.courseId) {
       this.isEdit = true;
       this.loadService
         .wrapObservable(
-          this.courseApiService.get(courseId).pipe(untilDestroyed(this))
+          this.courseApiService.get(this.courseId).pipe(untilDestroyed(this))
         )
         .subscribe((data) => {
           this.createCourseForm.patchValue(data);
