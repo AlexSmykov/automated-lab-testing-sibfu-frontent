@@ -10,6 +10,7 @@ export type TAttemptDto = {
   meta: object;
   sent_time: string;
   author_id: string;
+  language_id: number;
   practice_id: string;
   status: EAttemptStatuses;
 };

@@ -1,6 +1,7 @@
 export enum EAttemptStatuses {
   IN_QUEUE = 'IN_QUEUE',
   ACCEPTED = 'ACCEPTED',
+  RUNTIME_ERROR = 'RUNTIME_ERROR',
   TIME_LIMIT_EXCEED = 'TIME_LIMIT_EXCEED',
   MEMORY_LIMIT_EXCEED = 'MEMORY_LIMIT_EXCEED',
   WRONG_ANSWER = 'WRONG_ANSWER',
@@ -11,6 +12,7 @@ export enum EAttemptStatuses {
 export const EAttemptStatusesText: Record<EAttemptStatuses, string> = {
   IN_QUEUE: 'В обработке',
   ACCEPTED: 'Принято',
+  RUNTIME_ERROR: 'Ошибка времени выполнения',
   TIME_LIMIT_EXCEED: 'Превышение времени выполнение',
   MEMORY_LIMIT_EXCEED: 'Превышение по памяти',
   WRONG_ANSWER: 'Неправильный ответ',

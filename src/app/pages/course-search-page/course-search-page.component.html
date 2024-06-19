@@ -29,14 +29,14 @@
             <span class="course-search__course__text">{{ course.name }}</span>
 
             <svg-icon
-              *ngIf="!course.isHasActiveParticipation"
+              *ngIf="isPossibleSendRequest(course)"
               class="course-search__course__icon clickable"
               src="assets/icons/plus.svg"
               (click)="sendParticipationToCourse(course.id)"
             ></svg-icon>
 
             <svg-icon
-              *ngIf="course.isHasActiveParticipation"
+              *ngIf="!isPossibleSendRequest(course)"
               class="course-search__course__icon"
               src="assets/icons/check.svg"
             ></svg-icon>

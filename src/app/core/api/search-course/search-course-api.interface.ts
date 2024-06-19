@@ -1,7 +1,9 @@
+import { ECourseParticipationStatuses } from 'src/app/core/api/search-course/search-course-api.enum';
+
 export type TSearchedCourse = {
   id: string;
   name: string;
   description: string;
   image: string;
-  isHasActiveParticipation: boolean;
+  participationStatus: ECourseParticipationStatuses;
 };

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { EFullRoutes } from 'src/app/shared/router-paths';
 import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
-import { TCourse } from 'src/app/pages/course-page/course-page.interface';
+import { TCourse } from 'src/app/core/api/course/course-api.interface';
 
 @Component({
   selector: 'app-side-bar-course',

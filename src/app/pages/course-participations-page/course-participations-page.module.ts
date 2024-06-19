@@ -12,6 +12,7 @@ import { TextInputModule } from 'src/app/shared/components/forms/text-input/text
 import { IslandModule } from 'src/app/shared/components/island/island.module';
 import { CourseParticipationsPageComponent } from 'src/app/pages/course-participations-page/course-participations-page.component';
 import { CourseParticipationsPageRoutingModule } from 'src/app/pages/course-participations-page/course-participations-page-routing.module';
+import { PaginationModule } from 'src/app/shared/components/pagination/pagination.module';
 
 @NgModule({
   declarations: [CourseParticipationsPageComponent],
@@ -27,6 +28,7 @@ import { CourseParticipationsPageRoutingModule } from 'src/app/pages/course-part
     NzInputModule,
     IslandModule,
     SvgIconComponent,
+    PaginationModule,
   ],
   exports: [CourseParticipationsPageComponent],
 })

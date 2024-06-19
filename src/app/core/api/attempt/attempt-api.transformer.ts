@@ -20,6 +20,7 @@ export function deserializeAttempt(dto: TAttemptDto): TAttempt {
     meta: dto.meta,
     sentTime: new Date(dto.sent_time),
     authorId: dto.author_id,
+    languageId: dto.language_id,
     practiceId: dto.practice_id,
     status: dto.status,
   };

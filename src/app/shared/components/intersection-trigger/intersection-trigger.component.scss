@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+.infinite-scroll {
+  &__trigger-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

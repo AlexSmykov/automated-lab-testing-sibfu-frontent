@@ -6,14 +6,16 @@
       padding: 5px;
 
       &__field {
-        .status {
+        flex: 1;
+
+        &.status {
           color: rgb(var(--red-color));
 
-          .IN_QUEUE {
+          &.IN_QUEUE {
             color: var(--black-text);
           }
 
-          .APPROVE {
+          &.ACCEPTED {
             color: rgb(var(--green-color));
           }
         }

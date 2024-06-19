@@ -1,45 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { EFullRoutes } from 'src/app/shared/router-paths';
 import { CourseApiService } from 'src/app/core/api/course/course-api.service';
-import { TCourse } from 'src/app/core/api/course/course-api.interface';
 import { SideBarService } from 'src/app/components/side-bar/side-bar.service';
-import { LoadService } from 'src/app/shared/services/load.service';
 import { ERoles } from 'src/app/core/role/role.enum';
-
-import { BehaviorSubject } from 'rxjs';
+import { CoursePaginatedListService } from 'src/app/core/api/course/course-paginated-list.service';
 
 @UntilDestroy()
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  providers: [CourseApiService, LoadService],
+  providers: [CoursePaginatedListService, CourseApiService],
 })
 export class CoursesPageComponent implements OnInit {
-  private _courses$ = new BehaviorSubject<TCourse[] | null>(null);
-
-  courses$ = this._courses$.asObservable();
-  isLoading$ = this.loadService.isLoading$;
+  courses$ = this.coursePaginatedListService.list$;
+  isLoading$ = this.coursePaginatedListService.isLoading$;
+  hasNextPage$ = this.coursePaginatedListService.hasNextPage$;
 
   readonly EFullRoutes = EFullRoutes;
   readonly ERoles = ERoles;
 
   constructor(
     private router: Router,
-    private loadService: LoadService,
     private sideBarService: SideBarService,
-    private courseApiService: CourseApiService
+    private coursePaginatedListService: CoursePaginatedListService
   ) {}
 
   ngOnInit(): void {
-    this.loadService
-      .wrapObservable(this.courseApiService.getAll().pipe(untilDestroyed(this)))
-      .subscribe((courses) => {
-        this._courses$.next(courses);
-      });
+    this.coursePaginatedListService.updateList();
   }
 
   openCourse(courseId: string): void {
@@ -47,5 +38,9 @@ export class CoursesPageComponent implements OnInit {
       this.sideBarService.selectCourse(courseId);
       this.sideBarService.unselectPractice();
     });
+  }
+
+  loadMoreCourses(): void {
+    this.coursePaginatedListService.nextPage();
   }
 }

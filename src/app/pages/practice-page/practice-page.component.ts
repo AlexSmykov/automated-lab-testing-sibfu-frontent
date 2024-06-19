@@ -9,11 +9,10 @@ import { TPractice } from 'src/app/core/api/practice/practice-api.interface';
 import { DictionaryService } from 'src/app/core/dictionaries/dictionary.service';
 import { EDictionaries } from 'src/app/core/dictionaries/dictionary.enum';
 import { TFormGroupValue } from 'src/app/shared/interfaces/mapped-types.interface';
-import { TPracticeAnswerFormValue } from 'src/app/pages/practice-page/practice-page.interface';
 import { ERoles } from 'src/app/core/role/role.enum';
 import { LoadService } from 'src/app/shared/services/load.service';
+import { TPracticeAnswerFormValue } from 'src/app/pages/practice-page/practice-page.interface';
 import { AttemptApiService } from 'src/app/core/api/attempt/attempt-api.service';
-import { TAttempt } from 'src/app/core/api/attempt/attempt-api.interface';
 
 import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
 
@@ -22,7 +21,7 @@ import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
   selector: 'app-practice-page',
   templateUrl: './practice-page.component.html',
   styleUrls: ['./practice-page.component.scss'],
-  providers: [PracticeApiService, LoadService, AttemptApiService],
+  providers: [PracticeApiService, LoadService],
 })
 export class PracticePageComponent implements OnInit {
   private _practice$ = new BehaviorSubject<TPractice | null>(null);
@@ -31,11 +30,16 @@ export class PracticePageComponent implements OnInit {
     filter((practice): practice is TPractice => !!practice)
   );
 
-  private _attempts$ = new BehaviorSubject<TAttempt[] | null>(null);
-  attempts$ = this._attempts$.asObservable();
+  languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
+
+  practiceId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
+  private courseId: string =
+    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
+
+  isLoading$ = this.loadService.isLoading$;
 
   readonly ERoles = ERoles;
-  languages = this.dictionaryService.getDictByName(EDictionaries.LANGUAGES);
 
   answerFormGroup: TFormGroupValue<TPracticeAnswerFormValue> = this.fb.group({
     language: this.fb.control<number>(
@@ -44,12 +48,6 @@ export class PracticePageComponent implements OnInit {
     ),
     code: this.fb.control<string>('', Validators.required),
   });
-
-  isLoading$ = this.loadService.isLoading$;
-  private courseId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.COURSE_ID];
-  private practiceId: string =
-    this.activatedRoute.snapshot.params[ERoutesIds.PRACTICE_ID];
 
   get languagesNames$(): Observable<string> {
     return this.practiceSafe$.pipe(
@@ -76,16 +74,10 @@ export class PracticePageComponent implements OnInit {
   subOnPractice(): void {
     this.loadService
       .wrapObservable(
-        this.practiceApiService.get(this.practiceId!).pipe(
-          untilDestroyed(this),
-          switchMap((practice) => {
-            this._practice$.next(practice);
-            return this.attemptApiService.getAttempts(this.practiceId);
-          })
-        )
+        this.practiceApiService.get(this.practiceId!).pipe(untilDestroyed(this))
       )
-      .subscribe((attempts) => {
-        this._attempts$.next(attempts);
+      .subscribe((practice) => {
+        this._practice$.next(practice);
       });
   }
 
@@ -105,6 +97,12 @@ export class PracticePageComponent implements OnInit {
   edit(): void {
     this.router.navigate(
       EFullRoutes.PRACTICE_EDIT(this.courseId!, this.practiceId!)
+    );
+  }
+
+  summary(): void {
+    this.router.navigate(
+      EFullRoutes.PRACTICE_SUMMARY(this.courseId!, this.practiceId!)
     );
   }
 

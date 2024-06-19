@@ -10,6 +10,12 @@
 
     background: var(--light-gray-bg);
 
+    transition: 0.33s;
+
+    &:hover {
+      background: var(--very-light-gray-bg);
+    }
+
     .practice-text {
       overflow: hidden;
       display: -webkit-box;

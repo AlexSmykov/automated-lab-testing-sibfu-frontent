@@ -16,6 +16,13 @@ const routes: Routes = [
         (m) => m.PracticeFormPageModule
       ),
   },
+  {
+    path: EPartialRoutes.PRACTICE_SUMMARY,
+    loadChildren: () =>
+      import(
+        'src/app/pages/practice-summary-page/practice-summary-page.module'
+      ).then((m) => m.PracticeSummaryPageModule),
+  },
 ];
 
 @NgModule({
