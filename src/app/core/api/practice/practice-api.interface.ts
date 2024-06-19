@@ -24,3 +24,5 @@ export type TTestcase = {
   output: string;
   hidden: boolean;
 };
+
+export type TPracticeFilters = {};

@@ -1,4 +1,7 @@
-import { EParticipationStatuses } from 'src/app/core/api/participation/participation-api.enum';
+import {
+  EParticipationFilterStatuses,
+  EParticipationStatuses,
+} from 'src/app/core/api/participation/participation-api.enum';
 
 export type TParticipationDto = {
   username: string;
@@ -12,4 +15,8 @@ export type TParticipationDto = {
 export type TParticipationUpdateDto = {
   user_id: string;
   status: EParticipationStatuses;
+};
+
+export type TParticipationFiltersDto = {
+  participation_status: EParticipationFilterStatuses;
 };

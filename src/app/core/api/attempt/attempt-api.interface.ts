@@ -10,6 +10,9 @@ export type TAttempt = {
   meta: object;
   sentTime: Date;
   authorId: string;
+  languageId: number;
   practiceId: string;
   status: EAttemptStatuses;
 };
+
+export type TAttemptFilters = {};
