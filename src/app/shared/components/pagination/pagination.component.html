@@ -1,0 +1,11 @@
+<ng-container *ngIf="size$ | async as size">
+  <ng-container *ngIf="count$ | async as count">
+    <nz-pagination
+      *ngIf="count > size"
+      [nzSize]="'small'"
+      [nzTotal]="count"
+      [nzPageSize]="size"
+      (nzPageIndexChange)="pageChanged.emit($event + 1)"
+    ></nz-pagination>
+  </ng-container>
+</ng-container>
